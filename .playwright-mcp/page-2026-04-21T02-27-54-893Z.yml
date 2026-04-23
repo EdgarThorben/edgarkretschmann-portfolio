@@ -1,0 +1,88 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic:
+      - img
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - img "Edgar Kretschmann" [ref=e7]
+        - generic [ref=e8]:
+          - heading "Hello! I'm Edgar Kretschmann Whatsapp +4915784928200" [level=1] [ref=e9]:
+            - generic [ref=e10]: Hello! I'm Edgar Kretschmann
+            - generic [ref=e11]: Whatsapp +4915784928200
+          - paragraph [ref=e12]:
+            - text: I'm a digital marketing enthusiast with a knack for community management and lead generation.
+            - text: My strong suit is the implementation of automation and A.I.
+            - text: I've worked on a wide range of projects from retreats to language schools, crafting engaging marketing strategies that drive growth. I love connecting people and ideas, and I thrive in dynamic settings where I can enhance brand visibility and foster community.
+          - list [ref=e13]:
+            - listitem [ref=e14]:
+              - link "Look at my Projects" [ref=e15] [cursor=pointer]:
+                - /url: /portfolio
+                - img [ref=e16]
+                - generic [ref=e18]: Look at my Projects
+      - generic [ref=e19]:
+        - img "Portfolio preview" [ref=e21]
+        - generic [ref=e22]:
+          - heading "Explore my Portfolio" [level=2] [ref=e23]
+          - paragraph [ref=e24]: Between starting a German school in Manila, creating multiple online businesses and becoming a digital nomad there is much to learn. Find out about the projects I was involved with.
+          - list [ref=e25]:
+            - listitem [ref=e26]:
+              - link "How I got here" [ref=e27] [cursor=pointer]:
+                - /url: /bio
+                - img [ref=e28]
+                - generic [ref=e30]: How I got here
+            - listitem [ref=e31]:
+              - link "Get in Touch" [ref=e32] [cursor=pointer]:
+                - /url: mailto:edgar@edgarkretschmann.com
+                - img [ref=e33]
+                - generic [ref=e35]: Get in Touch
+      - generic [ref=e36]:
+        - img "Not a Mac Fan" [ref=e38]
+        - generic [ref=e39]:
+          - heading "Actually not a Mac Fan" [level=2] [ref=e40]
+          - paragraph [ref=e41]: x
+          - list [ref=e42]:
+            - listitem [ref=e43]:
+              - link "Get in Touch" [ref=e44] [cursor=pointer]:
+                - /url: mailto:edgar@edgarkretschmann.com
+                - img [ref=e45]
+                - generic [ref=e47]: Get in Touch
+      - generic [ref=e48]:
+        - img "Done Remotely" [ref=e50]
+        - generic [ref=e51]:
+          - heading "Done. Remotely" [level=2] [ref=e52]
+          - paragraph [ref=e53]: Modern work is done remotely, and that is not a disadvantage.
+          - list [ref=e54]:
+            - listitem [ref=e55]:
+              - link "Get in Touch" [ref=e56] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e57]
+                - generic [ref=e59]: Get in Touch
+      - generic [ref=e60]:
+        - list [ref=e61]:
+          - listitem [ref=e62]:
+            - link "Twitter" [ref=e63] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e64]
+              - generic [ref=e66]: Twitter
+          - listitem [ref=e67]:
+            - link "Facebook" [ref=e68] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e69]
+              - generic [ref=e71]: Facebook
+          - listitem [ref=e72]:
+            - link "Instagram" [ref=e73] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e74]
+              - generic [ref=e78]: Instagram
+          - listitem [ref=e79]:
+            - link "Phone" [ref=e80] [cursor=pointer]:
+              - /url: tel:+4915784928200
+              - img [ref=e81]
+              - generic [ref=e83]: Phone
+          - listitem [ref=e84]:
+            - link "Email" [ref=e85] [cursor=pointer]:
+              - /url: mailto:edgar@edgarkretschmann.com
+              - img [ref=e86]
+              - generic [ref=e88]: Email
+        - paragraph [ref=e89]: © Untitled. All rights reserved.
+  - alert [ref=e90]

@@ -1,0 +1,107 @@
+description = "Clone Edgar's sites from local HTTrack mirrors served on localhost"
+
+prompt = '''
+You are finishing the clone of edgarkretschmann.com and its subdomains into the Next.js project at the current working directory.
+
+## Preferred tools for fetching pages
+
+Always use the **Claude in Chrome extension** (`mcp__Claude_in_Chrome__navigate` + `mcp__Claude_in_Chrome__read_page` or `get_page_text`) to fetch and read pages. It renders JavaScript and works natively with localhost. Never use Firecrawl for page content. For downloading binary assets (images, fonts), use `curl.exe`.
+
+## Free tier constraints — read before starting
+
+You are running on the Gemini free tier. This means:
+- 15 requests per minute max. If you get a 429 error or a silent failure, stop and wait 60 seconds before retrying.
+- 1,500 requests per day hard cap. Work efficiently — do not repeat fetches you already did.
+- If a shell command exits silently with no output and no error, assume it was rate-limited. Wait 60s and retry once.
+- After every major step (fetching a page, running a build), pause briefly before the next request.
+- If you get stuck in a loop of silent failures, stop and report what happened so the user can restart.
+
+## Environment — Windows
+
+This project runs on Windows. Follow these rules for all shell commands:
+- Use `curl.exe` NOT `curl` (on Windows, `curl` is a PowerShell alias for Invoke-WebRequest and will hang)
+- Use `copy` not `cp`, use `move` not `mv`
+- Paths use backslashes: `src\components\` not `src/components/`
+- PowerShell is the shell — use PowerShell syntax when in doubt
+
+## Source of truth — local mirrors on localhost
+
+The scraped HTML mirrors are already running as local static servers. Use these URLs as your targets instead of the live sites:
+
+  http://localhost:3010  →  edgarkretschmann.com        (route: /)
+  http://localhost:3011  →  bio.edgarkretschmann.com     (route: /bio)
+  http://localhost:3012  →  portfolio.edgarkretschmann.com (route: /portfolio)
+  http://localhost:3013  →  projects.edgarkretschmann.com  (route: /projects)
+
+Before doing anything else, verify the servers are up:
+  curl.exe -s -o nul -w "%{http_code}" http://localhost:3010
+
+If the response is not 200, start them automatically:
+  Start-Process -NoNewWindow -FilePath "node" -ArgumentList "scripts/serve-local.mjs"
+Then wait 2 seconds and verify again before proceeding.
+
+## What already exists — do not redo this work
+
+The Next.js project already has:
+- App Router pages: src/app/page.tsx, bio/page.tsx, portfolio/page.tsx, projects/page.tsx, project1–project6/page.tsx
+- Components: HomeSection.tsx, PortfolioSection.tsx, ProjectDetail.tsx, PolygonBackground.tsx, RadarChart.tsx
+- Partial research: docs/research/ has CONTENT.md, DESIGN_TOKENS.md, LAYOUT.md per subdomain plus component specs
+- Public assets: public/images/{home,bio,projects,portfolio}/ already populated
+- Design references: docs/design-references/ has desktop + mobile screenshots
+- Stack: Next.js 16, App Router, Tailwind CSS v4, shadcn/ui (base-nova), Geist font, OKLCH tokens, TypeScript strict
+
+Read docs/research/ first to understand what has already been extracted before scraping anything.
+
+## Your tasks
+
+### 1. Audit existing research vs live (local) pages
+For each of the four localhost URLs, fetch the page using the Claude in Chrome extension (`mcp__Claude_in_Chrome__navigate` + `mcp__Claude_in_Chrome__read_page` or `mcp__Claude_in_Chrome__get_page_text`). This is the preferred method — it renders JavaScript and works reliably with localhost servers. Do NOT use Firecrawl or curl for page content. Compare:
+- Text content — does it match what is in the corresponding Next.js page file?
+- Images — are all img srcs present in public/? Copy any missing ones from the localhost response.
+- Sections — are there sections in the HTML not yet implemented in the Next.js component?
+- Colors and fonts — do globals.css tokens match the computed styles on the page?
+
+Write a gap report to docs/research/GAP_REPORT.md listing exactly what is missing or wrong.
+
+### 2. Copy missing assets
+For every image or video URL returned from the localhost servers that is not yet in public/:
+- Download it via the Chrome extension (`mcp__Claude_in_Chrome__navigate` to the URL, then extract the asset) or `curl.exe` for binary files
+- Save to public/images/<section>/ preserving the filename
+- Update the src reference in the relevant component
+
+### 3. Fix text content
+Update each Next.js page and component to match the exact text from the local mirror — headings, body copy, button labels, nav items, alt text. Do not paraphrase.
+
+### 4. Implement missing sections
+For any section present in the scraped HTML but absent in the Next.js source:
+- Extract its CSS via the Chrome extension: navigate to the localhost URL, run `getComputedStyle()` via `mcp__Claude_in_Chrome__javascript_tool` to get exact values
+- Write a spec to docs/research/components/<name>.spec.md
+- Implement it as a TSX component in src/components/
+- Import and render it in the correct page file
+
+### 5. Subdomains as routes — not separate domains
+Each subdomain maps to a Next.js route, not a separate app:
+- bio.edgarkretschmann.com content → src/app/bio/page.tsx
+- portfolio.edgarkretschmann.com content → src/app/portfolio/page.tsx
+- projects.edgarkretschmann.com content → src/app/projects/page.tsx and src/app/project[1-6]/page.tsx
+
+Do not create separate Next.js apps or rewrites. All content lives under one app at edgarkretschmann-new.
+
+### 6. Project detail pages
+The projects subdomain has individual project entries. Match each to project1–project6 by name:
+Innate, Pflegeplace, IcanSpeak, DeutschAcademy, Nomavillage, Narangyoga.
+Update each projectN/page.tsx via the ProjectDetail component with verbatim content from the local mirror.
+
+### 7. Do not touch client sites
+Ignore anything from ironandzen.carrd.co, sharonalmaandina.carrd.co, gregorkretschmann.carrd.co, dr-andrea.de.
+
+### 8. Verify build
+After all changes: npm run build
+Fix any TypeScript or ESLint errors before finishing.
+
+### 9. Report
+When done, output:
+- What was missing and is now fixed (text, images, sections)
+- What could not be resolved and why
+- Final build status
+'''

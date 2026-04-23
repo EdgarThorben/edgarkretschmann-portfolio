@@ -1,0 +1,70 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e12]:
+      - separator [ref=e13]
+      - heading "Hello! I'm Edgar Kretschmann Whatsapp +4915784928200" [level=1] [ref=e14]:
+        - generic [ref=e15]: Hello! I'm Edgar Kretschmann
+        - generic [ref=e16]:
+          - text: Whatsapp
+          - text: "+4915784928200"
+      - paragraph [ref=e17]:
+        - generic [ref=e18]:
+          - text: I’m a digital marketing enthusiast with a knack for community management and lead generation.
+          - text: My strong suit is the implementation of automation and A.I.
+          - text: I’ve worked on a wide range of projects from retreats to language schools, crafting engaging marketing strategies that drive growth. I love connecting people and ideas, and I thrive in dynamic settings where I can enhance brand visibility and foster community.
+      - list [ref=e19]:
+        - listitem [ref=e20]:
+          - button "Chevron Right (Light) Look at my Projects" [ref=e21] [cursor=pointer]:
+            - img "Chevron Right (Light)"
+            - generic [ref=e22]: Look at my Projects
+    - generic [ref=e26]:
+      - separator [ref=e27]
+      - heading "Explore my Portfolio" [level=2] [ref=e28]
+      - paragraph [ref=e29]: Between starting a German school in Manila, creating multiple online businesses and becoming a digital nomad there is much to learn. Find out about the projects I was involved with.
+      - list [ref=e30]:
+        - listitem [ref=e31]:
+          - button "Chevron Right (Light) How I got here" [ref=e32] [cursor=pointer]:
+            - img "Chevron Right (Light)"
+            - generic [ref=e33]: How I got here
+      - list [ref=e34]:
+        - listitem [ref=e35]:
+          - button "Chevron Right (Light) Get in Touch" [ref=e36] [cursor=pointer]:
+            - img "Chevron Right (Light)"
+            - generic [ref=e37]: Get in Touch
+  - generic [ref=e41]:
+    - generic [ref=e48]:
+      - separator [ref=e49]
+      - heading "Actually not a Mac Fan" [level=2] [ref=e50]
+      - paragraph [ref=e51]: x
+      - list [ref=e52]:
+        - listitem [ref=e53]:
+          - button "Chevron Right (Light) Get in Touch" [ref=e54] [cursor=pointer]:
+            - img "Chevron Right (Light)"
+            - generic [ref=e55]: Get in Touch
+    - generic [ref=e59]:
+      - separator [ref=e60]
+      - heading "Done. Remotely" [level=2] [ref=e61]
+      - paragraph [ref=e62]: Modern work is done remotely, and that is not a disadvantage.
+      - list [ref=e63]:
+        - listitem [ref=e64]:
+          - button "Chevron Right (Light) Have Sex" [ref=e65] [cursor=pointer]:
+            - img "Chevron Right (Light)"
+            - generic [ref=e66]: Have Sex
+    - generic [ref=e72]:
+      - list [ref=e73]:
+        - listitem [ref=e74]:
+          - button "Twitter" [ref=e75] [cursor=pointer]:
+            - img "Twitter"
+        - listitem [ref=e76]:
+          - button "Facebook" [ref=e77] [cursor=pointer]:
+            - img "Facebook"
+        - listitem [ref=e78]:
+          - button "Instagram" [ref=e79] [cursor=pointer]:
+            - img "Instagram"
+        - listitem [ref=e80]:
+          - button "Phone" [ref=e81] [cursor=pointer]:
+            - img "Phone"
+        - listitem [ref=e82]:
+          - button "Email" [ref=e83] [cursor=pointer]:
+            - img "Email"
+      - paragraph [ref=e84]: © Untitled. All rights reserved.

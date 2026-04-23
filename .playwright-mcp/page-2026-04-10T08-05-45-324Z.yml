@@ -1,0 +1,32 @@
+- generic [ref=e5]:
+  - generic [ref=e12]:
+    - separator [ref=e13]
+    - heading "Hello! I'm Edgar Kretschmann Whatsapp +4915784928200" [level=1] [ref=e14]:
+      - generic [ref=e15]: Hello! I'm Edgar Kretschmann
+      - generic [ref=e16]:
+        - text: Whatsapp
+        - text: "+4915784928200"
+    - paragraph [ref=e17]:
+      - generic [ref=e18]:
+        - text: I’m a digital marketing enthusiast with a knack for community management and lead generation.
+        - text: My strong suit is the implementation of automation and A.I.
+        - text: I’ve worked on a wide range of projects from retreats to language schools, crafting engaging marketing strategies that drive growth. I love connecting people and ideas, and I thrive in dynamic settings where I can enhance brand visibility and foster community.
+    - list [ref=e19]:
+      - listitem [ref=e20]:
+        - button "Chevron Right (Light) Look at my Projects" [ref=e21] [cursor=pointer]:
+          - img "Chevron Right (Light)"
+          - generic [ref=e22]: Look at my Projects
+  - generic [ref=e26]:
+    - separator [ref=e27]
+    - heading "Explore my Portfolio" [level=2] [ref=e28]
+    - paragraph [ref=e29]: Between starting a German school in Manila, creating multiple online businesses and becoming a digital nomad there is much to learn. Find out about the projects I was involved with.
+    - list [ref=e30]:
+      - listitem [ref=e31]:
+        - button "Chevron Right (Light) How I got here" [ref=e32] [cursor=pointer]:
+          - img "Chevron Right (Light)"
+          - generic [ref=e33]: How I got here
+    - list [ref=e34]:
+      - listitem [ref=e35]:
+        - button "Chevron Right (Light) Get in Touch" [ref=e36] [cursor=pointer]:
+          - img "Chevron Right (Light)"
+          - generic [ref=e37]: Get in Touch

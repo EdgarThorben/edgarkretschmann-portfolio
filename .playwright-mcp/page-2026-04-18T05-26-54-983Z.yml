@@ -1,0 +1,125 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "Redefining Co-living" [level=1]
+                  - paragraph: In our time and age working remotely is becoming the new norm for many people. With innate I created unforgettable moments in communities.
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint01"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#one
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "Finding Nurses" [level=1]
+                  - paragraph: Finding sough after professionals online isn't easy when the market is so competetive. With Pflegeplace I build a funnel to recruit Nurses in Germany
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint02"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#two
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "Building an Online School" [level=1]
+                  - paragraph: At IcanSpeak, I built an online language school to teach students German, managing campaigns and finding clients through LinkedIn.
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint03"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#three
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "Brick and Mortar German School (abroad)" [level=1]
+                  - paragraph: At DeutschAcademy, I helped developing a brick-and-mortar language school in Manila to recruit Filipino nurses, building the WordPress site, securing investors, and finding clients.
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint04"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#four
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "High Class Colive" [level=1]
+                  - paragraph: At Nomavillage, I manage marketing campaigns, automated lead funnels, and integrated SEM with social media strategies to drive growth and engagement.
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint05"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#five
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - heading "New Yoga" [level=1]
+                  - paragraph: At Narangyoga, I handled marketing campaigns, automated lead funnels, and managed SEM and social media efforts. I also worked as a brand creator and marketing strategist to shape the company's identity.
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Next Project":
+                        - /url: "#scrollpoint06"
+                        - img "Arrow Down (Light)"
+                        - generic: Next Project
+                - generic:
+                  - list:
+                    - listitem:
+                      - link "Arrow Down (Light) Check this out in Detail":
+                        - /url: https://projects.edgarkretschmann.com/#six
+                        - img "Arrow Down (Light)"
+                        - generic: Check this out in Detail
+          - list:
+            - listitem:
+              - link "Arrow Down (Light) Get in touch!":
+                - /url: https://projects.edgarkretschmann.com/#touch
+                - img "Arrow Down (Light)"
+                - generic: Get in touch!

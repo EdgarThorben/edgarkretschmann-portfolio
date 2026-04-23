@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - img
+    - generic [ref=e3]:
+      - link "← Home" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - img "Redefining Co-lives" [ref=e8]
+        - generic [ref=e11]:
+          - heading "Redefining Co-lives" [level=2] [ref=e12]
+          - paragraph [ref=e13]: In our time and age working remotely is becoming the new norm for many people. With innate I created unforgettable moments in communities.
+          - generic [ref=e14]:
+            - link "↓ Next Project" [ref=e15] [cursor=pointer]:
+              - /url: "#project-2"
+            - link "Check this out in Detail →" [ref=e16] [cursor=pointer]:
+              - /url: /project1
+      - generic [ref=e18]:
+        - img "Creating Nurse Lead Funnels" [ref=e19]
+        - generic [ref=e22]:
+          - heading "Creating Nurse Lead Funnels" [level=2] [ref=e23]
+          - paragraph [ref=e24]: Finding sought after professionals online isn't easy when the market is competitive. With Pflegeplace I built a funnel to recruit Nurses in Germany.
+          - generic [ref=e25]:
+            - link "↓ Next Project" [ref=e26] [cursor=pointer]:
+              - /url: "#project-3"
+            - link "Check this out in Detail →" [ref=e27] [cursor=pointer]:
+              - /url: /project2
+      - generic [ref=e29]:
+        - img "Building an Online School" [ref=e30]
+        - generic [ref=e33]:
+          - heading "Building an Online School" [level=2] [ref=e34]
+          - paragraph [ref=e35]: At IcanSpeak, I built an online language school to teach students German, managing campaigns and finding clients through LinkedIn.
+          - generic [ref=e36]:
+            - link "↓ Next Project" [ref=e37] [cursor=pointer]:
+              - /url: "#project-4"
+            - link "Check this out in Detail →" [ref=e38] [cursor=pointer]:
+              - /url: /project3
+      - generic [ref=e40]:
+        - img "Brick and Mortar German School" [ref=e41]
+        - generic [ref=e44]:
+          - heading "Brick and Mortar German School" [level=2] [ref=e45]
+          - paragraph [ref=e46]: At DeutschAcademy, I helped develop a brick-and-mortar language school in Manila to recruit Filipino nurses, building the WordPress site, securing investors, and finding clients.
+          - generic [ref=e47]:
+            - link "↓ Next Project" [ref=e48] [cursor=pointer]:
+              - /url: "#project-5"
+            - link "Check this out in Detail →" [ref=e49] [cursor=pointer]:
+              - /url: /project4
+      - generic [ref=e51]:
+        - img "High Class Colive" [ref=e52]
+        - generic [ref=e55]:
+          - heading "High Class Colive" [level=2] [ref=e56]
+          - paragraph [ref=e57]: At Nomavillage, I managed marketing campaigns, automated lead funnels, and integrated SEM with social media strategies to drive growth and engagement.
+          - generic [ref=e58]:
+            - link "↓ Next Project" [ref=e59] [cursor=pointer]:
+              - /url: "#project-6"
+            - link "Check this out in Detail →" [ref=e60] [cursor=pointer]:
+              - /url: /project5
+      - generic [ref=e62]:
+        - img "New Yoga" [ref=e63]
+        - generic [ref=e66]:
+          - heading "New Yoga" [level=2] [ref=e67]
+          - paragraph [ref=e68]: At Narangyoga, I handled marketing campaigns, automated lead funnels, and managed SEM and social media efforts, also working as a brand creator to shape the company's identity.
+          - link "Check this out in Detail →" [ref=e70] [cursor=pointer]:
+            - /url: /project6
+  - button "Open Next.js Dev Tools" [ref=e76] [cursor=pointer]:
+    - img [ref=e77]
+  - alert [ref=e80]

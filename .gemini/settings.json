@@ -1,0 +1,30 @@
+{
+  "sandbox": false,
+  "autoAccept": true,
+  "coreTools": {
+    "runCommand": {
+      "trust": true
+    }
+  },
+  "mcpServers": {
+    "firecrawl": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_KEY": "fc-7a0ab01fb5f44320a606f7e715555f21"
+      },
+      "trust": true
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "trust": true
+    }
+  }
+}

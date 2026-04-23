@@ -64,6 +64,29 @@ docs/
 scripts/            # Asset download scripts
 ```
 
+## Local Scraped Mirrors (Use These First)
+
+Pre-scraped HTTrack mirrors of the target sites live at `C:\Users\Edgar\Projects\Sites\`. **Always prefer these over live scraping** — they are offline, fast, and don't consume Firecrawl quota.
+
+| Route | Live URL | Local mirror path |
+|-------|----------|-------------------|
+| `/` | `edgarkretschmann.com` | `C:\Users\Edgar\Projects\Sites\Sites\edgarkretschmann.com\` |
+| `/bio` | `bio.edgarkretschmann.com` | `C:\Users\Edgar\Projects\Sites\ap\bio.edgarkretschmann.com\` |
+| `/portfolio` | `portfolio.edgarkretschmann.com` | `C:\Users\Edgar\Projects\Sites\ap\portfolio.edgarkretschmann.com\` |
+| `/projects` | `projects.edgarkretschmann.com` | `C:\Users\Edgar\Projects\Sites\ap\projects.edgarkretschmann.com\` |
+
+Each mirror folder contains:
+- `index.html` — full page HTML, parse this for text content, layout structure, and image paths
+- `assets/images/` — all images already downloaded, copy to `public/images/` as needed
+
+**Workflow when using local mirrors:**
+1. Read `index.html` with file tools instead of fetching with Firecrawl
+2. Copy image assets directly from the mirror's `assets/images/` folder into `public/images/`
+3. Only fall back to Firecrawl/live scraping for things the mirror is missing (dynamic content, videos, computed styles)
+4. For computed CSS values (colors, spacing, font sizes), use Firecrawl or Chrome MCP on the live URL since HTTrack doesn't capture computed styles
+
+**Do NOT copy** content from `ironandzen.carrd.co`, `sharonalmaandina.carrd.co`, `gregorkretschmann.carrd.co`, or `dr-andrea.de` — those are client sites.
+
 ## MOST IMPORTANT NOTES
 - When launching Claude Code agent teams, ALWAYS have each teammate work in their own worktree branch and merge everyone's work at the end, resolving any merge conflicts smartly since you are basically serving the orchestrator role and have full context to our goals, work given, work achieved, and desired outcomes.
 - After editing `AGENTS.md`, run `bash scripts/sync-agent-rules.sh` to regenerate platform-specific instruction files.

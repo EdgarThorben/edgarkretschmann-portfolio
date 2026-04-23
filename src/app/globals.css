@@ -73,6 +73,8 @@
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
+  --brand-accent: oklch(0.916 0.088 163.53);
+  --brand-accent-foreground: oklch(0.443 0.024 233.15);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -81,6 +83,44 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer utilities {
+  .fade-left-hidden {
+    transform: translateX(1.6875rem);
+    opacity: 0;
+  }
+  .fade-up-hidden {
+    transform: translateY(1.6875rem);
+    opacity: 0;
+  }
+  .portfolio-image {
+    transform: scale(1.05625);
+    filter: blur(0.28125rem);
+    transition: transform 1s, filter 1s;
+  }
+  .stagger-text {
+    transition: opacity 1s 0.125s;
+  }
+  .animated {
+    backface-visibility: hidden;
+  }
+  .animate-blur-in {
+    animation: blur-in 1s forwards;
+  }
+}
+
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 .dark {

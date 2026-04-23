@@ -1,0 +1,81 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - img
+    - generic [ref=e3]:
+      - link "← Home" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic:
+        - generic:
+          - generic:
+            - img "Redefining Co-lives"
+          - generic [ref=e6]:
+            - heading "Redefining Co-lives" [level=2] [ref=e7]
+            - paragraph [ref=e8]: In our time and age working remotely is becoming the new norm for many people. With innate I created unforgettable moments in communities.
+            - generic [ref=e9]:
+              - link "↓ Next Project" [ref=e10] [cursor=pointer]:
+                - /url: "#project-2"
+              - link "Check this out in Detail →" [ref=e11] [cursor=pointer]:
+                - /url: /project1
+      - generic:
+        - generic:
+          - generic:
+            - img "Creating Nurse Lead Funnels"
+          - generic [ref=e12]:
+            - heading "Creating Nurse Lead Funnels" [level=2] [ref=e13]
+            - paragraph [ref=e14]: Finding sought after professionals online isn't easy when the market is competitive. With Pflegeplace I built a funnel to recruit Nurses in Germany.
+            - generic [ref=e15]:
+              - link "↓ Next Project" [ref=e16] [cursor=pointer]:
+                - /url: "#project-3"
+              - link "Check this out in Detail →" [ref=e17] [cursor=pointer]:
+                - /url: /project2
+      - generic:
+        - generic:
+          - generic:
+            - img "Building an Online School"
+          - generic [ref=e18]:
+            - heading "Building an Online School" [level=2] [ref=e19]
+            - paragraph [ref=e20]: At IcanSpeak, I built an online language school to teach students German, managing campaigns and finding clients through LinkedIn.
+            - generic [ref=e21]:
+              - link "↓ Next Project" [ref=e22] [cursor=pointer]:
+                - /url: "#project-4"
+              - link "Check this out in Detail →" [ref=e23] [cursor=pointer]:
+                - /url: /project3
+      - generic:
+        - generic:
+          - generic:
+            - img "Brick and Mortar German School"
+          - generic [ref=e24]:
+            - heading "Brick and Mortar German School" [level=2] [ref=e25]
+            - paragraph [ref=e26]: At DeutschAcademy, I helped develop a brick-and-mortar language school in Manila to recruit Filipino nurses, building the WordPress site, securing investors, and finding clients.
+            - generic [ref=e27]:
+              - link "↓ Next Project" [ref=e28] [cursor=pointer]:
+                - /url: "#project-5"
+              - link "Check this out in Detail →" [ref=e29] [cursor=pointer]:
+                - /url: /project4
+      - generic:
+        - generic:
+          - generic:
+            - img "High Class Colive"
+          - generic [ref=e30]:
+            - heading "High Class Colive" [level=2] [ref=e31]
+            - paragraph [ref=e32]: At Nomavillage, I managed marketing campaigns, automated lead funnels, and integrated SEM with social media strategies to drive growth and engagement.
+            - generic [ref=e33]:
+              - link "↓ Next Project" [ref=e34] [cursor=pointer]:
+                - /url: "#project-6"
+              - link "Check this out in Detail →" [ref=e35] [cursor=pointer]:
+                - /url: /project5
+      - generic:
+        - generic:
+          - generic:
+            - img "New Yoga"
+          - generic [ref=e36]:
+            - heading "New Yoga" [level=2] [ref=e37]
+            - paragraph [ref=e38]: At Narangyoga, I handled marketing campaigns, automated lead funnels, and managed SEM and social media efforts, also working as a brand creator to shape the company's identity.
+            - link "Check this out in Detail →" [ref=e40] [cursor=pointer]:
+              - /url: /project6
+    - link "✉ Get in touch!" [ref=e42] [cursor=pointer]:
+      - /url: mailto:edgar@edgarkretschmann.com
+  - button "Open Next.js Dev Tools" [ref=e48] [cursor=pointer]:
+    - img [ref=e49]
+  - alert [ref=e52]

@@ -1,0 +1,619 @@
+[    6187ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    6385ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    6639ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    6640ms] [LOG] [Fast Refresh] done in 151ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    6763ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[    6810ms] [LOG] [Fast Refresh] done in 150ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   23958ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   24009ms] [LOG] [Fast Refresh] done in 153ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   32932ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   32993ms] [LOG] [Fast Refresh] done in 168ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   33113ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   33140ms] [LOG] [Fast Refresh] done in 131ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   35033ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   35259ms] [LOG] [Fast Refresh] done in 285ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   41092ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   41277ms] [LOG] [Fast Refresh] done in 260ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   47986ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   47999ms] [LOG] [Fast Refresh] done in 117ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   48234ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   48291ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   56446ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   56511ms] [LOG] [Fast Refresh] done in 173ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   98053ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[   98232ms] [LOG] [Fast Refresh] done in 248ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  105131ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  105333ms] [LOG] [Fast Refresh] done in 84ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  105440ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  105447ms] [LOG] [Fast Refresh] done in 106ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  110976ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  111043ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  118109ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  118127ms] [LOG] [Fast Refresh] done in 131ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  143626ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  143826ms] [LOG] [Fast Refresh] done in 84ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  143942ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  143945ms] [LOG] [Fast Refresh] done in 107ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  149251ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  149335ms] [LOG] [Fast Refresh] done in 190ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  149494ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  149533ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  159619ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  159716ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  159804ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  159904ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  159952ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160009ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160057ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160115ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160171ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160219ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160260ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160308ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160356ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160413ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160463ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160512ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160562ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160618ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160669ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160725ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160776ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160824ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160881ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160930ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  160980ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161021ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161070ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161127ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161176ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161217ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161274ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161316ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161365ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161413ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161463ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161520ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161570ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161620ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161669ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161725ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161773ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161821ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161870ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161918ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  161966ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162015ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162057ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162105ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162146ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162195ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162236ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162284ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162333ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162374ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162423ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162465ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162507ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162555ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162598ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162663ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162712ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162761ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162809ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162866ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162908ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162957ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  162998ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163047ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163105ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163154ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163203ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163251ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163302ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163352ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163409ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163460ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163509ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163558ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163615ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163667ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163707ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163757ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163799ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163840ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163888ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163929ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  163970ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164020ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164077ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164134ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164184ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164228ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164282ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164331ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164381ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164438ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164487ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164538ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164585ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164634ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164674ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164731ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164782ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164830ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164879ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164938ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  164985ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165027ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165076ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165125ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165167ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165218ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165272ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165313ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165369ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165419ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165468ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165523ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165581ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165622ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165670ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165721ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165773ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165820ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165871ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165927ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  165986ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166044ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166098ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166155ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166203ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166260ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166302ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166358ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166407ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166457ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166503ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166559ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166610ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166673ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166723ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166779ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166826ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166879ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166937ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  166990ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167048ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167098ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167148ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167205ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167264ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167313ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167354ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167421ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167469ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167517ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167577ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167636ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167693ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167742ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167784ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167834ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167892ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167939ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  167992ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168048ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168095ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168154ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168219ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168284ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168342ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168397ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168447ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168499ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168548ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168597ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168638ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168688ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168749ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168799ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168849ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168899ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  168950ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169008ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169059ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169115ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169161ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169212ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169261ms] [ERROR] ./src/app/portfolio/page.tsx
+'styled-jsx' cannot be imported from a Server Component module
+It only works in a Client Component but none of its parents are marked with 'use client', so they're Server Components by default. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:3272
+[  169361ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  169589ms] [LOG] [Fast Refresh] done in 114ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  175445ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  175573ms] [LOG] [Fast Refresh] done in 237ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  175757ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  175802ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  183298ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  183300ms] [LOG] [Fast Refresh] done in 113ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  212015ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  212026ms] [LOG] [Fast Refresh] done in 111ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  950355ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  950387ms] [LOG] [Fast Refresh] done in 141ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  953572ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
+[  953579ms] [LOG] [Fast Refresh] done in 124ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_115brz8._.js:2431
