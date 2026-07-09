@@ -5,6 +5,7 @@ node_modules/
 
 # Build
 .next/
+.astro/
 out/
 build/
 dist/
@@ -47,3 +48,4 @@ next-env.d.ts
 
 # Local temp files
 temp/
+.env*

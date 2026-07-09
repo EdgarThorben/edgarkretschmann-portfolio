@@ -1,0 +1,332 @@
+---
+import Base from "../../layouts/Base.astro";
+import PolygonBackground from "../../components/PolygonBackground.astro";
+import { projects, bonusExperience } from "../../data/projects";
+
+const timeline = [...projects].sort((a, b) => {
+  const order = ["deutschacademy", "pflegeplace", "icanspeak", "innate", "nomavillage", "narangyoga"];
+  return order.indexOf(a.slug) - order.indexOf(b.slug);
+});
+---
+
+<Base
+  title="My Bio — Edgar Kretschmann"
+  description="Chronological journey of Edgar Kretschmann — from founding a German school in Manila to digital marketing across Europe and Asia."
+  section="bio"
+>
+  <PolygonBackground />
+
+  <a href="/" class="back-link fixed-back">← Home</a>
+
+  <main>
+    <section class="hero" data-reveal="fade-up">
+      <div class="avatar">
+        <img src="/images/bio/image01.jpg" alt="Edgar Kretschmann" />
+      </div>
+      <h1>My Bio</h1>
+      <p class="subtitle">Chronologically</p>
+    </section>
+
+    <div class="scroll-cue" data-reveal="fade-up">
+      <a href="#start" class="scroll-cue__circle" aria-label="Scroll to timeline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l7-7m-7 7l-7-7" />
+        </svg>
+      </a>
+      <div class="scroll-cue__line" id="start"></div>
+    </div>
+
+    <ol class="timeline">
+      {
+        timeline.map((project) => (
+          <li>
+            <div class="entry card" data-reveal="fade-up" data-reveal-group="bio-timeline">
+              <div class="entry__image">
+                <img src={project.bioImage} alt={project.company} />
+              </div>
+              <div class="entry__body">
+                <p class="entry__period">{project.bioPeriod}</p>
+                <p class="entry__role">{project.bioRole}</p>
+                <h2>{project.company}</h2>
+                <p class="entry__desc">{project.bioDescription}</p>
+                <a href={`/projects/${project.slug}`} class="btn-pill btn-ghost">
+                  More Details
+                </a>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+      <li>
+        <div class="entry card" data-reveal="fade-up" data-reveal-group="bio-timeline">
+          <div class="entry__image">
+            <img src={bonusExperience.image} alt={bonusExperience.company} />
+          </div>
+          <div class="entry__body">
+            <p class="entry__period">{bonusExperience.period}</p>
+            <p class="entry__role">{bonusExperience.role}</p>
+            <h2>Bonus: Language Teacher</h2>
+            <p class="entry__desc">{bonusExperience.description}</p>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <section class="contact" data-reveal="fade-up">
+      <h2>Get in touch</h2>
+      <div class="contact__actions">
+        <a href="mailto:edgar.kretschmann@hotmail.com" class="btn-pill btn-accent">Email me</a>
+        <a href="/projects#touch" class="btn-pill btn-ghost">More Details</a>
+      </div>
+      <a href="/" class="back-to-top">
+        <span class="back-to-top__circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7-7 7 7M5 19l7-7 7 7" />
+          </svg>
+        </span>
+        Back to top
+      </a>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .fixed-back {
+    position: fixed;
+    top: var(--space-4);
+    left: var(--space-4);
+    z-index: 40;
+    color: var(--accent);
+  }
+
+  main {
+    padding: var(--space-8) var(--space-4) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .avatar {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    margin-bottom: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .avatar {
+      width: 12rem;
+      height: 12rem;
+    }
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 10vw, 84px);
+    color: #000;
+    margin: 0 0 var(--space-2);
+  }
+
+  .subtitle {
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .scroll-cue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .scroll-cue__circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 999px;
+    border: 4px solid #fff;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+  }
+
+  .scroll-cue__circle:hover {
+    transform: scale(1.1);
+  }
+
+  .scroll-cue__circle svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .scroll-cue__line {
+    width: 2px;
+    height: 6rem;
+    background: #fff;
+    opacity: 0.4;
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0 0 var(--space-7);
+    padding: 0;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline li:not(:last-child)::after {
+    content: "";
+    width: 2px;
+    height: 5rem;
+    background: #fff;
+    opacity: 0.5;
+    margin: var(--space-5) 0;
+  }
+
+  .entry {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .entry__image {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .entry__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .entry__body {
+    padding: var(--space-6) var(--space-5);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .entry__body {
+      padding: var(--space-7) var(--space-8);
+    }
+  }
+
+  .entry__period {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .entry__role {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0.5;
+    margin: 0 0 var(--space-4);
+  }
+
+  .entry h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #000;
+    margin: 0 0 var(--space-5);
+  }
+
+  .entry__desc {
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 0 var(--space-5);
+  }
+
+  .contact {
+    text-align: center;
+    padding: var(--space-7) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .contact h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    color: #000;
+    margin: 0;
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .back-to-top {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .back-to-top:hover {
+    opacity: 0.7;
+  }
+
+  .back-to-top__circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-to-top__circle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>

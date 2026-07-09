@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@import "@fontsource/source-sans-pro/400.css";
+@import "@fontsource/source-sans-pro/600.css";
+@import "@fontsource/source-sans-pro/700.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/lexend-deca/500.css";
+@import "@fontsource/lexend-deca/700.css";
+
+/*
+  Each top-level section of the site keeps its original Carrd sub-brand
+  identity (home=mint, portfolio/projects=blue+orange, bio=teal) instead of
+  collapsing into one palette. Shared layout/spacing/component patterns make
+  it read as one system; [data-section] swaps only the accent tokens.
+*/
+:root {
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-heading: var(--font-body);
+  --radius: 12px;
+
+  --accent: #def1ff;
+  --accent-2: #ed5d3e;
+  --accent-foreground: #20243d;
+  --link: #ff7b5e;
+  --text: #000000;
+  --text-muted: #596269;
+  --bg: #ffffff;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+
+  /* exact reveal-animation values extracted from the original Carrd sites */
+  --reveal-offset: 1.6875rem;
+  --reveal-scale: 1.05625;
+  --reveal-blur: 0.28125rem;
+  --reveal-duration: 1s;
+  --reveal-stagger: 0.125s;
+}
+
+[data-section="home"] {
+  --font-body: "Source Sans Pro", system-ui, sans-serif;
+  --accent: #bff2da;
+  --accent-foreground: #20243d;
+  --text-muted: #596269;
+  --radius: 48px;
+}
+
+[data-section="portfolio"],
+[data-section="projects"] {
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+  --accent: #def1ff;
+  --accent-2: #ed5d3e;
+  --link: #ff7b5e;
+  --text: #000000;
+  --radius: 12px;
+}
+
+[data-section="bio"] {
+  --font-heading: "Lexend Deca", system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+  --accent: #7ac4b7;
+  --link: #50adba;
+  --text: #000000;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+/* --- scroll-reveal system (data-reveal="fade-up|fade-left|zoom-blur") --- */
+@layer utilities {
+  [data-reveal] {
+    transition:
+      opacity var(--reveal-duration) ease-out,
+      transform var(--reveal-duration) ease-out,
+      filter var(--reveal-duration) ease-out;
+    backface-visibility: hidden;
+    opacity: 0;
+  }
+
+  [data-reveal="fade-up"] {
+    transform: translateY(var(--reveal-offset));
+  }
+
+  [data-reveal="fade-left"] {
+    transform: translateX(calc(-1 * var(--reveal-offset)));
+  }
+
+  [data-reveal="zoom-blur"] {
+    transform: scale(var(--reveal-scale));
+    filter: blur(var(--reveal-blur));
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      transition: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+}
+
+/* --- shared pill/circle button + card patterns used across every page --- */
+@layer components {
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-4);
+    line-height: 3rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      filter 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .btn-pill:hover {
+    filter: brightness(1.08);
+  }
+
+  .btn-pill:active {
+    transform: scale(0.96);
+  }
+
+  .btn-circle {
+    width: 3rem;
+    padding: 0;
+    justify-content: center;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    color: var(--accent-foreground, var(--text));
+  }
+
+  .btn-ghost {
+    background: color-mix(in oklab, var(--text) 6%, transparent);
+    color: var(--text);
+  }
+
+  .btn-dark {
+    background: #302d36;
+    color: #fff;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted, var(--text));
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    opacity: 0.7;
+  }
+}

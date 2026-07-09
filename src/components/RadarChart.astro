@@ -1,0 +1,90 @@
+---
+import type { SkillPoint } from "../types";
+
+interface Props {
+  points: SkillPoint[];
+  size?: number;
+  fillColor?: string;
+  strokeColor?: string;
+}
+
+const { points, size = 180, fillColor = "rgba(191,242,218,0.55)", strokeColor = "#7AC4B7" } = Astro.props;
+
+function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
+  const rad = ((angleDeg - 90) * Math.PI) / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function polygonPoints(n: number, cx: number, cy: number, r: number): string {
+  return Array.from({ length: n }, (_, i) => {
+    const { x, y } = polarToCartesian(cx, cy, r, (360 / n) * i);
+    return `${x},${y}`;
+  }).join(" ");
+}
+
+function wrapLabel(text: string, maxLen = 10): string[] {
+  if (text.length <= maxLen) return [text];
+  const mid = text.lastIndexOf(" ", maxLen);
+  if (mid === -1) return [text.slice(0, maxLen), text.slice(maxLen)];
+  return [text.slice(0, mid), text.slice(mid + 1)];
+}
+
+const n = points.length;
+const PAD = 44;
+const vb = size + 2 * PAD;
+const cx = vb / 2;
+const cy = vb / 2;
+const maxR = size * 0.34;
+const labelR = maxR + 22;
+const levels = 4;
+
+const dataPolygon = points
+  .map((p, i) => {
+    const { x, y } = polarToCartesian(cx, cy, maxR * (p.value / 100), (360 / n) * i);
+    return `${x},${y}`;
+  })
+  .join(" ");
+---
+
+{
+  n >= 3 && (
+    <svg width={size} height={size} viewBox={`0 0 ${vb} ${vb}`} aria-label="Skill set radar chart">
+      {Array.from({ length: levels }, (_, lvl) => (
+        <polygon points={polygonPoints(n, cx, cy, maxR * ((lvl + 1) / levels))} fill="none" stroke="#e2e8f0" stroke-width="1" />
+      ))}
+
+      {points.map((_, i) => {
+        const tip = polarToCartesian(cx, cy, maxR, (360 / n) * i);
+        return <line x1={cx} y1={cy} x2={tip.x} y2={tip.y} stroke="#e2e8f0" stroke-width="1" />;
+      })}
+
+      <polygon points={dataPolygon} fill={fillColor} stroke={strokeColor} stroke-width="2" stroke-linejoin="round" />
+
+      {points.map((p, i) => {
+        const { x, y } = polarToCartesian(cx, cy, maxR * (p.value / 100), (360 / n) * i);
+        return <circle cx={x} cy={y} r="3" fill={strokeColor} />;
+      })}
+
+      {points.map((p, i) => {
+        const angle = (360 / n) * i;
+        const { x, y } = polarToCartesian(cx, cy, labelR, angle);
+        const lines = wrapLabel(p.label, 10);
+        const normalized = ((angle % 360) + 360) % 360;
+        const anchor =
+          Math.abs(normalized) < 10 || Math.abs(normalized - 180) < 10 ? "middle" : normalized > 10 && normalized < 170 ? "start" : "end";
+        const lineH = 11;
+        const startDY = lines.length === 1 ? "0.35em" : `${-(lines.length - 1) * 0.5 * lineH}px`;
+
+        return (
+          <text x={x} y={y} text-anchor={anchor} fill="#596269" font-size="9.5" font-family="ui-sans-serif, system-ui, sans-serif">
+            {lines.map((line, li) => (
+              <tspan x={x} dy={li === 0 ? startDY : `${lineH}px`}>
+                {line}
+              </tspan>
+            ))}
+          </text>
+        );
+      })}
+    </svg>
+  )
+}

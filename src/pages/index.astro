@@ -1,0 +1,257 @@
+---
+import Base from "../layouts/Base.astro";
+import Icons from "../components/Icons.astro";
+
+const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+---
+
+<Base title="Edgar Kretschmann" description="Showing his work" section="home">
+  <main>
+    <!-- Hero: image left, text right -->
+    <section class="row">
+      <div class="row__image" data-reveal="zoom-blur">
+        <img src="/images/home/image01.jpg" alt="Edgar Kretschmann" />
+      </div>
+      <div class="row__text">
+        <div class="dots" data-reveal="fade-up"></div>
+        <h1 data-reveal="fade-left">
+          <span class="block">Hello! I'm Edgar Kretschmann</span>
+          <span class="block sub">Whatsapp +49 157 84928200</span>
+        </h1>
+        <p data-reveal="fade-up">
+          I'm a digital marketing enthusiast with a knack for community management and lead generation. My strong
+          suit is the implementation of automation and A.I. I've worked on a wide range of projects from retreats to
+          language schools, crafting engaging marketing strategies that drive growth. I love connecting people and
+          ideas, and I thrive in dynamic settings where I can enhance brand visibility and foster community.
+        </p>
+        <div class="cta-row" data-reveal="fade-up">
+          <a class="btn-pill btn-accent" href="/portfolio">
+            <Icons name="chevron-right" class="icon" />
+            <span>Look at my Projects</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio preview: text left, image right -->
+    <section class="row row--reverse">
+      <div class="row__image" data-reveal="zoom-blur">
+        <img src="/images/home/image02.jpg" alt="Portfolio preview" />
+      </div>
+      <div class="row__text">
+        <div class="dots" data-reveal="fade-up"></div>
+        <h2 data-reveal="fade-left">Explore my Portfolio</h2>
+        <p data-reveal="fade-up">
+          Between starting a German school in Manila, creating multiple online businesses and becoming a digital
+          nomad there is much to learn. Find out about the projects I was involved with.
+        </p>
+        <div class="cta-row" data-reveal="fade-up">
+          <a class="btn-pill btn-accent" href="/bio">
+            <Icons name="chevron-right" class="icon" />
+            <span>How I got here</span>
+          </a>
+          <a class="btn-pill btn-accent" href={`mailto:${CONTACT_EMAIL}`}>
+            <Icons name="chevron-right" class="icon" />
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Not a Mac Fan: image left, text right -->
+    <section class="row">
+      <div class="row__image" data-reveal="zoom-blur">
+        <img src="/images/home/image04.jpg" alt="Not a Mac Fan" />
+      </div>
+      <div class="row__text">
+        <div class="dots" data-reveal="fade-up"></div>
+        <h2 data-reveal="fade-left">Actually not a Mac Fan</h2>
+        <p data-reveal="fade-up">
+          I run Windows and Linux day to day — Mac's walled-off ecosystem never fit how I work. I'd rather script my
+          own automations, swap in whatever tool fits the job, and not fight a laptop for the privilege.
+        </p>
+        <div class="cta-row" data-reveal="fade-up">
+          <a class="btn-pill btn-accent" href={`mailto:${CONTACT_EMAIL}`}>
+            <Icons name="chevron-right" class="icon" />
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Done. Remotely: text left, image right -->
+    <section class="row row--reverse">
+      <div class="row__image" data-reveal="zoom-blur">
+        <img src="/images/home/image03.jpg" alt="Done Remotely" />
+      </div>
+      <div class="row__text">
+        <div class="dots" data-reveal="fade-up"></div>
+        <h2 data-reveal="fade-left">Done. Remotely</h2>
+        <p data-reveal="fade-up">Modern work is done remotely, and that is not a disadvantage.</p>
+        <div class="cta-row" data-reveal="fade-up">
+          <a class="btn-pill btn-accent" href="/projects#touch">
+            <Icons name="chevron-right" class="icon" />
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer data-reveal="fade-up">
+      <ul class="social">
+        <li>
+          <a href="mailto:edgar.kretschmann@hotmail.com" aria-label="Email"><Icons name="email" class="icon" /></a>
+        </li>
+        <li>
+          <a href="tel:+4915784928200" aria-label="Phone"><Icons name="phone" class="icon" /></a>
+        </li>
+      </ul>
+      <p class="copyright">© Edgar Kretschmann. All rights reserved.</p>
+    </footer>
+  </main>
+</Base>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    background: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .row {
+      flex-direction: row;
+    }
+    .row--reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .row__image {
+    width: 100%;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .row__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .row__image {
+      width: 46%;
+    }
+  }
+
+  .row__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .row__text {
+      width: 54%;
+      padding: var(--space-7) var(--space-6);
+    }
+  }
+
+  .dots {
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: var(--accent-2, var(--accent));
+    margin-bottom: var(--space-4);
+  }
+
+  h1,
+  h2 {
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--accent-foreground);
+    font-size: clamp(1.75rem, 3.5vw, 2.9rem);
+    margin: 0 0 var(--space-4);
+  }
+
+  h1 .sub {
+    display: block;
+    margin-top: var(--space-3);
+    font-weight: 400;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .row__text p {
+    color: var(--accent-foreground);
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    line-height: 1.9;
+    margin: 0 0 var(--space-5);
+  }
+
+  .cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 480px) {
+    .cta-row {
+      flex-direction: row;
+    }
+  }
+
+  .icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-7) var(--space-4);
+  }
+
+  .social {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .social a {
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+
+  .social a:hover {
+    color: var(--accent);
+  }
+
+  .social .icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .copyright {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0;
+  }
+</style>

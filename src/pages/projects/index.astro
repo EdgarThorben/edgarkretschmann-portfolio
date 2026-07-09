@@ -1,0 +1,492 @@
+---
+import Base from "../../layouts/Base.astro";
+import PolygonBackground from "../../components/PolygonBackground.astro";
+import { projects } from "../../data/projects";
+
+const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+---
+
+<Base
+  title="Projects — Edgar Kretschmann"
+  description="A detailed showcase of Edgar Kretschmann's projects — from co-living communities to nurse recruitment funnels and online language schools."
+  section="projects"
+>
+  <PolygonBackground />
+
+  <main>
+    <a href="/" class="back-link top-back">← Home</a>
+
+    <div class="header card" data-reveal="fade-up">
+      <div class="header__top">
+        <p class="eyebrow">Portfolio Details</p>
+        <h1>All Projects</h1>
+        <p class="lede">A deep dive into each engagement</p>
+      </div>
+      <div class="header__nav">
+        <a href="/portfolio" class="btn-pill btn-accent">← Back to Portfolio</a>
+      </div>
+    </div>
+
+    {
+      projects.map((project, index) => {
+        const prev = index > 0 ? projects[index - 1] : undefined;
+        const next = index < projects.length - 1 ? projects[index + 1] : undefined;
+        return (
+          <section id={project.slug} class="project" data-reveal="fade-up" data-reveal-group="projects-list">
+            <div class="hero" data-scroll-speed={index % 2 === 0 ? "2" : "3"}>
+              <img src={project.projectsHeroImage} alt={project.company} />
+              <div class="hero__overlay" />
+              <div class="hero__text">
+                <p class="hero__index">
+                  {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+                </p>
+                <h2>{project.company}</h2>
+                <p class="hero__subtitle">{project.title}</p>
+              </div>
+            </div>
+
+            <div class="nav-strip">
+              {prev && (
+                <a href={`#${prev.slug}`} class="btn-pill btn-circle btn-dark" aria-label="Previous project">
+                  ←
+                </a>
+              )}
+              {next && (
+                <a href={`#${next.slug}`} class="btn-pill btn-dark nav-strip__next">
+                  ↓ Next: {next.company}
+                </a>
+              )}
+              <a href={`/projects/${project.slug}`} class="btn-pill btn-dark nav-strip__details">
+                View Details →
+              </a>
+            </div>
+
+            <div class="content card">
+              <div class="content__main">
+                <div class="content__text">
+                  <p class="eyebrow">{project.url}</p>
+                  <h3>{project.title}</h3>
+                  {project.detail.map((para) => <p>{para}</p>)}
+                </div>
+                {project.galleryImages.length > 0 && (
+                  <div class="content__gallery">
+                    {project.galleryImages.slice(0, 2).map((img) => (
+                      <div class="content__gallery-item">
+                        <img src={img} alt={`${project.company} detail`} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div class="content__grid">
+                <div>
+                  <h4>Achievements</h4>
+                  <ul>
+                    {project.achievements.map((a) => (
+                      <li>▸ {a}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4>Tech Stack</h4>
+                  <ul>
+                    {project.tech.map((t) => (
+                      <li>▸ {t}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4>Skill Set</h4>
+                  <div class="pills">
+                    {project.skills.map((s) => (
+                      <span class="pill">{s.label}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div class="nav-strip nav-strip--bottom">
+                {prev ? (
+                  <a href={`#${prev.slug}`} class="btn-pill btn-circle btn-dark" aria-label="Previous">
+                    ←
+                  </a>
+                ) : (
+                  <a href="/portfolio" class="btn-pill btn-circle btn-dark" aria-label="Back to portfolio">
+                    ←
+                  </a>
+                )}
+                <a href="/portfolio" class="btn-pill btn-dark">
+                  ← Back to Portfolio
+                </a>
+                {next && (
+                  <a href={`#${next.slug}`} class="btn-pill btn-circle btn-dark nav-strip__end" aria-label="Next">
+                    ↓
+                  </a>
+                )}
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
+
+    <!-- Contact -->
+    <section id="touch" class="touch card" data-reveal="fade-up">
+      <p class="eyebrow">Ready to work together?</p>
+      <h2>Get in Touch</h2>
+      <form id="contact-form" method="post" action="/api/contact">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="siteUrl">Site Url <span class="optional">(optional)</span></label>
+          <input id="siteUrl" name="siteUrl" type="url" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-pill btn-accent submit-btn">Submit</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="touch__alt">
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn-pill btn-ghost">✉ Email me directly</a>
+        <a href="/portfolio" class="btn-pill btn-ghost">← Back to Portfolio</a>
+        <a href="/bio" class="btn-pill btn-ghost">Bio</a>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status) return;
+    status.textContent = "Sending…";
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error("Request failed");
+      status.textContent = "I will definitely get back to you!";
+      form.reset();
+    } catch {
+      status.textContent = "Something went wrong — email me directly instead.";
+    }
+  });
+</script>
+
+<style>
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .top-back {
+    align-self: flex-start;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .header__top {
+    background: #302d36;
+    padding: var(--space-6) var(--space-6) var(--space-5);
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 var(--space-2);
+  }
+
+  .header h1 {
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0;
+  }
+
+  .header .lede {
+    color: rgba(255, 255, 255, 0.5);
+    margin: var(--space-1) 0 0;
+  }
+
+  .header__nav {
+    background: #302d36;
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: clamp(300px, 45vw, 520px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(48, 45, 54, 0.92) 100%);
+  }
+
+  .hero__text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--space-6);
+  }
+
+  .hero__index {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0 0 var(--space-1);
+  }
+
+  .hero__text h2 {
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin: 0;
+  }
+
+  .hero__subtitle {
+    color: rgba(255, 255, 255, 0.65);
+    margin: var(--space-1) 0 0;
+  }
+
+  .nav-strip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    border-radius: 0 0 12px 12px;
+    margin-top: -4px;
+  }
+
+  .nav-strip__next,
+  .nav-strip__details {
+    white-space: nowrap;
+  }
+
+  .nav-strip__details {
+    margin-left: auto;
+  }
+
+  .nav-strip--bottom {
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+
+  .nav-strip__end {
+    margin-left: auto;
+  }
+
+  .content {
+    margin-top: var(--space-3);
+  }
+
+  .content__main {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .content__main {
+      flex-direction: row;
+    }
+  }
+
+  .content__text {
+    flex: 1;
+  }
+
+  .content__text h3 {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: #1a1a1a;
+    margin: 0 0 var(--space-3);
+  }
+
+  .content__text p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 var(--space-3);
+  }
+
+  .content__gallery {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-1);
+  }
+
+  @media (min-width: 768px) {
+    .content__gallery {
+      flex-direction: column;
+      width: 10rem;
+      flex-shrink: 0;
+    }
+  }
+
+  .content__gallery-item {
+    flex: 1;
+    min-height: 5rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .content__gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .content__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: 0 var(--space-5) var(--space-5);
+    border-top: 1px solid #f0f0f0;
+    padding-top: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .content__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .content__grid h4 {
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    margin: 0 0 var(--space-2);
+  }
+
+  .content__grid ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #4a5568;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .pill {
+    background: #edf2f7;
+    color: #4a5568;
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 0.75rem;
+  }
+
+  .touch {
+    text-align: center;
+    padding: var(--space-7) var(--space-5);
+    background: #302d36;
+    color: #fff;
+  }
+
+  .touch h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin: 0 0 var(--space-5);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 460px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .optional {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .field input,
+  .field textarea {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    padding: var(--space-2) var(--space-3);
+    font: inherit;
+  }
+
+  .submit-btn {
+    align-self: flex-start;
+    margin-top: var(--space-2);
+  }
+
+  .form-status {
+    min-height: 1.2em;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .touch__alt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+</style>
