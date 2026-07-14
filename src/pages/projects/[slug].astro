@@ -1,6 +1,5 @@
 ---
 import Base from "../../layouts/Base.astro";
-import PolygonBackground from "../../components/PolygonBackground.astro";
 import RadarChart from "../../components/RadarChart.astro";
 import { projects } from "../../data/projects";
 
@@ -23,263 +22,210 @@ const { project, prev, next } = Astro.props;
   description={`${project.title}: ${project.bioRole} at ${project.company}.`}
   section="projects"
 >
-  <PolygonBackground />
+  <main class="wrap">
+    <div class="nav-strip nav-strip--top" data-reveal="fade-up">
+      {
+        prev ? (
+          <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
+        ) : (
+          <a href="/portfolio">← Portfolio</a>
+        )
+      }
+      <a href="/portfolio" class="nav-strip__mid">All projects</a>
+      {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
+    </div>
 
-  <main>
-    <!-- Card 1: Details header + wordmark + nav -->
-    <section class="card card--header">
-      <div class="header__top">
-        <h1>Details</h1>
-        <p class="url">{project.url}</p>
+    <section class="head" data-reveal="fade-up">
+      <p class="eyebrow">{project.url}</p>
+      <h1>{project.company}</h1>
+      <p class="subtitle">{project.title}</p>
+    </section>
+
+    <div class="media" data-reveal="zoom-blur">
+      <img src={project.projectsHeroImage} alt={project.title} />
+    </div>
+
+    <section class="content" data-reveal="fade-up">
+      {project.detail.map((para) => <p>{para}</p>)}
+    </section>
+
+    <section class="stats" data-reveal="fade-up">
+      <div>
+        <h3>Achievements</h3>
+        <ul>
+          {project.achievements.map((a) => (
+            <li>{a}</li>
+          ))}
+        </ul>
       </div>
-      <div class="wordmark">
-        <h2>{project.company}</h2>
+      <div>
+        <h3>Tech stack</h3>
+        <div class="tags">
+          {project.tech.map((t) => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
       </div>
-      <div class="nav-strip">
-        {
-          prev ? (
-            <a href={`/projects/${prev.slug}`} class="btn-pill btn-circle btn-dark" aria-label="Previous project">
-              ←
-            </a>
-          ) : (
-            <span class="btn-pill btn-circle btn-dark disabled" aria-hidden="true">
-              ←
-            </span>
-          )
-        }
-        <a href="/portfolio" class="btn-pill btn-dark">← Back to Portfolio</a>
-        {
-          next && (
-            <a href={`/projects/${next.slug}`} class="btn-pill btn-circle btn-dark nav-end" aria-label="Next project">
-              →
-            </a>
-          )
-        }
+      <div class="radar">
+        <h3>Skill set</h3>
+        <RadarChart points={project.skills} size={180} fillColor="rgba(226,181,61,0.15)" strokeColor="#e2b53d" />
       </div>
     </section>
 
-    <!-- Card 2: Content -->
-    <section class="card card--content">
-      <div class="content__head">
-        <h2>{project.title}</h2>
-        <div class="content__image">
-          <img src={project.projectsHeroImage} alt={project.title} />
-        </div>
-      </div>
-      <div class="content__body">
-        {project.detail.map((para) => <p>{para}</p>)}
-      </div>
-    </section>
-
-    <!-- Card 3: Achievements / Tech / Skills -->
-    <section class="card card--stats">
-      <div class="stats__grid">
-        <div>
-          <h3>Achievements</h3>
-          <ul>
-            {project.achievements.map((a) => <li>{a}</li>)}
-          </ul>
-        </div>
-        <div>
-          <h3>Tech</h3>
-          <ul>
-            {project.tech.map((t) => <li>{t}</li>)}
-          </ul>
-        </div>
-        <div class="stats__radar">
-          <h3>Skill Set</h3>
-          <RadarChart points={project.skills} size={180} />
-        </div>
-      </div>
-      <div class="nav-strip nav-strip--bottom">
-        {
-          prev ? (
-            <a href={`/projects/${prev.slug}`} class="btn-pill btn-circle btn-dark" aria-label="Previous">
-              ←
-            </a>
-          ) : (
-            <span class="btn-pill btn-circle btn-dark disabled" aria-hidden="true">
-              ←
-            </span>
-          )
-        }
-        <a href="/portfolio" class="btn-pill btn-dark">← Back</a>
-        {
-          next && (
-            <a href={`/projects/${next.slug}`} class="btn-pill btn-circle btn-dark nav-end" aria-label="Next">
-              →
-            </a>
-          )
-        }
-      </div>
-    </section>
+    <div class="nav-strip nav-strip--bottom" data-reveal="fade-up">
+      {
+        prev ? (
+          <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
+        ) : (
+          <a href="/portfolio">← Portfolio</a>
+        )
+      }
+      <a href="/portfolio" class="nav-strip__mid">All projects</a>
+      {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
+    </div>
   </main>
 </Base>
 
 <style>
-  main {
-    max-width: 720px;
+  .wrap {
+    max-width: 760px;
     margin: 0 auto;
     padding: var(--space-6) var(--space-4) var(--space-8);
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .card--header {
-    min-height: 420px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .header__top {
-    background: #637060;
-    padding: var(--space-5) var(--space-5) var(--space-4);
-  }
-
-  .header__top h1 {
-    color: #fff;
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin: 0;
-    line-height: 1;
-  }
-
-  .header__top .url {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.85rem;
-    margin: var(--space-2) 0 0;
-  }
-
-  .wordmark {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: var(--space-6) var(--space-5);
-  }
-
-  .wordmark h2 {
-    font-style: italic;
-    font-weight: 800;
-    line-height: 1;
-    font-size: clamp(2.8rem, 10vw, 5rem);
-    color: #1a1a1a;
-    margin: 0;
+    gap: var(--space-6);
   }
 
   .nav-strip {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-4) var(--space-5);
+    gap: var(--space-3);
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-strip a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .nav-strip a:hover {
+    color: var(--text);
+  }
+
+  .nav-strip__mid {
+    font-weight: 600;
+    color: var(--text) !important;
+  }
+
+  .nav-strip--top {
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--line);
   }
 
   .nav-strip--bottom {
-    background: #637060;
-    padding: var(--space-3) var(--space-5);
-    margin: var(--space-4) calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--line);
   }
 
-  .nav-end {
-    margin-left: auto;
+  .head h1 {
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    font-weight: 500;
+    margin: var(--space-3) 0 var(--space-2);
   }
 
-  .disabled {
-    opacity: 0.35;
-    pointer-events: none;
-  }
-
-  .content__head {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
-  }
-
-  .content__head h2 {
-    flex: 1;
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    color: #1a1a1a;
-    line-height: 1.2;
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
     margin: 0;
   }
 
-  .content__image {
-    flex-shrink: 0;
-    width: 8.75rem;
-    height: 6.875rem;
-    border-radius: 12px;
+  .media {
+    border-radius: var(--radius);
     overflow: hidden;
+    height: clamp(240px, 40vw, 420px);
   }
 
-  .content__image img {
+  .media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
-  .card--content {
-    padding: var(--space-5);
+  .content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 var(--space-4);
   }
 
-  .content__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .content__body p {
-    border-left: 3px solid #637060;
-    padding-left: var(--space-3);
-    color: #4a5568;
-    font-size: 0.9rem;
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  .card--stats {
-    padding-bottom: var(--space-5);
-  }
-
-  .stats__grid {
+  .stats {
     display: grid;
     grid-template-columns: 1fr;
-    padding: var(--space-5);
+    gap: var(--space-5);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--line);
   }
 
-  @media (min-width: 768px) {
-    .stats__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (min-width: 700px) {
+    .stats {
+      grid-template-columns: repeat(3, 1fr);
     }
-    .stats__grid > div:not(:last-child) {
-      border-right: 1px solid #f0f0f0;
-    }
   }
 
-  .stats__grid > div {
-    padding: var(--space-3);
-  }
-
-  .stats__grid h3 {
-    text-align: center;
-    color: #1a1a1a;
-    font-size: 0.9rem;
+  .stats h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
     margin: 0 0 var(--space-3);
+    color: var(--text);
   }
 
-  .stats__grid ul {
+  .stats ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    color: #4a5568;
-    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 8px;
   }
 
-  .stats__radar {
+  .stats li::before {
+    content: "▸ ";
+    color: var(--accent);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 12px;
+    color: var(--text-muted);
+  }
+
+  .radar {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  @media (min-width: 700px) {
+    .radar {
+      align-items: flex-start;
+    }
+    .radar h3 {
+      align-self: flex-start;
+    }
   }
 </style>

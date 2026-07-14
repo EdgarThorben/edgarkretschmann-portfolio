@@ -1,257 +1,305 @@
 ---
 import Base from "../layouts/Base.astro";
-import Icons from "../components/Icons.astro";
+import { projects } from "../data/projects";
 
 const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
 ---
 
-<Base title="Edgar Kretschmann" description="Showing his work" section="home">
-  <main>
-    <!-- Hero: image left, text right -->
-    <section class="row">
-      <div class="row__image" data-reveal="zoom-blur">
-        <img src="/images/home/image01.jpg" alt="Edgar Kretschmann" />
+<Base title="Edgar Kretschmann" description="AI-augmented marketing systems for SMBs — Munich-based, remote everywhere." section="home">
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow" data-reveal="fade-up">Munich, based worldwide</p>
+      <h1 data-reveal="fade-left">
+        AI-augmented <em>marketing systems</em> for businesses that need more than a website.
+      </h1>
+      <p class="lede" data-reveal="fade-up">
+        I build lead funnels and content systems — for coliving communities, yoga brands, and a German-language
+        pipeline that recruits nurses into Germany. I've founded a language school, run paid campaigns end-to-end,
+        and now use AI to build in days what used to take a team weeks.
+      </p>
+      <div class="cta-row" data-reveal="fade-up">
+        <a class="btn btn-primary" href="/portfolio">Look at my projects →</a>
+        <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
       </div>
-      <div class="row__text">
-        <div class="dots" data-reveal="fade-up"></div>
-        <h1 data-reveal="fade-left">
-          <span class="block">Hello! I'm Edgar Kretschmann</span>
-          <span class="block sub">Whatsapp +49 157 84928200</span>
-        </h1>
+    </section>
+
+    <section class="strip" data-reveal="fade-up">
+      <div class="strip-grid">
+        <div><strong>{projects.length}</strong>Case studies shipped</div>
+        <div><strong>3</strong>Countries recruited from</div>
+        <div><strong>1</strong>Language school founded</div>
+        <div><strong>100%</strong>Remote, async delivery</div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="work-head">
+        <h2 data-reveal="fade-left">Selected work</h2>
         <p data-reveal="fade-up">
-          I'm a digital marketing enthusiast with a knack for community management and lead generation. My strong
-          suit is the implementation of automation and A.I. I've worked on a wide range of projects from retreats to
-          language schools, crafting engaging marketing strategies that drive growth. I love connecting people and
-          ideas, and I thrive in dynamic settings where I can enhance brand visibility and foster community.
+          One pattern across six case studies: find the underserved audience, then build the funnel and content
+          system that reaches them fast — real market research, paired with AI production speed.
         </p>
-        <div class="cta-row" data-reveal="fade-up">
-          <a class="btn-pill btn-accent" href="/portfolio">
-            <Icons name="chevron-right" class="icon" />
-            <span>Look at my Projects</span>
-          </a>
-        </div>
+      </div>
+      <div class="work-list">
+        {
+          projects.map((project, index) => (
+            <a class="work-row" href={`/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="home-work">
+              <span class="work-num">{String(index + 1).padStart(2, "0")}</span>
+              <span class="work-thumb">
+                <img src={project.portfolioImage} alt={project.company} />
+              </span>
+              <span class="work-info">
+                <span class="work-title">{project.company}</span>
+                <span class="work-sub">{project.summary}</span>
+              </span>
+              <span class="work-arrow">→</span>
+            </a>
+          ))
+        }
       </div>
     </section>
 
-    <!-- Portfolio preview: text left, image right -->
-    <section class="row row--reverse">
-      <div class="row__image" data-reveal="zoom-blur">
-        <img src="/images/home/image02.jpg" alt="Portfolio preview" />
-      </div>
-      <div class="row__text">
-        <div class="dots" data-reveal="fade-up"></div>
-        <h2 data-reveal="fade-left">Explore my Portfolio</h2>
-        <p data-reveal="fade-up">
-          Between starting a German school in Manila, creating multiple online businesses and becoming a digital
-          nomad there is much to learn. Find out about the projects I was involved with.
-        </p>
-        <div class="cta-row" data-reveal="fade-up">
-          <a class="btn-pill btn-accent" href="/bio">
-            <Icons name="chevron-right" class="icon" />
-            <span>How I got here</span>
-          </a>
-          <a class="btn-pill btn-accent" href={`mailto:${CONTACT_EMAIL}`}>
-            <Icons name="chevron-right" class="icon" />
-            <span>Get in Touch</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Not a Mac Fan: image left, text right -->
-    <section class="row">
-      <div class="row__image" data-reveal="zoom-blur">
-        <img src="/images/home/image04.jpg" alt="Not a Mac Fan" />
-      </div>
-      <div class="row__text">
-        <div class="dots" data-reveal="fade-up"></div>
-        <h2 data-reveal="fade-left">Actually not a Mac Fan</h2>
-        <p data-reveal="fade-up">
-          I run Windows and Linux day to day — Mac's walled-off ecosystem never fit how I work. I'd rather script my
-          own automations, swap in whatever tool fits the job, and not fight a laptop for the privilege.
-        </p>
-        <div class="cta-row" data-reveal="fade-up">
-          <a class="btn-pill btn-accent" href={`mailto:${CONTACT_EMAIL}`}>
-            <Icons name="chevron-right" class="icon" />
-            <span>Get in Touch</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Done. Remotely: text left, image right -->
-    <section class="row row--reverse">
-      <div class="row__image" data-reveal="zoom-blur">
-        <img src="/images/home/image03.jpg" alt="Done Remotely" />
-      </div>
-      <div class="row__text">
-        <div class="dots" data-reveal="fade-up"></div>
-        <h2 data-reveal="fade-left">Done. Remotely</h2>
-        <p data-reveal="fade-up">Modern work is done remotely, and that is not a disadvantage.</p>
-        <div class="cta-row" data-reveal="fade-up">
-          <a class="btn-pill btn-accent" href="/projects#touch">
-            <Icons name="chevron-right" class="icon" />
-            <span>Get in Touch</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
     <footer data-reveal="fade-up">
-      <ul class="social">
-        <li>
-          <a href="mailto:edgar.kretschmann@hotmail.com" aria-label="Email"><Icons name="email" class="icon" /></a>
-        </li>
-        <li>
-          <a href="tel:+4915784928200" aria-label="Phone"><Icons name="phone" class="icon" /></a>
-        </li>
-      </ul>
+      <div class="footer-grid">
+        <div>
+          <h3>Let's build the system your business actually needs.</h3>
+          <p>{CONTACT_EMAIL} · +49 157 84928200</p>
+        </div>
+        <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
+      </div>
       <p class="copyright">© Edgar Kretschmann. All rights reserved.</p>
     </footer>
   </main>
 </Base>
 
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-5);
   }
 
-  .row {
-    display: flex;
-    flex-direction: column;
-    min-height: 60vh;
-    background: #fff;
+  .hero {
+    padding: var(--space-8) 0 var(--space-7);
   }
 
-  @media (min-width: 768px) {
-    .row {
-      flex-direction: row;
-    }
-    .row--reverse {
-      flex-direction: row-reverse;
-    }
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: var(--space-5) 0 var(--space-5);
+    max-width: 15ch;
   }
 
-  .row__image {
-    width: 100%;
-    min-height: 320px;
-    overflow: hidden;
+  h1 em {
+    font-style: normal;
+    color: var(--text-muted);
   }
 
-  .row__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  @media (min-width: 768px) {
-    .row__image {
-      width: 46%;
-    }
-  }
-
-  .row__text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--space-6) var(--space-4);
-  }
-
-  @media (min-width: 768px) {
-    .row__text {
-      width: 54%;
-      padding: var(--space-7) var(--space-6);
-    }
-  }
-
-  .dots {
-    width: 2.5rem;
-    height: 0.25rem;
-    border-radius: 999px;
-    background: var(--accent-2, var(--accent));
-    margin-bottom: var(--space-4);
-  }
-
-  h1,
-  h2 {
-    font-weight: 600;
-    line-height: 1.15;
-    color: var(--accent-foreground);
-    font-size: clamp(1.75rem, 3.5vw, 2.9rem);
-    margin: 0 0 var(--space-4);
-  }
-
-  h1 .sub {
-    display: block;
-    margin-top: var(--space-3);
-    font-weight: 400;
-    font-size: clamp(1rem, 2vw, 1.5rem);
-  }
-
-  .row__text p {
-    color: var(--accent-foreground);
-    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-    line-height: 1.9;
-    margin: 0 0 var(--space-5);
+  .lede {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 58ch;
+    margin: 0 0 var(--space-6);
   }
 
   .cta-row {
     display: flex;
-    flex-direction: column;
     gap: var(--space-3);
+    flex-wrap: wrap;
   }
 
-  @media (min-width: 480px) {
-    .cta-row {
-      flex-direction: row;
-    }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 14px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
   }
 
-  .icon {
-    width: 1.1rem;
-    height: 1.1rem;
-    flex-shrink: 0;
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  .btn:hover {
+    opacity: 0.75;
+  }
+
+  .strip {
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
+
+  .strip-grid div {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: var(--space-4) 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .strip-grid strong {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .work {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .work-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-7);
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .work-head h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 500;
+    margin: 0;
+    max-width: 20ch;
+  }
+
+  .work-head p {
+    color: var(--text-muted);
+    max-width: 40ch;
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .work-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-row {
+    display: grid;
+    grid-template-columns: 2rem 140px 2fr auto;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .work-row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .work-row:hover {
+    opacity: 0.6;
+  }
+
+  .work-num {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .work-thumb {
+    width: 140px;
+    height: 88px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+
+  .work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .work-title {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .work-sub {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .work-arrow {
+    font-size: 1.4rem;
+    color: var(--text-muted);
   }
 
   footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-7) var(--space-4);
+    padding: var(--space-8) 0 var(--space-6);
+    border-top: 1px solid var(--line);
   }
 
-  .social {
+  .footer-grid {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
     gap: var(--space-4);
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
-  .social a {
+  footer h3 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    margin: 0 0 8px;
+    max-width: 16ch;
+  }
+
+  footer p {
     color: var(--text-muted);
-    transition: color 0.15s ease;
-  }
-
-  .social a:hover {
-    color: var(--accent);
-  }
-
-  .social .icon {
-    width: 1.4rem;
-    height: 1.4rem;
+    margin: 0;
+    font-size: 0.9rem;
   }
 
   .copyright {
+    margin-top: var(--space-6);
+    font-size: 0.8rem;
     color: var(--text-muted);
-    font-size: 0.85rem;
-    opacity: 0.6;
-    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .strip-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .work-row {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .work-thumb {
+      width: 100%;
+      height: 160px;
+    }
+    .work-num,
+    .work-arrow {
+      display: none;
+    }
   }
 </style>
