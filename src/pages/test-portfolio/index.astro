@@ -1,0 +1,49 @@
+---
+const concepts = [
+  { href: "/test-portfolio/dossier", name: "Dossier", desc: "Manila-folder case files, stamped periods, real skill data as dot-matrix bars." },
+  { href: "/test-portfolio/departures", name: "Departures", desc: "Split-flap airport board — amber LED type, flap-in rows, nomad/travel motif." },
+  { href: "/test-portfolio/funnel-print", name: "Funnel Print", desc: "Riso-print poster — halftone duotone images, a literal funnel diagram as hero." },
+  { href: "/test-portfolio/signal", name: "Signal", desc: "Minimal award-style — huge italic serif, asymmetric grid, single cobalt accent." },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio Redesign — Test Concepts</title>
+  </head>
+  <body>
+    <main>
+      <h1>Portfolio redesign — four test concepts</h1>
+      <p class="lede">Each is a full standalone page built from the real project data, not mockups. Open each one and compare.</p>
+      <ul>
+        {
+          concepts.map((c) => (
+            <li>
+              <a href={c.href}>
+                <span class="name">{c.name}</span>
+                <span class="desc">{c.desc}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </body>
+</html>
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: #fff; color: #111; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 700px; margin: 0 auto; padding: 64px 24px; }
+  h1 { font-size: 1.8rem; margin: 0 0 12px; }
+  .lede { color: #666; margin: 0 0 36px; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  a { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border: 1px solid #ddd; border-radius: 8px; text-decoration: none; color: inherit; transition: border-color 0.15s ease; }
+  a:hover { border-color: #999; }
+  .name { font-weight: 700; font-size: 1.05rem; }
+  .desc { font-size: 0.85rem; color: #666; }
+</style>

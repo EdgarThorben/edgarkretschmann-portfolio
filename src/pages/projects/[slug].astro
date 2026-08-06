@@ -37,7 +37,10 @@ const { project, prev, next } = Astro.props;
 
     <section class="head" data-reveal="fade-up">
       <p class="eyebrow">{project.url}</p>
-      <h1>{project.company}</h1>
+      <h1>
+        {project.company}
+        {project.status === "next" && <span class="status-badge">In progress</span>}
+      </h1>
       <p class="subtitle">{project.title}</p>
     </section>
 
@@ -45,13 +48,24 @@ const { project, prev, next } = Astro.props;
       <img src={project.projectsHeroImage} alt={project.title} />
     </div>
 
-    <section class="content" data-reveal="fade-up">
-      {project.detail.map((para) => <p>{para}</p>)}
+    <section class="narrative" data-reveal="fade-up">
+      <div class="narrative-block">
+        <h3>The challenge</h3>
+        <p>{project.challenge}</p>
+      </div>
+      <div class="narrative-block">
+        <h3>The approach</h3>
+        <ul>
+          {project.approach.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ul>
+      </div>
     </section>
 
     <section class="stats" data-reveal="fade-up">
       <div>
-        <h3>Achievements</h3>
+        <h3>{project.status === "next" ? "What's next" : "Outcome"}</h3>
         <ul>
           {project.achievements.map((a) => (
             <li>{a}</li>
@@ -133,6 +147,21 @@ const { project, prev, next } = Astro.props;
     font-size: clamp(2.4rem, 7vw, 4rem);
     font-weight: 500;
     margin: var(--space-3) 0 var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 4px 12px;
   }
 
   .subtitle {
@@ -154,11 +183,49 @@ const { project, prev, next } = Astro.props;
     display: block;
   }
 
-  .content p {
+  .narrative {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 700px) {
+    .narrative {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .narrative-block h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    margin: 0 0 var(--space-3);
+    color: var(--text);
+  }
+
+  .narrative-block p {
     color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.75;
-    margin: 0 0 var(--space-4);
+    margin: 0;
+  }
+
+  .narrative-block ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .narrative-block li::before {
+    content: "▸ ";
+    color: var(--accent);
   }
 
   .stats {

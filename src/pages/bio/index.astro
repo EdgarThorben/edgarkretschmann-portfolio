@@ -1,16 +1,14 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { projects, bonusExperience } from "../../data/projects";
+import { sortProjectsDesc } from "../../lib/timeline";
 
-const timeline = [...projects].sort((a, b) => {
-  const order = ["deutschacademy", "pflegeplace", "icanspeak", "innate", "nomavillage", "narangyoga"];
-  return order.indexOf(a.slug) - order.indexOf(b.slug);
-});
+const timeline = sortProjectsDesc(projects);
 ---
 
 <Base
   title="My Bio — Edgar Kretschmann"
-  description="Chronological journey of Edgar Kretschmann — from founding a German school in Manila to digital marketing across Europe and Asia."
+  description="Career journey of Edgar Kretschmann, newest to oldest — from marketing management today back to founding a German school in Manila."
   section="bio"
 >
   <main class="wrap">
@@ -20,7 +18,7 @@ const timeline = [...projects].sort((a, b) => {
       <div class="avatar">
         <img src="/images/bio/image01.jpg" alt="Edgar Kretschmann" />
       </div>
-      <p class="eyebrow">Chronologically</p>
+      <p class="eyebrow">Newest to oldest</p>
       <h1>My bio</h1>
     </section>
 
@@ -35,7 +33,10 @@ const timeline = [...projects].sort((a, b) => {
               </span>
               <span class="entry-info">
                 <span class="entry-role">{project.bioRole}</span>
-                <span class="entry-title">{project.company}</span>
+                <span class="entry-title">
+                  {project.company}
+                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                </span>
                 <span class="entry-desc">{project.bioDescription}</span>
               </span>
               <span class="entry-arrow">→</span>
@@ -173,8 +174,23 @@ const timeline = [...projects].sort((a, b) => {
   }
 
   .entry-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
     font-size: 1.3rem;
     font-weight: 500;
+  }
+
+  .status-badge {
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 9px;
   }
 
   .entry-desc {

@@ -1,46 +1,110 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { projects } from "../../data/projects";
+import { sortProjectsDesc } from "../../lib/timeline";
+import type { SkillPoint } from "../../types";
+
+function topSkills(skills: SkillPoint[]) {
+  return [...skills].sort((a, b) => b.value - a.value).slice(0, 3);
+}
+
+const files = sortProjectsDesc(projects).map((p, i) => ({ ...p, num: String(i + 1).padStart(2, "0") }));
+
+const ticker = [...files]
+  .sort((a, b) => topSkills(b.skills)[0].value - topSkills(a.skills)[0].value)
+  .map((p) => `${p.company.toUpperCase()} — ${topSkills(p.skills)[0].label.toUpperCase()} ${topSkills(p.skills)[0].value}%`);
 ---
 
 <Base
   title="Portfolio — Edgar Kretschmann"
-  description="Projects by Edgar Kretschmann — from coliving communities to nurse recruitment funnels and online language schools."
+  description="Seven case files by Edgar Kretschmann — from coliving communities to nurse recruitment funnels and online language schools, newest first."
   section="portfolio"
 >
   <main class="wrap">
     <section class="head">
-      <p class="eyebrow" data-reveal="fade-up">Portfolio</p>
-      <h1 data-reveal="fade-left">Six case studies, one pattern.</h1>
-      <p class="lede" data-reveal="fade-up">
-        Find the underserved audience, then build the funnel and content system that reaches them fast — real market
-        research, paired with AI production speed.
+      <p class="eyebrow">Portfolio</p>
+      <h1>Seven engagements. Four countries. One recurring brief.</h1>
+      <p class="lede">
+        Find the audience everyone else is ignoring — nomads without a home base, nurses with no way into Germany,
+        nurses already here with no way to get licensed — then build the funnel or the product that reaches them
+        before the quarter ends. Newest work first.
       </p>
     </section>
 
-    <div class="work-list">
+    <div class="ticker">
+      <div class="ticker-track">
+        <div class="ticker-seg">
+          {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+        </div>
+        <div class="ticker-seg" aria-hidden="true">
+          {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+        </div>
+      </div>
+    </div>
+
+    <section class="files">
       {
-        projects.map((project, index) => (
-          <a class="work-row" href={`/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="portfolio-list">
-            <span class="work-num">{String(index + 1).padStart(2, "0")}</span>
-            <span class="work-thumb">
-              <img src={project.portfolioImage} alt={project.company} />
-            </span>
-            <span class="work-info">
-              <span class="work-title">{project.company}</span>
-              <span class="work-role">{project.title}</span>
-              <span class="work-sub">{project.summary}</span>
-              <span class="work-tags">
-                {project.tech.map((t) => (
-                  <span class="tag">{t}</span>
-                ))}
+        files.map((p, i) => (
+          <details class="file-card" data-reveal="fade-up" data-reveal-group="portfolio-files" open={i === 0}>
+            <summary class="file-summary">
+              <span class="file-num">{p.num}</span>
+              <span class="file-photo">
+                <img src={p.portfolioImage} alt={p.company} loading="lazy" />
               </span>
-            </span>
-            <span class="work-arrow">→</span>
-          </a>
+              <span class="file-headline">
+                <span class="file-head">
+                  <span class="file-company">{p.company}</span>
+                  <span class="file-role">{p.bioRole}</span>
+                  {p.status === "next" && <span class="status-badge">In progress</span>}
+                </span>
+                <span class="file-title">{p.title}</span>
+              </span>
+              <span class="file-period">{p.bioPeriod}</span>
+              <span class="file-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="file-body">
+              <div class="file-content">
+                <p class="file-summary-text">{p.summary}</p>
+                <ul class="file-achievements">
+                  {p.achievements.map((a) => <li>{a}</li>)}
+                </ul>
+                <div class="file-tags">
+                  {p.tech.map((t) => <span class="tag">{t}</span>)}
+                </div>
+                <a class="file-link" href={`/projects/${p.slug}`}>View full case study &rarr;</a>
+              </div>
+              <div class="file-metrics">
+                {topSkills(p.skills).map((s) => (
+                  <div class="metric">
+                    <span class="metric-label">{s.label}</span>
+                    <div class="metric-row">
+                      <div class="metric-track"><div class="metric-fill" style={`width:${s.value}%`} /></div>
+                      <span class="metric-value">{s.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
         ))
       }
-    </div>
+    </section>
+
+    <section class="route">
+      <p class="section-title">Field log, newest to oldest</p>
+      <div class="route-track">
+        {
+          files.map((p) => (
+            <div class="stop">
+              <span class="stop-dot" />
+              <span class="stop-period">{p.bioPeriod}</span>
+              <span class="stop-company">{p.company}</span>
+              <span class="stop-role">{p.bioRole}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
 
     <div class="touch" data-reveal="fade-up">
       <p>Like what you see?</p>
@@ -57,8 +121,8 @@ import { projects } from "../../data/projects";
   }
 
   .head {
-    max-width: 60ch;
-    margin-bottom: var(--space-7);
+    max-width: 62ch;
+    margin-bottom: var(--space-6);
   }
 
   h1 {
@@ -66,6 +130,7 @@ import { projects } from "../../data/projects";
     font-weight: 500;
     line-height: 1.1;
     margin: var(--space-4) 0;
+    text-wrap: balance;
   }
 
   .lede {
@@ -75,76 +140,267 @@ import { projects } from "../../data/projects";
     margin: 0;
   }
 
-  .work-list {
+  /* --- ticker --- */
+
+  .ticker {
+    overflow: hidden;
+    background: var(--ink);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-7);
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-ticker 32s linear infinite;
+  }
+
+  @keyframes scroll-ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ticker-seg {
+    display: flex;
+    white-space: nowrap;
+    font-family: monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    padding: var(--space-3) 0;
+  }
+
+  .ticker-seg span.sep {
+    color: var(--accent);
+    margin: 0 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+      overflow-x: auto;
+    }
+  }
+
+  /* --- file cards --- */
+
+  .files {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--line);
-  }
-
-  .work-row {
-    display: grid;
-    grid-template-columns: 2.5rem 180px 1fr auto;
-    align-items: center;
     gap: var(--space-5);
-    padding: var(--space-5) 0;
-    border-bottom: 1px solid var(--line);
-    text-decoration: none;
-    color: inherit;
-    transition: opacity 0.2s ease;
+    margin-bottom: var(--space-7);
   }
 
-  .work-row:hover {
-    opacity: 0.6;
-  }
-
-  .work-num {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .work-thumb {
-    width: 180px;
-    height: 112px;
-    border-radius: 8px;
-    overflow: hidden;
+  .file-card {
     background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease;
+    overflow: hidden;
   }
 
-  .work-thumb img {
+  .file-card:hover,
+  .file-card[open] {
+    border-color: var(--ink);
+  }
+
+  .file-summary {
+    display: grid;
+    grid-template-columns: 2.25rem 60px 1fr auto auto;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .file-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .file-summary:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+
+  .file-num {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .file-photo {
+    display: block;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+
+  .file-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .work-info {
+  .file-headline {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .file-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px var(--space-3);
+  }
+
+  .file-company {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .file-role {
+    font-family: monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .status-badge {
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+
+  .file-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .file-period {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .file-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .file-card[open] .file-toggle {
+    transform: rotate(45deg);
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .file-body {
+    display: grid;
+    grid-template-columns: 1fr 210px;
+    gap: var(--space-5);
+    padding: 0 var(--space-5) var(--space-5);
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-4);
+  }
+
+  @keyframes file-body-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .file-card[open] .file-body {
+    animation: file-body-in 0.25s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .file-card[open] .file-body {
+      animation: none;
+    }
+  }
+
+  .file-summary-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-3);
+    max-width: 54ch;
+  }
+
+  .file-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: var(--space-2);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .file-link:hover {
+    color: var(--text-muted);
+  }
+
+  .file-achievements {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
 
-  .work-title {
-    font-size: 1.4rem;
-    font-weight: 500;
+  .file-achievements li {
+    font-size: 0.82rem;
+    padding-left: 16px;
+    position: relative;
   }
 
-  .work-role {
-    font-size: 0.85rem;
+  .file-achievements li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
     color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
   }
 
-  .work-sub {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    max-width: 56ch;
-    margin: 4px 0 8px;
-  }
-
-  .work-tags {
+  .file-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
@@ -158,17 +414,148 @@ import { projects } from "../../data/projects";
     color: var(--text-muted);
   }
 
-  .work-arrow {
-    font-size: 1.5rem;
+  .file-metrics {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    border-left: 1px solid var(--line);
+    padding-left: var(--space-4);
+  }
+
+  .metric-label {
+    font-family: monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .metric-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .metric-track {
+    flex: 1;
+    height: 5px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .metric-fill {
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+    border-radius: 999px;
+  }
+
+  .metric-value {
+    font-family: monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    width: 22px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 760px) {
+    .file-summary {
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas:
+        "num photo toggle"
+        "headline headline headline"
+        "period period period";
+      row-gap: var(--space-2);
+    }
+    .file-num { grid-area: num; }
+    .file-photo { grid-area: photo; }
+    .file-toggle { grid-area: toggle; }
+    .file-headline { grid-area: headline; }
+    .file-period { grid-area: period; justify-self: start; }
+    .file-body {
+      grid-template-columns: 1fr;
+    }
+    .file-metrics {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      padding-left: 0;
+      padding-top: var(--space-3);
+    }
+  }
+
+  /* --- route / field log --- */
+
+  .route {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--line);
+    margin-bottom: var(--space-6);
+  }
+
+  .route-track {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .stop {
+    flex: 0 0 auto;
+    min-width: 150px;
+    padding: 0 var(--space-4) 0 0;
+    position: relative;
+  }
+
+  .stop:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 0;
+    height: 1px;
+    background-image: repeating-linear-gradient(90deg, var(--text-muted) 0 4px, transparent 4px 8px);
+  }
+
+  .stop-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .stop-period {
+    font-family: monospace;
+    font-size: 0.66rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .stop-company {
+    font-weight: 600;
+    font-size: 0.92rem;
+    display: block;
+  }
+
+  .stop-role {
+    font-size: 0.75rem;
     color: var(--text-muted);
   }
+
+  /* --- contact --- */
 
   .touch {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-4);
-    padding: var(--space-8) 0 0;
+    padding: var(--space-6) 0 0;
     flex-direction: column;
     text-align: center;
   }
@@ -177,19 +564,5 @@ import { projects } from "../../data/projects";
     color: var(--text-muted);
     margin: 0;
     font-size: 1rem;
-  }
-
-  @media (max-width: 760px) {
-    .work-row {
-      grid-template-columns: 1fr;
-    }
-    .work-thumb {
-      width: 100%;
-      height: 180px;
-    }
-    .work-num,
-    .work-arrow {
-      display: none;
-    }
   }
 </style>

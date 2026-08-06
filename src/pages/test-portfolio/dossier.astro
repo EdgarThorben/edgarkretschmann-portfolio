@@ -1,0 +1,208 @@
+---
+import { getProject } from "../../data/projects";
+
+const order = ["deutschacademy", "pflegeplace", "icanspeak", "innate", "nomavillage", "narangyoga"];
+const files = order.map((slug, i) => ({ ...getProject(slug)!, num: String(i + 1).padStart(2, "0") }));
+
+const topSkills = (p: (typeof files)[number]) => [...p.skills].sort((a, b) => b.value - a.value).slice(0, 3);
+
+const ticker = [...files]
+  .sort((a, b) => topSkills(b)[0].value - topSkills(a)[0].value)
+  .map((p) => `${p.company.toUpperCase()} — ${topSkills(p)[0].label.toUpperCase()} ${topSkills(p)[0].value}%`);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test: Dossier — Portfolio Concept</title>
+  </head>
+  <body>
+    <div class="grain"></div>
+    <div class="page">
+      <header class="masthead">
+        <div class="masthead-top">
+          <span class="wordmark">The Kretschmann File</span>
+          <span class="stamp-draft">Concept &mdash; Dossier</span>
+        </div>
+        <div class="masthead-sub">
+          <span>Growth &amp; Community Ops</span>
+          <span>Six Case Files</span>
+          <span>2018 &ndash; 2024</span>
+        </div>
+      </header>
+
+      <div class="ticker">
+        <div class="ticker-track">
+          <div class="ticker-seg">
+            {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+          </div>
+          <div class="ticker-seg" aria-hidden="true">
+            {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+          </div>
+        </div>
+      </div>
+
+      <section class="hero">
+        <h1>Six employers. Four countries. One recurring brief.</h1>
+        <p class="hero-sub">
+          Find the audience everyone else is ignoring &mdash; nomads without a home base, nurses with no way into
+          Germany, students who need the language fast &mdash; then build the funnel that reaches them before the
+          quarter ends.
+        </p>
+      </section>
+
+      <section class="files">
+        {
+          files.map((p) => (
+            <article class="file-card">
+              <div class="file-stamp">
+                <span class="file-num">{p.num}</span>
+                <span class="file-period">{p.bioPeriod}</span>
+                <div class="file-photo"><img src={p.portfolioImage} alt="" loading="lazy" /></div>
+              </div>
+              <div class="file-content">
+                <div class="file-head">
+                  <h3>{p.company}</h3>
+                  <span class="file-role">{p.bioRole}</span>
+                </div>
+                <p class="file-title">{p.title}</p>
+                <p class="file-summary">{p.summary}</p>
+                <ul class="file-achievements">
+                  {p.achievements.map((a) => <li>{a}</li>)}
+                </ul>
+                <div class="file-tags">
+                  {p.tech.map((t) => <span class="tag">{t}</span>)}
+                </div>
+              </div>
+              <div class="file-metrics">
+                {topSkills(p).map((s) => (
+                  <div>
+                    <span class="metric-label">{s.label}</span>
+                    <div class="metric-row">
+                      <div class="metric-track"><div class="metric-fill" style={`width:${s.value}%`} /></div>
+                      <span class="metric-value">{s.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="route">
+        <h2>Field log &mdash; six years, six openings</h2>
+        <div class="route-track">
+          {
+            files.map((p) => (
+              <div class="stop">
+                <span class="stop-dot" />
+                <span class="stop-period">{p.bioPeriod}</span>
+                <span class="stop-company">{p.company}</span>
+                <span class="stop-role">{p.bioRole}</span>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <footer class="colophon">
+        <p>Design concept for edgarkretschmann.com/portfolio &mdash; dossier direction. <a href="/test-portfolio">&larr; all concepts</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #E7E1CE;
+    --folder: #DEC48D;
+    --folder-2: #CBAE72;
+    --ink: #221B10;
+    --ink-muted: #6B6148;
+    --accent: #AE3226;
+    --line: rgba(34,27,16,0.24);
+    --line-soft: rgba(34,27,16,0.12);
+    --bar: #57623C;
+    --bar-track: rgba(34,27,16,0.14);
+    --grain-opacity: 0.05;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15130D; --folder: #2E2717; --folder-2: #423721; --ink: #EFE7D2; --ink-muted: #A79A79;
+      --accent: #E2584A; --line: rgba(239,231,210,0.18); --line-soft: rgba(239,231,210,0.09);
+      --bar: #9AAE73; --bar-track: rgba(239,231,210,0.14); --grain-opacity: 0.07;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: var(--grain-opacity); mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .page { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+  .masthead { padding: 28px 0 18px; border-bottom: 3px double var(--line); }
+  .masthead-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .wordmark { font-family: Georgia, "Iowan Old Style", serif; font-size: clamp(1.5rem, 4.5vw, 2.1rem); font-weight: 700; letter-spacing: -0.01em; }
+  .stamp-draft { flex-shrink: 0; border: 2px dashed var(--accent); color: var(--accent); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; padding: 6px 10px; transform: rotate(-6deg); white-space: nowrap; margin-top: 4px; }
+  .masthead-sub { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .ticker { overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--line); }
+  .ticker-track { display: flex; width: max-content; animation: scroll-ticker 32s linear infinite; }
+  @keyframes scroll-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-seg { display: flex; white-space: nowrap; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--bg); padding: 8px 0; }
+  .ticker-seg span.sep { color: var(--accent); margin: 0 14px; }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; overflow-x: auto; } }
+  .hero { padding: 56px 0 44px; max-width: 640px; }
+  .hero h1 { font-family: Georgia, serif; font-size: clamp(1.9rem, 5.5vw, 3rem); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 18px; text-wrap: balance; }
+  .hero-sub { font-size: 1.05rem; line-height: 1.65; color: var(--ink-muted); margin: 0; max-width: 58ch; }
+  .files { display: flex; flex-direction: column; gap: 34px; padding-bottom: 20px; }
+  .file-card { position: relative; display: grid; grid-template-columns: 96px 1fr 200px; gap: 22px; background: var(--folder); border: 1px solid var(--line-soft); padding: 22px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .file-card::before { content: ""; position: absolute; top: -14px; left: 22px; width: 100px; height: 20px; background: var(--folder-2); clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%); z-index: -1; }
+  .file-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -18px rgba(0,0,0,0.4); }
+  .file-stamp { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .file-num { font-family: Georgia, serif; font-size: 2.1rem; font-weight: 700; line-height: 1; opacity: 0.85; }
+  .file-period { display: inline-block; border: 1.5px solid var(--accent); color: var(--accent); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; padding: 3px 7px; transform: rotate(-3deg); }
+  .file-photo { width: 100%; aspect-ratio: 4/3; overflow: hidden; filter: sepia(0.35) contrast(1.05); border: 1px solid var(--line-soft); }
+  .file-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .file-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 2px; }
+  .file-head h3 { font-family: Georgia, serif; font-size: 1.4rem; margin: 0; }
+  .file-role { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+  .file-title { font-weight: 600; font-size: 0.95rem; margin: 0 0 8px; }
+  .file-summary { font-size: 0.9rem; line-height: 1.6; color: var(--ink-muted); margin: 0 0 12px; max-width: 52ch; }
+  .file-achievements { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+  .file-achievements li { font-size: 0.82rem; padding-left: 14px; position: relative; }
+  .file-achievements li::before { content: "\2014"; position: absolute; left: 0; color: var(--accent); }
+  .file-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.65rem; letter-spacing: 0.02em; border: 1px solid var(--line); padding: 3px 8px; color: var(--ink-muted); }
+  .file-metrics { display: flex; flex-direction: column; justify-content: center; gap: 12px; border-left: 1px dashed var(--line); padding-left: 18px; }
+  .metric-label { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); display: block; margin-bottom: 4px; }
+  .metric-row { display: flex; align-items: center; gap: 8px; }
+  .metric-track { flex: 1; height: 6px; background: var(--bar-track); position: relative; overflow: hidden; }
+  .metric-fill { position: absolute; inset: 0; width: 0; background-image: repeating-linear-gradient(90deg, var(--bar) 0 3px, transparent 3px 5px); }
+  .metric-value { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.68rem; color: var(--ink-muted); width: 24px; text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 720px) {
+    .file-card { grid-template-columns: 1fr; }
+    .file-stamp { flex-direction: row; align-items: center; flex-wrap: wrap; }
+    .file-photo { width: 96px; }
+    .file-metrics { border-left: none; border-top: 1px dashed var(--line); padding-left: 0; padding-top: 14px; }
+  }
+  .route { padding-top: 40px; border-top: 3px double var(--line); }
+  .route h2 { font-family: Georgia, serif; font-size: 1.1rem; margin: 0 0 22px; }
+  .route-track { display: flex; overflow-x: auto; padding-bottom: 10px; }
+  .stop { flex: 0 0 auto; min-width: 148px; padding: 0 18px 0 0; position: relative; }
+  .stop:not(:last-child)::after { content: ""; position: absolute; top: 5px; left: 10px; right: 0; height: 1px; background-image: repeating-linear-gradient(90deg, var(--ink-muted) 0 4px, transparent 4px 8px); }
+  .stop-dot { display: block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-bottom: 10px; }
+  .stop-period { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.66rem; color: var(--ink-muted); display: block; margin-bottom: 3px; }
+  .stop-company { font-weight: 700; font-size: 0.92rem; display: block; }
+  .stop-role { font-size: 0.75rem; color: var(--ink-muted); }
+  .colophon { margin-top: 50px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+  .colophon p { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.68rem; color: var(--ink-muted); margin: 0; }
+  .colophon a { color: var(--accent); }
+</style>

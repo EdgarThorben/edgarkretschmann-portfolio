@@ -29,7 +29,10 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
                 <span class="project-index">
                   {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
                 </span>
-                <h2>{project.company}</h2>
+                <h2>
+                  {project.company}
+                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                </h2>
                 <p class="project-subtitle">{project.title}</p>
               </div>
 
@@ -39,27 +42,31 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
                 </div>
                 <div class="project-text">
                   <p class="project-url">{project.url}</p>
-                  {project.detail.map((para) => (
-                    <p>{para}</p>
-                  ))}
+                  <p>{project.challenge}</p>
 
                   <div class="project-grid">
                     <div>
-                      <h4>Achievements</h4>
+                      <h4>Approach</h4>
+                      <ul>
+                        {project.approach.map((step) => (
+                          <li>{step}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4>{project.status === "next" ? "What's next" : "Outcome"}</h4>
                       <ul>
                         {project.achievements.map((a) => (
                           <li>{a}</li>
                         ))}
                       </ul>
                     </div>
-                    <div>
-                      <h4>Tech stack</h4>
-                      <div class="tags">
-                        {project.tech.map((t) => (
-                          <span class="tag">{t}</span>
-                        ))}
-                      </div>
-                    </div>
+                  </div>
+
+                  <div class="tags">
+                    {project.tech.map((t) => (
+                      <span class="tag">{t}</span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -184,6 +191,21 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 500;
     margin: var(--space-2) 0 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .status-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 3px 10px;
   }
 
   .project-subtitle {
@@ -200,6 +222,7 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
   @media (min-width: 768px) {
     .project-body {
       flex-direction: row;
+      align-items: flex-start;
     }
   }
 
@@ -208,13 +231,12 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
     overflow: hidden;
     flex-shrink: 0;
     width: 100%;
-    height: 220px;
+    aspect-ratio: 16 / 9;
   }
 
   @media (min-width: 768px) {
     .project-media {
       width: 280px;
-      height: 200px;
     }
   }
 
@@ -285,6 +307,7 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin-top: var(--space-4);
   }
 
   .tag {

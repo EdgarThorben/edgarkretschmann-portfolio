@@ -1,0 +1,144 @@
+---
+import { getProject } from "../../data/projects";
+
+const order = ["deutschacademy", "pflegeplace", "icanspeak", "innate", "nomavillage", "narangyoga"];
+const rows = order.map((slug, i) => ({ ...getProject(slug)!, code: `EK-${String(i + 1).padStart(2, "0")}` }));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test: Departures — Portfolio Concept</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="head">
+        <div class="head-row">
+          <h1>Departures</h1>
+          <span class="clock" id="clock">--:--:--</span>
+        </div>
+        <p class="sub">GROUND CONTROL &mdash; E. KRETSCHMANN &mdash; SIX LAUNCHES, 2018&ndash;2024</p>
+      </header>
+
+      <div class="ticker">
+        <div class="ticker-track">
+          <span class="ticker-text">
+            NOW DEPARTED &mdash; INNATE TO GLOBAL COLIVING &nbsp;&bull;&nbsp; PFLEGEPLACE TO GERMANY &nbsp;&bull;&nbsp;
+            ICANSPEAK TO ONLINE &nbsp;&bull;&nbsp; DEUTSCHACADEMY TO MANILA &nbsp;&bull;&nbsp; NOMAVILLAGE TO GLOBAL
+            &nbsp;&bull;&nbsp; NARANGYOGA TO BRAND LAUNCH &nbsp;&bull;&nbsp;
+          </span>
+          <span class="ticker-text" aria-hidden="true">
+            NOW DEPARTED &mdash; INNATE TO GLOBAL COLIVING &nbsp;&bull;&nbsp; PFLEGEPLACE TO GERMANY &nbsp;&bull;&nbsp;
+            ICANSPEAK TO ONLINE &nbsp;&bull;&nbsp; DEUTSCHACADEMY TO MANILA &nbsp;&bull;&nbsp; NOMAVILLAGE TO GLOBAL
+            &nbsp;&bull;&nbsp; NARANGYOGA TO BRAND LAUNCH &nbsp;&bull;&nbsp;
+          </span>
+        </div>
+      </div>
+
+      <div class="board">
+        <div class="board-head">
+          <span>CODE</span>
+          <span>ROUTE</span>
+          <span>ROLE</span>
+          <span>PERIOD</span>
+          <span>STATUS</span>
+        </div>
+        {
+          rows.map((r, i) => (
+            <div class="board-row" style={`--delay:${i * 0.08}s`}>
+              <span class="cell code">{r.code}</span>
+              <span class="cell route">
+                <strong>{r.company}</strong>
+                <em>{r.title}</em>
+              </span>
+              <span class="cell role">{r.bioRole}</span>
+              <span class="cell period">{r.bioPeriod}</span>
+              <span class="cell status">DEPARTED</span>
+              <span class="cell detail">
+                {r.summary}
+                <span class="tags">{r.tech.map((t) => <i>{t}</i>)}</span>
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      <footer class="foot">
+        <p>Design concept for edgarkretschmann.com/portfolio &mdash; split-flap departures direction. <a href="/test-portfolio">&larr; all concepts</a></p>
+      </footer>
+    </div>
+    <script>
+      const el = document.getElementById("clock");
+      function tick() {
+        if (!el) return;
+        const d = new Date();
+        el.textContent = d.toTimeString().slice(0, 8);
+      }
+      tick();
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #0A0A0B;
+    --panel: #141416;
+    --amber: #F2A63C;
+    --amber-dim: #8A6A3A;
+    --line: rgba(242,166,60,0.22);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--amber);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    overflow-x: hidden;
+  }
+  .page { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  .head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); letter-spacing: 0.12em; text-transform: uppercase; margin: 0; text-shadow: 0 0 12px rgba(242,166,60,0.35); }
+  .clock { font-size: 1.1rem; font-variant-numeric: tabular-nums; color: var(--amber); text-shadow: 0 0 10px rgba(242,166,60,0.4); }
+  .sub { margin: 10px 0 0; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--amber-dim); text-transform: uppercase; }
+  .ticker { margin-top: 22px; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel); }
+  .ticker-track { display: flex; width: max-content; animation: scroll 26s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-text { white-space: nowrap; padding: 8px 0; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--amber); }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; overflow-x: auto; } .board-row { animation: none !important; opacity: 1 !important; } }
+
+  .board { margin-top: 28px; border: 1px solid var(--line); background: var(--panel); }
+  .board-head, .board-row { display: grid; grid-template-columns: 90px 1fr 170px 110px 120px; gap: 14px; padding: 12px 16px; }
+  .board-head { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--amber-dim); border-bottom: 1px solid var(--line); text-transform: uppercase; }
+  .board-row {
+    grid-template-columns: 90px 1fr 170px 110px 120px;
+    grid-template-areas: "code route role period status" "code detail detail detail detail";
+    border-bottom: 1px solid var(--line);
+    animation: flap 0.5s ease-out both;
+    animation-delay: var(--delay);
+    transform-origin: top center;
+  }
+  @keyframes flap { from { opacity: 0; transform: rotateX(-90deg); } to { opacity: 1; transform: rotateX(0deg); } }
+  .board-row:last-child { border-bottom: none; }
+  .cell { font-size: 0.85rem; letter-spacing: 0.03em; }
+  .code { grid-area: code; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .route { grid-area: route; display: flex; flex-direction: column; gap: 2px; }
+  .route strong { font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .route em { font-style: normal; font-size: 0.72rem; color: var(--amber-dim); }
+  .role { grid-area: role; font-size: 0.72rem; color: var(--amber-dim); text-transform: uppercase; }
+  .period { grid-area: period; font-variant-numeric: tabular-nums; }
+  .status { grid-area: status; font-size: 0.68rem; letter-spacing: 0.08em; color: #4CAF6D; text-shadow: 0 0 8px rgba(76,175,109,0.4); }
+  .detail { grid-area: detail; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 0.78rem; line-height: 1.6; color: rgba(242,166,60,0.75); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tags i { font-style: normal; font-size: 0.62rem; border: 1px solid var(--line); padding: 2px 7px; color: var(--amber-dim); }
+
+  @media (max-width: 760px) {
+    .board-head { display: none; }
+    .board-row { grid-template-columns: 1fr; grid-template-areas: "code" "route" "role" "period" "status" "detail"; }
+  }
+
+  .foot { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .foot p { font-size: 0.68rem; color: var(--amber-dim); margin: 0; }
+  .foot a { color: var(--amber); }
+</style>

@@ -8,18 +8,23 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
 <Base title="Edgar Kretschmann" description="AI-augmented marketing systems for SMBs — Munich-based, remote everywhere." section="home">
   <main class="wrap">
     <section class="hero">
-      <p class="eyebrow" data-reveal="fade-up">Munich, based worldwide</p>
-      <h1 data-reveal="fade-left">
-        AI-augmented <em>marketing systems</em> for businesses that need more than a website.
-      </h1>
-      <p class="lede" data-reveal="fade-up">
-        I build lead funnels and content systems — for coliving communities, yoga brands, and a German-language
-        pipeline that recruits nurses into Germany. I've founded a language school, run paid campaigns end-to-end,
-        and now use AI to build in days what used to take a team weeks.
-      </p>
-      <div class="cta-row" data-reveal="fade-up">
-        <a class="btn btn-primary" href="/portfolio">Look at my projects →</a>
-        <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
+      <div class="hero-text">
+        <p class="eyebrow" data-reveal="fade-up">Munich, based worldwide</p>
+        <h1 data-reveal="fade-left">
+          AI-augmented <em>marketing systems</em> for businesses that need more than a website.
+        </h1>
+        <p class="lede" data-reveal="fade-up">
+          I build lead funnels and content systems — for coliving communities, yoga brands, and a German-language
+          pipeline that recruits nurses into Germany. I've founded a language school, run paid campaigns end-to-end,
+          and now use AI to build in days what used to take a team weeks.
+        </p>
+        <div class="cta-row" data-reveal="fade-up">
+          <a class="btn btn-primary" href="/portfolio">Look at my projects →</a>
+          <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo" data-reveal="fade-up">
+        <img src="/images/bio/image01.jpg" alt="Edgar Kretschmann" />
       </div>
     </section>
 
@@ -36,8 +41,8 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
       <div class="work-head">
         <h2 data-reveal="fade-left">Selected work</h2>
         <p data-reveal="fade-up">
-          One pattern across six case studies: find the underserved audience, then build the funnel and content
-          system that reaches them fast — real market research, paired with AI production speed.
+          One pattern across seven engagements: find the underserved audience, then build the funnel or the product
+          that reaches them fast — real market research, paired with AI production speed.
         </p>
       </div>
       <div class="work-list">
@@ -49,7 +54,10 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
                 <img src={project.portfolioImage} alt={project.company} />
               </span>
               <span class="work-info">
-                <span class="work-title">{project.company}</span>
+                <span class="work-title">
+                  {project.company}
+                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                </span>
                 <span class="work-sub">{project.summary}</span>
               </span>
               <span class="work-arrow">→</span>
@@ -81,6 +89,30 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
 
   .hero {
     padding: var(--space-8) 0 var(--space-7);
+    display: flex;
+    align-items: center;
+    gap: var(--space-7);
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-photo {
+    flex-shrink: 0;
+    width: 220px;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   h1 {
@@ -236,9 +268,23 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
   }
 
   .work-title {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
     font-size: 1.2rem;
     font-weight: 500;
+  }
+
+  .status-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 3px 10px;
   }
 
   .work-sub {
@@ -286,6 +332,13 @@ const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
   }
 
   @media (max-width: 760px) {
+    .hero {
+      flex-direction: column-reverse;
+      gap: var(--space-5);
+    }
+    .hero-photo {
+      width: 140px;
+    }
     .strip-grid {
       grid-template-columns: repeat(2, 1fr);
     }

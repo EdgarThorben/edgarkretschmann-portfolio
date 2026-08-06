@@ -1,0 +1,124 @@
+---
+import { getProject } from "../../data/projects";
+
+const order = ["deutschacademy", "pflegeplace", "icanspeak", "innate", "nomavillage", "narangyoga"];
+const plates = order.map((slug, i) => ({ ...getProject(slug)!, plate: String(i + 1).padStart(2, "0") }));
+
+const stages = ["Awareness", "Landing Page", "Automation", "Conversion"];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test: Funnel Print — Portfolio Concept</title>
+  </head>
+  <body>
+    <div class="paper">
+      <header class="head">
+        <p class="kicker">Print Run No. 06 &mdash; 2018/2024</p>
+        <h1>SIX FUNNELS,<br />SIX MARKETS.</h1>
+        <p class="dek">Every job starts the same way: awareness, a landing page, automation underneath it, then a
+          conversion at the end. What changes is who's on the other side &mdash; nomads, nurses, students, a yoga
+          brand starting from nothing.</p>
+      </header>
+
+      <div class="funnel" aria-hidden="true">
+        {stages.map((s, i) => <div class="funnel-stage" style={`--i:${i}`}><span>{s}</span></div>)}
+      </div>
+
+      <section class="plates">
+        {
+          plates.map((p) => (
+            <article class="plate">
+              <div class="plate-image">
+                <img src={p.portfolioImage} alt="" loading="lazy" />
+                <div class="halftone" />
+              </div>
+              <div class="plate-text">
+                <span class="plate-num">{p.plate}</span>
+                <h2>{p.company}</h2>
+                <p class="plate-title">{p.title}</p>
+                <p class="plate-summary">{p.summary}</p>
+                <div class="plate-tags">{p.tech.map((t) => <span>{t}</span>)}</div>
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <footer class="foot">
+        <p>Design concept for edgarkretschmann.com/portfolio &mdash; riso-print / funnel direction. <a href="/test-portfolio">&larr; all concepts</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :root {
+    --paper: #F1ECE1;
+    --ink-navy: #1B2A4A;
+    --riso-orange: #FF5A36;
+    --muted: #8A7F6E;
+    --line: rgba(27,42,74,0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper); color: var(--ink-navy);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+  .paper { max-width: 980px; margin: 0 auto; padding: 40px 24px 90px; }
+  .kicker { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--riso-orange); margin: 0 0 14px; }
+  h1 {
+    font-family: Impact, "Arial Narrow", Arial, sans-serif;
+    font-stretch: condensed;
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+    text-shadow: 3px 3px 0 var(--riso-orange);
+  }
+  .dek { max-width: 56ch; font-size: 1.02rem; line-height: 1.65; color: var(--muted); margin: 0; }
+
+  .funnel { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 48px 0; }
+  .funnel-stage {
+    --w: calc(100% - (var(--i) * 18%));
+    width: var(--w);
+    max-width: 640px;
+    padding: 12px 0;
+    text-align: center;
+    background: color-mix(in srgb, var(--ink-navy) calc(100% - (var(--i) * 12%)), var(--riso-orange));
+    color: var(--paper);
+    clip-path: polygon(4% 0, 96% 0, 90% 100%, 10% 100%);
+  }
+  .funnel-stage span { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .plates { display: flex; flex-direction: column; gap: 46px; }
+  .plate { display: grid; grid-template-columns: 260px 1fr; gap: 28px; align-items: start; }
+  .plate-image { position: relative; aspect-ratio: 4/3; overflow: hidden; border: 3px solid var(--ink-navy); }
+  .plate-image img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.5) sepia(0.15) contrast(1.1); mix-blend-mode: luminosity; }
+  .halftone {
+    position: absolute; inset: 0; mix-blend-mode: multiply; opacity: 0.5;
+    background-image: radial-gradient(var(--riso-orange) 22%, transparent 23%);
+    background-size: 6px 6px;
+  }
+  .plate-num { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.75rem; color: var(--riso-orange); font-weight: 700; }
+  .plate-text h2 { font-family: Impact, "Arial Narrow", Arial, sans-serif; font-stretch: condensed; font-size: 1.9rem; margin: 4px 0 2px; letter-spacing: -0.01em; }
+  .plate-title { font-weight: 700; font-size: 0.9rem; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); }
+  .plate-summary { font-size: 0.95rem; line-height: 1.6; margin: 0 0 12px; max-width: 56ch; }
+  .plate-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .plate-tags span { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.68rem; border: 1.5px solid var(--ink-navy); padding: 3px 9px; }
+
+  @media (max-width: 680px) {
+    .plate { grid-template-columns: 1fr; }
+    .funnel-stage { --w: calc(100% - (var(--i) * 10%)); }
+  }
+
+  .foot { margin-top: 60px; padding-top: 18px; border-top: 2px solid var(--ink-navy); }
+  .foot p { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.68rem; color: var(--muted); margin: 0; }
+  .foot a { color: var(--riso-orange); }
+</style>
