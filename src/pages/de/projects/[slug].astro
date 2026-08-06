@@ -1,14 +1,16 @@
 ---
-import Base from "../../layouts/Base.astro";
-import RadarChart from "../../components/RadarChart.astro";
-import { projects, getProject } from "../../data/projects";
+import Base from "../../../layouts/Base.astro";
+import RadarChart from "../../../components/RadarChart.astro";
+import { localizeProjects, localizeProject } from "../../../lib/i18n";
+import { ui } from "../../../i18n/ui";
 
 export function getStaticPaths() {
-  const visible = projects.filter((p) => !p.hidden);
-  return projects.map((project) => {
+  const localized = localizeProjects("de");
+  const visible = localized.filter((p) => !p.hidden);
+  return localized.map((project) => {
     const visIndex = visible.findIndex((p) => p.slug === project.slug);
     const isVisible = visIndex !== -1;
-    const parent = isVisible ? undefined : projects.find((p) => p.followUpSlug === project.slug);
+    const parent = isVisible ? undefined : localized.find((p) => p.followUpSlug === project.slug);
     return {
       params: { slug: project.slug },
       props: {
@@ -21,32 +23,34 @@ export function getStaticPaths() {
 }
 
 const { project, prev, next } = Astro.props;
-const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undefined;
+const t = ui.de;
+const followUp = project.followUpSlug ? localizeProject(project.followUpSlug, "de") : undefined;
 ---
 
 <Base
   title={`${project.company} — Edgar Kretschmann`}
-  description={`${project.title}: ${project.bioRole} at ${project.company}.`}
+  description={`${project.title}: ${project.bioRole} bei ${project.company}.`}
   section="projects"
+  lang="de"
 >
   <main class="wrap">
     <div class="nav-strip nav-strip--top" data-reveal="fade-up">
       {
         prev ? (
-          <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
+          <a href={`/de/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/portfolio">← Portfolio</a>
+          <a href="/de/portfolio">{t.project.backToPortfolio}</a>
         )
       }
-      <a href="/portfolio" class="nav-strip__mid">All projects</a>
-      {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
+      <a href="/de/portfolio" class="nav-strip__mid">{t.project.allProjects}</a>
+      {next && <a href={`/de/projects/${next.slug}`}>{next.company} →</a>}
     </div>
 
     <section class="head" data-reveal="fade-up">
       <p class="eyebrow">{project.url}</p>
       <h1>
         {project.company}
-        {project.status === "next" && <span class="status-badge">In progress</span>}
+        {project.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
       </h1>
       <p class="subtitle">{project.title}</p>
     </section>
@@ -57,11 +61,11 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
 
     <section class="narrative" data-reveal="fade-up">
       <div class="narrative-block">
-        <h3>The challenge</h3>
+        <h3>{t.project.theChallenge}</h3>
         <p>{project.challenge}</p>
       </div>
       <div class="narrative-block">
-        <h3>The approach</h3>
+        <h3>{t.project.theApproach}</h3>
         <ul>
           {project.approach.map((step) => (
             <li>{step}</li>
@@ -72,7 +76,7 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
 
     <section class="stats" data-reveal="fade-up">
       <div>
-        <h3>{project.status === "next" ? "What's next" : "Outcome"}</h3>
+        <h3>{project.status === "next" ? t.project.whatsNext : t.project.outcome}</h3>
         <ul>
           {project.achievements.map((a) => (
             <li>{a}</li>
@@ -80,23 +84,23 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
         </ul>
       </div>
       <div>
-        <h3>Tech stack</h3>
+        <h3>{t.project.techStack}</h3>
         <div class="tags">
-          {project.tech.map((t) => (
-            <span class="tag">{t}</span>
+          {project.tech.map((tech) => (
+            <span class="tag">{tech}</span>
           ))}
         </div>
       </div>
       <div class="radar">
-        <h3>Skill set</h3>
+        <h3>{t.project.skillSet}</h3>
         <RadarChart points={project.skills} size={180} fillColor="rgba(226,181,61,0.15)" strokeColor="#e2b53d" />
       </div>
     </section>
 
     {
       followUp && (
-        <a class="follow-up" href={`/projects/${followUp.slug}`} data-reveal="fade-up">
-          <span class="follow-up-eyebrow">Still in motion</span>
+        <a class="follow-up" href={`/de/projects/${followUp.slug}`} data-reveal="fade-up">
+          <span class="follow-up-eyebrow">{t.project.stillInMotion}</span>
           <span class="follow-up-title">{followUp.title} →</span>
           <span class="follow-up-desc">{followUp.summary}</span>
         </a>
@@ -106,13 +110,13 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
     <div class="nav-strip nav-strip--bottom" data-reveal="fade-up">
       {
         prev ? (
-          <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
+          <a href={`/de/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/portfolio">← Portfolio</a>
+          <a href="/de/portfolio">{t.project.backToPortfolio}</a>
         )
       }
-      <a href="/portfolio" class="nav-strip__mid">All projects</a>
-      {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
+      <a href="/de/portfolio" class="nav-strip__mid">{t.project.allProjects}</a>
+      {next && <a href={`/de/projects/${next.slug}`}>{next.company} →</a>}
     </div>
   </main>
 </Base>

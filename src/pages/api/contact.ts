@@ -15,6 +15,8 @@ export const POST: APIRoute = async ({ request }) => {
   const email = String(data.get("email") ?? "").trim();
   const siteUrl = String(data.get("siteUrl") ?? "").trim();
   const message = String(data.get("message") ?? "").trim();
+  const lang = String(data.get("lang") ?? "").trim();
+  const redirectTo = lang === "de" ? "/de/projects#touch" : "/projects#touch";
 
   const wantsJson = request.headers.get("accept")?.includes("application/json");
 
@@ -61,5 +63,5 @@ export const POST: APIRoute = async ({ request }) => {
   if (wantsJson) {
     return new Response(JSON.stringify({ ok: true }), { status: 200, headers: { "Content-Type": "application/json" } });
   }
-  return new Response(null, { status: 303, headers: { Location: "/projects#touch" } });
+  return new Response(null, { status: 303, headers: { Location: redirectTo } });
 };

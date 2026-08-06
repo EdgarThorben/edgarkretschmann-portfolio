@@ -1,30 +1,38 @@
 ---
-import Base from "../layouts/Base.astro";
-import { projects } from "../data/projects";
+import Base from "../../layouts/Base.astro";
+import { localizeProjects } from "../../lib/i18n";
+import { ui } from "../../i18n/ui";
 
 const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const t = ui.de;
+const projects = localizeProjects("de");
 const visibleProjects = projects.filter((p) => !p.hidden);
-const industries = new Set(["Coliving", "Healthcare recruitment", "Language education", "Wellness"]);
+const industries = new Set(["Coliving", "Pflegekräfte-Recruiting", "Sprachbildung", "Wellness"]);
 const foundingYear = 2018;
 const yearsActive = new Date().getFullYear() - foundingYear;
 ---
 
-<Base title="Edgar Kretschmann" description="AI-augmented marketing systems for SMBs — Munich-based, remote everywhere." section="home">
+<Base
+  title="Edgar Kretschmann"
+  description="KI-gestützte Marketing-Systeme für KMU — aus München, weltweit unterwegs."
+  section="home"
+  lang="de"
+>
   <main class="wrap">
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow" data-reveal="fade-up">Munich, based worldwide</p>
+        <p class="eyebrow" data-reveal="fade-up">München, weltweit unterwegs</p>
         <h1 data-reveal="fade-left">
-          AI-augmented <em>marketing systems</em> for businesses that need more than a website.
+          KI-gestützte <em>Marketing-Systeme</em> für Unternehmen, die mehr brauchen als nur eine Website.
         </h1>
         <p class="lede" data-reveal="fade-up">
-          I build lead funnels and content systems — for coliving communities, yoga brands, and a German-language
-          pipeline that recruits nurses into Germany. I've founded a language school, run paid campaigns end-to-end,
-          and now use AI to build in days what used to take a team weeks.
+          Ich baue Lead-Funnels und Content-Systeme — für Coliving-Communities, Yoga-Marken und eine deutschsprachige
+          Pipeline, die Pflegekräfte für Deutschland rekrutiert. Ich habe eine Sprachschule gegründet, Paid-Kampagnen
+          end-to-end gesteuert und nutze heute KI, um in Tagen zu bauen, wofür ein Team früher Wochen brauchte.
         </p>
         <div class="cta-row" data-reveal="fade-up">
-          <a class="btn btn-primary" href="/portfolio">Look at my projects →</a>
-          <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
+          <a class="btn btn-primary" href="/de/portfolio">Meine Projekte ansehen →</a>
+          <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Kontakt aufnehmen</a>
         </div>
       </div>
       <div class="hero-photo" data-reveal="fade-up">
@@ -34,25 +42,25 @@ const yearsActive = new Date().getFullYear() - foundingYear;
 
     <section class="strip" data-reveal="fade-up">
       <div class="strip-grid">
-        <div><strong>{visibleProjects.length}</strong>Ventures built or scaled</div>
-        <div><strong>{industries.size}</strong>Industries served</div>
-        <div><strong>{yearsActive}+</strong>Years in growth marketing</div>
-        <div><strong>100%</strong>Remote, async delivery</div>
+        <div><strong>{visibleProjects.length}</strong>Projekte aufgebaut oder skaliert</div>
+        <div><strong>{industries.size}</strong>Branchen bedient</div>
+        <div><strong>{yearsActive}+</strong>Jahre im Growth Marketing</div>
+        <div><strong>100%</strong>Remote, asynchrone Umsetzung</div>
       </div>
     </section>
 
     <section class="work" id="work">
       <div class="work-head">
-        <h2 data-reveal="fade-left">Selected work</h2>
+        <h2 data-reveal="fade-left">Ausgewählte Arbeiten</h2>
         <p data-reveal="fade-up">
-          One pattern across every engagement: find the underserved audience, then build the funnel or the product
-          that reaches them fast — real market research, paired with AI production speed.
+          Ein Muster zieht sich durch jedes Projekt: die unterversorgte Zielgruppe finden, dann den Funnel oder das
+          Produkt bauen, das sie schnell erreicht — echte Marktrecherche gepaart mit KI-Produktionsgeschwindigkeit.
         </p>
       </div>
       <div class="work-list">
         {
           visibleProjects.map((project, index) => (
-            <a class="work-row" href={`/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="home-work">
+            <a class="work-row" href={`/de/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="home-work">
               <span class="work-num">{String(index + 1).padStart(2, "0")}</span>
               <span class="work-thumb">
                 <img src={project.portfolioImage} alt={project.company} />
@@ -60,7 +68,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
               <span class="work-info">
                 <span class="work-title">
                   {project.company}
-                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                  {project.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
                 </span>
                 <span class="work-sub">{project.summary}</span>
               </span>
@@ -74,12 +82,12 @@ const yearsActive = new Date().getFullYear() - foundingYear;
     <footer data-reveal="fade-up">
       <div class="footer-grid">
         <div>
-          <h3>Let's build the system your business actually needs.</h3>
+          <h3>Lass uns das System bauen, das dein Unternehmen wirklich braucht.</h3>
           <p>{CONTACT_EMAIL} · +49 157 84928200</p>
         </div>
-        <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
+        <a class="btn btn-primary" href={`mailto:${CONTACT_EMAIL}`}>Kontakt aufnehmen</a>
       </div>
-      <p class="copyright">© Edgar Kretschmann. All rights reserved.</p>
+      <p class="copyright">© Edgar Kretschmann. Alle Rechte vorbehalten.</p>
     </footer>
   </main>
 </Base>
@@ -124,7 +132,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
     font-weight: 500;
     line-height: 1.05;
     margin: var(--space-5) 0 var(--space-5);
-    max-width: 15ch;
+    max-width: 20ch;
   }
 
   h1 em {
@@ -320,7 +328,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     font-weight: 500;
     margin: 0 0 8px;
-    max-width: 16ch;
+    max-width: 18ch;
   }
 
   footer p {

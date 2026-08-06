@@ -1,22 +1,25 @@
 ---
-import Base from "../../layouts/Base.astro";
-import { projects } from "../../data/projects";
+import Base from "../../../layouts/Base.astro";
+import { localizeProjects } from "../../../lib/i18n";
+import { ui } from "../../../i18n/ui";
 
 const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
-const visibleProjects = projects.filter((p) => !p.hidden);
+const t = ui.de;
+const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 ---
 
 <Base
-  title="Projects — Edgar Kretschmann"
-  description="A detailed showcase of Edgar Kretschmann's projects — from co-living communities to nurse recruitment funnels and online language schools."
+  title="Projekte — Edgar Kretschmann"
+  description="Ein detaillierter Einblick in Edgar Kretschmanns Projekte — von Coliving-Communities über Recruiting-Funnels für Pflegekräfte bis zu Online-Sprachschulen."
   section="projects"
+  lang="de"
 >
   <main class="wrap">
     <div class="head" data-reveal="fade-up">
-      <a href="/" class="back-link">← Home</a>
-      <p class="eyebrow">Portfolio details</p>
-      <h1>All projects</h1>
-      <p class="lede">A deep dive into each engagement.</p>
+      <a href="/de" class="back-link">← Start</a>
+      <p class="eyebrow">Portfolio im Detail</p>
+      <h1>Alle Projekte</h1>
+      <p class="lede">Ein tiefer Einblick in jedes Projekt.</p>
     </div>
 
     <div class="project-list">
@@ -32,7 +35,7 @@ const visibleProjects = projects.filter((p) => !p.hidden);
                 </span>
                 <h2>
                   {project.company}
-                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                  {project.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
                 </h2>
                 <p class="project-subtitle">{project.title}</p>
               </div>
@@ -47,7 +50,7 @@ const visibleProjects = projects.filter((p) => !p.hidden);
 
                   <div class="project-grid">
                     <div>
-                      <h4>Approach</h4>
+                      <h4>{t.project.theApproach}</h4>
                       <ul>
                         {project.approach.map((step) => (
                           <li>{step}</li>
@@ -55,7 +58,7 @@ const visibleProjects = projects.filter((p) => !p.hidden);
                       </ul>
                     </div>
                     <div>
-                      <h4>{project.status === "next" ? "What's next" : "Outcome"}</h4>
+                      <h4>{project.status === "next" ? t.project.whatsNext : t.project.outcome}</h4>
                       <ul>
                         {project.achievements.map((a) => (
                           <li>{a}</li>
@@ -65,8 +68,8 @@ const visibleProjects = projects.filter((p) => !p.hidden);
                   </div>
 
                   <div class="tags">
-                    {project.tech.map((t) => (
-                      <span class="tag">{t}</span>
+                    {project.tech.map((tech) => (
+                      <span class="tag">{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -74,8 +77,8 @@ const visibleProjects = projects.filter((p) => !p.hidden);
 
               <div class="nav-strip">
                 {prev && <a href={`#${prev.slug}`}>← {prev.company}</a>}
-                <a href={`/projects/${project.slug}`} class="nav-strip__details">
-                  View full details →
+                <a href={`/de/projects/${project.slug}`} class="nav-strip__details">
+                  {t.project.viewFullDetails}
                 </a>
                 {next && (
                   <a href={`#${next.slug}`} class="nav-strip__next">
@@ -91,33 +94,33 @@ const visibleProjects = projects.filter((p) => !p.hidden);
 
     <!-- Contact -->
     <section id="touch" class="touch" data-reveal="fade-up">
-      <p class="eyebrow">Ready to work together?</p>
-      <h2>Get in touch</h2>
+      <p class="eyebrow">{t.contact.eyebrow}</p>
+      <h2>{t.contact.heading}</h2>
       <form id="contact-form" method="post" action="/api/contact">
-        <input type="hidden" name="lang" value="en" />
+        <input type="hidden" name="lang" value="de" />
         <div class="field">
-          <label for="name">Name</label>
+          <label for="name">{t.contact.name}</label>
           <input id="name" name="name" type="text" required />
         </div>
         <div class="field">
-          <label for="email">Email</label>
+          <label for="email">{t.contact.email}</label>
           <input id="email" name="email" type="email" required />
         </div>
         <div class="field">
-          <label for="siteUrl">Site URL <span class="optional">(optional)</span></label>
+          <label for="siteUrl">{t.contact.siteUrl} <span class="optional">{t.contact.optional}</span></label>
           <input id="siteUrl" name="siteUrl" type="url" />
         </div>
         <div class="field">
-          <label for="message">Message</label>
+          <label for="message">{t.contact.message}</label>
           <textarea id="message" name="message" rows="4" required></textarea>
         </div>
-        <button type="submit" class="btn-pill btn-accent submit-btn">Submit</button>
+        <button type="submit" class="btn-pill btn-accent submit-btn">{t.contact.submit}</button>
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
       <div class="touch__alt">
-        <a href={`mailto:${CONTACT_EMAIL}`} class="btn-pill btn-ghost">✉ Email me directly</a>
-        <a href="/portfolio" class="btn-pill btn-ghost">← Back to Portfolio</a>
-        <a href="/bio" class="btn-pill btn-ghost">Bio</a>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn-pill btn-ghost">{t.contact.emailDirect}</a>
+        <a href="/de/portfolio" class="btn-pill btn-ghost">{t.contact.backToPortfolio}</a>
+        <a href="/de/bio" class="btn-pill btn-ghost">{t.contact.bio}</a>
       </div>
     </section>
   </main>
@@ -130,7 +133,7 @@ const visibleProjects = projects.filter((p) => !p.hidden);
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!status) return;
-    status.textContent = "Sending…";
+    status.textContent = "Wird gesendet…";
     try {
       const response = await fetch(form.action, {
         method: "POST",
@@ -138,10 +141,10 @@ const visibleProjects = projects.filter((p) => !p.hidden);
         headers: { Accept: "application/json" },
       });
       if (!response.ok) throw new Error("Request failed");
-      status.textContent = "I will definitely get back to you!";
+      status.textContent = "Ich melde mich auf jeden Fall bei dir!";
       form.reset();
     } catch {
-      status.textContent = "Something went wrong — email me directly instead.";
+      status.textContent = "Etwas ist schiefgelaufen — schreib mir stattdessen direkt eine E-Mail.";
     }
   });
 </script>

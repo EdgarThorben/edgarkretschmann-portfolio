@@ -1,32 +1,34 @@
 ---
-import Base from "../../layouts/Base.astro";
-import { projects, bonusExperience } from "../../data/projects";
-import { sortProjectsDesc } from "../../lib/timeline";
+import Base from "../../../layouts/Base.astro";
+import { localizeProjects, localizeBonusExperience } from "../../../lib/i18n";
+import { sortProjectsDesc } from "../../../lib/timeline";
 
-const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
+const timeline = sortProjectsDesc(localizeProjects("de").filter((p) => !p.hidden));
+const bonusExperience = localizeBonusExperience("de");
 ---
 
 <Base
-  title="My Bio — Edgar Kretschmann"
-  description="Career journey of Edgar Kretschmann, newest to oldest — from marketing management today back to founding a German school in Manila."
+  title="Mein Werdegang — Edgar Kretschmann"
+  description="Der berufliche Werdegang von Edgar Kretschmann, neueste zuerst — vom heutigen Marketing-Management zurück zur Gründung einer Deutschschule in Manila."
   section="bio"
+  lang="de"
 >
   <main class="wrap">
-    <a href="/" class="back-link" data-reveal="fade-up">← Home</a>
+    <a href="/de" class="back-link" data-reveal="fade-up">← Start</a>
 
     <section class="hero" data-reveal="fade-up">
       <div class="avatar">
         <img src="/images/bio/image01.jpg" alt="Edgar Kretschmann" />
       </div>
-      <p class="eyebrow">Newest to oldest</p>
-      <h1>My bio</h1>
+      <p class="eyebrow">Neueste zuerst</p>
+      <h1>Mein Werdegang</h1>
     </section>
 
     <ol class="timeline">
       {
         timeline.map((project) => (
           <li>
-            <a class="entry" href={`/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="bio-timeline">
+            <a class="entry" href={`/de/projects/${project.slug}`} data-reveal="fade-up" data-reveal-group="bio-timeline">
               <span class="entry-period">{project.bioPeriod}</span>
               <span class="entry-thumb">
                 <img src={project.bioImage} alt={project.company} />
@@ -35,7 +37,7 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
                 <span class="entry-role">{project.bioRole}</span>
                 <span class="entry-title">
                   {project.company}
-                  {project.status === "next" && <span class="status-badge">In progress</span>}
+                  {project.status === "next" && <span class="status-badge">In Arbeit</span>}
                 </span>
                 <span class="entry-desc">{project.bioDescription}</span>
               </span>
@@ -52,7 +54,7 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
           </span>
           <span class="entry-info">
             <span class="entry-role">{bonusExperience.role}</span>
-            <span class="entry-title">Bonus: Language teacher</span>
+            <span class="entry-title">Bonus: Sprachlehrer</span>
             <span class="entry-desc">{bonusExperience.description}</span>
           </span>
         </div>
@@ -62,12 +64,12 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
     <footer data-reveal="fade-up">
       <div class="footer-grid">
         <div>
-          <h2>Get in touch</h2>
+          <h2>Kontakt aufnehmen</h2>
           <p>edgar.kretschmann@hotmail.com</p>
         </div>
         <div class="footer-actions">
-          <a href="mailto:edgar.kretschmann@hotmail.com" class="btn-pill btn-accent">Email me</a>
-          <a href="/projects#touch" class="btn-pill btn-ghost">More details</a>
+          <a href="mailto:edgar.kretschmann@hotmail.com" class="btn-pill btn-accent">E-Mail schreiben</a>
+          <a href="/de/projects#touch" class="btn-pill btn-ghost">Mehr Details</a>
         </div>
       </div>
     </footer>

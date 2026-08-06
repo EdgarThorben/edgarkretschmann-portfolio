@@ -13,6 +13,8 @@ export interface Project {
   approach: string[]; // what was actually done, rendered as a bulleted list
   achievements: string[]; // outcomes/results, or forward-looking milestones when status is "next"
   status?: "next"; // marks an in-progress/upcoming project — swaps "Outcome" for "What's next" in the UI
+  hidden?: boolean; // excluded from all listing pages (home/portfolio/projects/bio); still reachable directly at /projects/[slug]
+  followUpSlug?: string; // slug of a hidden project this one leads into — renders a discovery teaser on the project detail page
   tech: string[];
   skills: SkillPoint[];
   portfolioImage: string;

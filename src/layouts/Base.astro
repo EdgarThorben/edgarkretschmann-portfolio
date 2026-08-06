@@ -1,25 +1,34 @@
 ---
 import "../styles/global.css";
+import type { Lang } from "../lib/i18n";
+import { altLocalePath } from "../lib/i18n";
+import { ui, languageLabels } from "../i18n/ui";
 
 interface Props {
   title: string;
   description: string;
   section: "home" | "portfolio" | "projects" | "bio";
+  lang?: Lang;
   ogImage?: string;
 }
 
-const { title, description, section, ogImage = "/seo/share.jpg" } = Astro.props;
+const { title, description, section, lang = "en", ogImage = "/seo/share.jpg" } = Astro.props;
+const t = ui[lang];
 
 const nav = [
-  { href: "/", label: "Home" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/projects", label: "Projects" },
-  { href: "/bio", label: "Bio" },
+  { href: lang === "en" ? "/" : "/de", label: t.nav.home },
+  { href: lang === "en" ? "/portfolio" : "/de/portfolio", label: t.nav.portfolio },
+  { href: lang === "en" ? "/projects" : "/de/projects", label: t.nav.projects },
+  { href: lang === "en" ? "/bio" : "/de/bio", label: t.nav.bio },
 ];
+
+const alt = altLocalePath(Astro.url.pathname);
+const enPath = lang === "en" ? Astro.url.pathname : alt.path;
+const dePath = lang === "de" ? Astro.url.pathname : alt.path;
 ---
 
 <!doctype html>
-<html lang="en" data-section={section}>
+<html lang={lang} data-section={section}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,10 +41,31 @@ const nav = [
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" hreflang="en" href={enPath} />
+    <link rel="alternate" hreflang="de" href={dePath} />
+    <link rel="alternate" hreflang="x-default" href={enPath} />
+    <script is:inline>
+      (function () {
+        try {
+          var KEY = "lang-pref";
+          var saved = localStorage.getItem(KEY);
+          var onGerman = location.pathname === "/de" || location.pathname.indexOf("/de/") === 0;
+          if (!saved) {
+            var prefersGerman = (navigator.language || "").toLowerCase().indexOf("de") === 0;
+            if (prefersGerman && !onGerman) {
+              localStorage.setItem(KEY, "de");
+              location.replace("/de" + location.pathname + location.search);
+              return;
+            }
+            localStorage.setItem(KEY, onGerman ? "de" : "en");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body data-section={section}>
-    <nav class="site-nav" aria-label="Primary">
-      <a class="site-nav__brand" href="/">Edgar Kretschmann</a>
+    <nav class="site-nav" aria-label={t.nav.primary}>
+      <a class="site-nav__brand" href={lang === "en" ? "/" : "/de"}>Edgar Kretschmann</a>
       <ul>
         {
           nav.map((item) => (
@@ -46,8 +76,25 @@ const nav = [
             </li>
           ))
         }
+        <li class="site-nav__lang">
+          <a
+            href={enPath}
+            aria-current={lang === "en" ? "true" : undefined}
+            onclick="try{localStorage.setItem('lang-pref','en')}catch(e){}"
+          >
+            {languageLabels.en}
+          </a>
+          <span aria-hidden="true">/</span>
+          <a
+            href={dePath}
+            aria-current={lang === "de" ? "true" : undefined}
+            onclick="try{localStorage.setItem('lang-pref','de')}catch(e){}"
+          >
+            {languageLabels.de}
+          </a>
+        </li>
         <li>
-          <a class="site-nav__cta" href="mailto:edgar.kretschmann@hotmail.com">Get in touch</a>
+          <a class="site-nav__cta" href="mailto:edgar.kretschmann@hotmail.com">{t.nav.cta}</a>
         </li>
       </ul>
     </nav>
@@ -116,6 +163,26 @@ const nav = [
     background: var(--ink);
     color: var(--bg) !important;
     border-color: var(--ink);
+  }
+
+  .site-nav__lang {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem !important;
+  }
+
+  .site-nav__lang a {
+    font-size: 0.75rem;
+  }
+
+  .site-nav__lang a[aria-current="true"] {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .site-nav__lang span {
+    color: var(--line);
   }
 
   @media (max-width: 640px) {

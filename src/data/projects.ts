@@ -67,6 +67,7 @@ export const projects: Project[] = [
       "Nurses successfully recruited for Germany",
       "Cost-per-lead reduced through targeting",
     ],
+    followUpSlug: "pflegeplace-hub",
     tech: ["HubSpot", "LinkedIn Ads", "Zapier", "Mailchimp"],
     skills: [
       { label: "Landing Pages", value: 85 },
@@ -110,6 +111,7 @@ export const projects: Project[] = [
       "In build on the existing pflegeplace.com domain and audience",
     ],
     status: "next",
+    hidden: true,
     tech: ["Astro", "Claude Code", "Vercel"],
     skills: [
       { label: "Landing Pages", value: 70 },
@@ -118,12 +120,12 @@ export const projects: Project[] = [
       { label: "Building", value: 85 },
       { label: "Campaigning", value: 55 },
     ],
-    portfolioImage: "/images/portfolio/container04.jpg",
-    projectsHeroImage: "/images/projects/container10.jpg",
+    portfolioImage: "/images/projects/container10.jpg",
+    projectsHeroImage: "/images/projects/container17.jpg",
     galleryImages: [
-      "/images/projects/container04.jpg",
-      "/images/projects/container12.jpg",
+      "/images/projects/container10.jpg",
       "/images/projects/container17.jpg",
+      "/images/projects/container12.jpg",
       "/images/projects/container01.jpg",
       "/images/projects/container41.jpg",
     ],

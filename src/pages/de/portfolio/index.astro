@@ -1,14 +1,17 @@
 ---
-import Base from "../../layouts/Base.astro";
-import { projects } from "../../data/projects";
-import { sortProjectsDesc } from "../../lib/timeline";
-import type { SkillPoint } from "../../types";
+import Base from "../../../layouts/Base.astro";
+import { localizeProjects } from "../../../lib/i18n";
+import { sortProjectsDesc } from "../../../lib/timeline";
+import { ui } from "../../../i18n/ui";
+import type { SkillPoint } from "../../../types";
+
+const t = ui.de;
 
 function topSkills(skills: SkillPoint[]) {
   return [...skills].sort((a, b) => b.value - a.value).slice(0, 3);
 }
 
-const visibleProjects = projects.filter((p) => !p.hidden);
+const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 const files = sortProjectsDesc(visibleProjects).map((p, i) => ({ ...p, num: String(i + 1).padStart(2, "0") }));
 
 const ticker = [...files]
@@ -18,27 +21,28 @@ const ticker = [...files]
 
 <Base
   title="Portfolio — Edgar Kretschmann"
-  description="Case files by Edgar Kretschmann — from coliving communities to nurse recruitment funnels and online language schools, newest first."
+  description="Case Studies von Edgar Kretschmann — von Coliving-Communities über Recruiting-Funnels für Pflegekräfte bis zu Online-Sprachschulen, neueste zuerst."
   section="portfolio"
+  lang="de"
 >
   <main class="wrap">
     <section class="head">
       <p class="eyebrow">Portfolio</p>
-      <h1>{files.length} engagements. Four industries. One recurring brief.</h1>
+      <h1>{files.length} Projekte. Vier Branchen. Ein wiederkehrender Auftrag.</h1>
       <p class="lede">
-        Find the audience everyone else is ignoring — nomads without a home base, nurses with no way into Germany,
-        nurses already here with no way to get licensed — then build the funnel or the product that reaches them
-        before the quarter ends. Newest work first.
+        Die Zielgruppe finden, die alle anderen ignorieren — Nomaden ohne festen Wohnsitz, Pflegekräfte ohne Weg nach
+        Deutschland, Pflegekräfte, die schon hier sind, aber keine Anerkennung bekommen — und dann den Funnel oder
+        das Produkt bauen, das sie noch vor Quartalsende erreicht. Neueste Arbeiten zuerst.
       </p>
     </section>
 
     <div class="ticker">
       <div class="ticker-track">
         <div class="ticker-seg">
-          {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+          {ticker.map((line) => <><span>{line}</span><span class="sep">&middot;</span></>)}
         </div>
         <div class="ticker-seg" aria-hidden="true">
-          {ticker.map((t) => <><span>{t}</span><span class="sep">&middot;</span></>)}
+          {ticker.map((line) => <><span>{line}</span><span class="sep">&middot;</span></>)}
         </div>
       </div>
     </div>
@@ -56,7 +60,7 @@ const ticker = [...files]
                 <span class="file-head">
                   <span class="file-company">{p.company}</span>
                   <span class="file-role">{p.bioRole}</span>
-                  {p.status === "next" && <span class="status-badge">In progress</span>}
+                  {p.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
                 </span>
                 <span class="file-title">{p.title}</span>
               </span>
@@ -70,9 +74,9 @@ const ticker = [...files]
                   {p.achievements.map((a) => <li>{a}</li>)}
                 </ul>
                 <div class="file-tags">
-                  {p.tech.map((t) => <span class="tag">{t}</span>)}
+                  {p.tech.map((tech) => <span class="tag">{tech}</span>)}
                 </div>
-                <a class="file-link" href={`/projects/${p.slug}`}>View full case study &rarr;</a>
+                <a class="file-link" href={`/de/projects/${p.slug}`}>{t.project.viewFullCaseStudy}</a>
               </div>
               <div class="file-metrics">
                 {topSkills(p.skills).map((s) => (
@@ -92,7 +96,7 @@ const ticker = [...files]
     </section>
 
     <section class="route">
-      <p class="section-title">Field log, newest to oldest</p>
+      <p class="section-title">Verlaufsprotokoll, neueste zuerst</p>
       <div class="route-track">
         {
           files.map((p) => (
@@ -108,8 +112,8 @@ const ticker = [...files]
     </section>
 
     <div class="touch" data-reveal="fade-up">
-      <p>Like what you see?</p>
-      <a href="/projects#touch" class="btn-pill btn-accent">Get in touch</a>
+      <p>Gefällt dir, was du siehst?</p>
+      <a href="/de/projects#touch" class="btn-pill btn-accent">{t.nav.cta}</a>
     </div>
   </main>
 </Base>
