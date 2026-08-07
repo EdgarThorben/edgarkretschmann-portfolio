@@ -1,0 +1,365 @@
+---
+import { diagnosticCopy } from "../lib/diagnostic";
+
+interface Props {
+  lang: "en" | "de";
+}
+
+const { lang } = Astro.props;
+const c = diagnosticCopy[lang];
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
+
+type QuestionKey = "industry" | "leadSource" | "bottleneck";
+const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
+---
+
+<section class="diagnostic" id="diagnostic" data-reveal="fade-up">
+  <div class="diagnostic-head">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h2>{c.heading}</h2>
+    <p class="diagnostic-sub">{c.sub}</p>
+  </div>
+
+  <form class="diagnostic-form" id="diagnostic-form" novalidate>
+    <input type="hidden" name="lang" value={lang} />
+    <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+    {
+      questionKeys.map((key) => (
+        <fieldset>
+          <legend>{c.questions[key].label}</legend>
+          <div class="pill-group">
+            {Object.entries(c.questions[key].options).map(([value, label]) => (
+              <label class="pill">
+                <input type="radio" name={key} value={value} required />
+                <span>{label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ))
+    }
+
+    <button type="submit" class="btn-pill btn-accent diagnostic-submit">{c.submit}</button>
+    <p id="diagnostic-status" class="diagnostic-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="diagnostic-result" id="diagnostic-result" hidden></div>
+</section>
+
+<script is:inline define:vars={{ lang, copy: c, contactEmail: CONTACT_EMAIL }}>
+  const form = document.getElementById("diagnostic-form");
+  const status = document.getElementById("diagnostic-status");
+  const resultBox = document.getElementById("diagnostic-result");
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = value;
+    return div.innerHTML;
+  }
+
+  function renderResult(result, overall) {
+    if (!resultBox) return;
+    const scoreRows = [
+      ["trafficCapture", copy.scoreLabels.trafficCapture],
+      ["leadCapture", copy.scoreLabels.leadCapture],
+      ["followUp", copy.scoreLabels.followUp],
+    ]
+      .map(([key, label]) => {
+        const score = Math.max(0, Math.min(100, Math.round(result.scores[key])));
+        return `
+          <div class="score-row">
+            <span class="score-label">${escapeHtml(label)}</span>
+            <div class="score-bar"><span style="width:${score}%"></span></div>
+            <strong class="score-value">${score}</strong>
+          </div>`;
+      })
+      .join("");
+
+    const gapItems = result.gaps.map((gap) => `<li>${escapeHtml(gap)}</li>`).join("");
+
+    const mailSubject =
+      lang === "de" ? "Anfrage nach meinem Marketing-Diagnose-Ergebnis" : "Following up on my marketing diagnostic";
+    const mailBody = `${result.verdict}\n\n${result.recommendation}`;
+    const mailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+    resultBox.innerHTML = `
+      <p class="result-overall">${overall}<span>/100</span></p>
+      <p class="result-verdict">${escapeHtml(result.verdict)}</p>
+      <div class="result-scores">${scoreRows}</div>
+      <div class="result-block">
+        <p class="result-heading">${escapeHtml(copy.gapsHeading)}</p>
+        <ul class="result-gaps">${gapItems}</ul>
+      </div>
+      <div class="result-block">
+        <p class="result-heading">${escapeHtml(copy.recommendationHeading)}</p>
+        <p class="result-recommendation">${escapeHtml(result.recommendation)}</p>
+      </div>
+      <a class="btn-pill btn-accent result-cta" href="${mailHref}">${escapeHtml(copy.cta)}</a>
+      <p class="result-disclaimer">${escapeHtml(copy.disclaimer)}</p>
+    `;
+    resultBox.hidden = false;
+    resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status || !(form instanceof HTMLFormElement)) return;
+
+    const data = new FormData(form);
+    const payload = {
+      industry: data.get("industry"),
+      leadSource: data.get("leadSource"),
+      bottleneck: data.get("bottleneck"),
+      lang: data.get("lang"),
+      website: data.get("website") || "",
+    };
+
+    if (!payload.industry || !payload.leadSource || !payload.bottleneck) {
+      status.textContent = "";
+      form.reportValidity();
+      return;
+    }
+
+    status.textContent = copy.loading;
+    resultBox.hidden = true;
+    const submitBtn = form.querySelector("button[type=submit]");
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const response = await fetch("/api/diagnostic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await response.json();
+      if (!response.ok || !json.ok) throw new Error(json.error || "Request failed");
+      status.textContent = "";
+      renderResult(json.result, json.overall);
+    } catch {
+      status.textContent = copy.error;
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .diagnostic {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .diagnostic-head {
+    max-width: 56ch;
+    margin: 0 0 var(--space-6);
+  }
+
+  .diagnostic-head h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 500;
+    margin: var(--space-3) 0 var(--space-3);
+  }
+
+  .diagnostic-sub {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .diagnostic-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  legend {
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .pill {
+    position: relative;
+  }
+
+  .pill input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .pill span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .pill input:checked + span {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+
+  .pill input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .diagnostic-submit {
+    align-self: flex-start;
+  }
+
+  .diagnostic-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .diagnostic-status {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    min-height: 1.2em;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .diagnostic-result {
+    margin-top: var(--space-7);
+    padding: var(--space-6);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+  }
+
+  .result-overall {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 0 var(--space-2);
+  }
+
+  .result-overall span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 4px;
+  }
+
+  .result-verdict {
+    font-size: 1.15rem;
+    font-weight: 500;
+    max-width: 48ch;
+    margin: 0 0 var(--space-5);
+  }
+
+  .result-scores {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .score-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 2.5rem;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .score-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .score-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--line);
+    overflow: hidden;
+  }
+
+  .score-bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+  }
+
+  .score-value {
+    font-size: 0.85rem;
+    text-align: right;
+  }
+
+  .result-block {
+    margin-bottom: var(--space-5);
+  }
+
+  .result-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-2);
+  }
+
+  .result-gaps {
+    margin: 0;
+    padding-left: 1.2em;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .result-recommendation {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .result-cta {
+    margin-top: var(--space-2);
+  }
+
+  .result-disclaimer {
+    margin: var(--space-5) 0 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .score-row {
+      grid-template-columns: 100px 1fr 2rem;
+    }
+  }
+</style>

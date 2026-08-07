@@ -64,10 +64,10 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
       <div class="footer-grid">
         <div>
           <h2>Get in touch</h2>
-          <p>edgar.kretschmann@hotmail.com</p>
+          <p>hello@edgarkretschmann.com</p>
         </div>
         <div class="footer-actions">
-          <a href="mailto:edgar.kretschmann@hotmail.com" class="btn-pill btn-accent">Email me</a>
+          <a href="mailto:hello@edgarkretschmann.com" class="btn-pill btn-accent">Email me</a>
           <a href="/projects#touch" class="btn-pill btn-ghost">More details</a>
         </div>
       </div>
@@ -125,7 +125,7 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
 
   .entry {
     display: grid;
-    grid-template-columns: 90px 140px 1fr auto;
+    grid-template-columns: 90px 104px 1fr auto;
     align-items: center;
     gap: var(--space-4);
     padding: var(--space-5) 0;
@@ -146,8 +146,8 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
   }
 
   .entry-thumb {
-    width: 140px;
-    height: 90px;
+    width: 104px;
+    aspect-ratio: 1;
     border-radius: 6px;
     overflow: hidden;
     background: var(--bg-2);
@@ -245,7 +245,8 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
     }
     .entry-thumb {
       width: 100%;
-      height: 160px;
+      max-width: 220px;
+      aspect-ratio: 1;
     }
     .entry-arrow {
       display: none;

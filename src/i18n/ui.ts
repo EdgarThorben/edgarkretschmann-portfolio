@@ -52,7 +52,7 @@ export const ui = {
       home: "Start",
       portfolio: "Portfolio",
       projects: "Projekte",
-      bio: "Werdegang",
+      bio: "Bio",
       cta: "Kontakt aufnehmen",
     },
     project: {
@@ -83,7 +83,7 @@ export const ui = {
       error: "Etwas ist schiefgelaufen — schreib mir stattdessen direkt eine E-Mail.",
       emailDirect: "✉ Direkt anschreiben",
       backToPortfolio: "← Zurück zum Portfolio",
-      bio: "Werdegang",
+      bio: "Bio",
     },
   },
 } as const;

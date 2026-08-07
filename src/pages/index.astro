@@ -1,8 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import MarketingDiagnostic from "../components/MarketingDiagnostic.astro";
 import { projects } from "../data/projects";
 
-const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const visibleProjects = projects.filter((p) => !p.hidden);
 const industries = new Set(["Coliving", "Healthcare recruitment", "Language education", "Wellness"]);
 const foundingYear = 2018;
@@ -15,15 +16,16 @@ const yearsActive = new Date().getFullYear() - foundingYear;
       <div class="hero-text">
         <p class="eyebrow" data-reveal="fade-up">Munich, based worldwide</p>
         <h1 data-reveal="fade-left">
-          AI-augmented <em>marketing systems</em> for businesses that need more than a website.
+          Marketing systems that get your business <em>in front of the people already looking for it.</em>
         </h1>
         <p class="lede" data-reveal="fade-up">
-          I build lead funnels and content systems — for coliving communities, yoga brands, and a German-language
-          pipeline that recruits nurses into Germany. I've founded a language school, run paid campaigns end-to-end,
-          and now use AI to build in days what used to take a team weeks.
+          Good marketing doesn't start with a bigger budget — it starts with finding the exact audience everyone
+          else is ignoring, then building the funnel or product that reaches them fast. I've spent 8 years doing
+          exactly that: for coliving communities, wellness retreats, and a nurse-recruitment pipeline into Germany,
+          including ventures I've built and run myself. If that's what your business needs next, let's talk.
         </p>
         <div class="cta-row" data-reveal="fade-up">
-          <a class="btn btn-primary" href="/portfolio">Look at my projects →</a>
+          <a class="btn btn-primary" href="/portfolio">See the work →</a>
           <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
         </div>
       </div>
@@ -40,6 +42,8 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         <div><strong>100%</strong>Remote, async delivery</div>
       </div>
     </section>
+
+    <MarketingDiagnostic lang="en" />
 
     <section class="work" id="work">
       <div class="work-head">
@@ -258,7 +262,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
 
   .work-thumb {
     width: 140px;
-    height: 88px;
+    aspect-ratio: 16 / 9;
     border-radius: 6px;
     overflow: hidden;
     background: var(--bg-2);
@@ -352,7 +356,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
     }
     .work-thumb {
       width: 100%;
-      height: 160px;
+      aspect-ratio: 16 / 9;
     }
     .work-num,
     .work-arrow {

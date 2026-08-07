@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export const prerender = false;
 
-const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);

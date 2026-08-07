@@ -1,137 +1,87 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { localizeProjects } from "../../../lib/i18n";
-import { sortProjectsDesc } from "../../../lib/timeline";
-import { ui } from "../../../i18n/ui";
-import type { SkillPoint } from "../../../types";
+import { localizeProject } from "../../../lib/i18n";
 
-const t = ui.de;
-
-function topSkills(skills: SkillPoint[]) {
-  return [...skills].sort((a, b) => b.value - a.value).slice(0, 3);
-}
-
-const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
-const files = sortProjectsDesc(visibleProjects).map((p, i) => ({ ...p, num: String(i + 1).padStart(2, "0") }));
-
-const ticker = [...files]
-  .sort((a, b) => topSkills(b.skills)[0].value - topSkills(a.skills)[0].value)
-  .map((p) => `${p.company.toUpperCase()} — ${topSkills(p.skills)[0].label.toUpperCase()} ${topSkills(p.skills)[0].value}%`);
+const FLAGSHIP_SLUGS = ["pflegeplace", "ironandzen", "nomavillage", "innate"];
+const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filter((p) => p !== undefined);
 ---
 
 <Base
   title="Portfolio — Edgar Kretschmann"
-  description="Case Studies von Edgar Kretschmann — von Coliving-Communities über Recruiting-Funnels für Pflegekräfte bis zu Online-Sprachschulen, neueste zuerst."
+  description="Vier Vorzeigeprojekte von Edgar Kretschmann — das Muster hinter jedem Engagement, ausführlich erzählt. Das komplette Archiv gibt's unter /projekte."
   section="portfolio"
   lang="de"
 >
   <main class="wrap">
     <section class="head">
       <p class="eyebrow">Portfolio</p>
-      <h1>{files.length} Projekte. Vier Branchen. Ein wiederkehrender Auftrag.</h1>
+      <h1>Ein paar der Geschichten.</h1>
       <p class="lede">
-        Die Zielgruppe finden, die alle anderen ignorieren — Nomaden ohne festen Wohnsitz, Pflegekräfte ohne Weg nach
-        Deutschland, Pflegekräfte, die schon hier sind, aber keine Anerkennung bekommen — und dann den Funnel oder
-        das Produkt bauen, das sie noch vor Quartalsende erreicht. Neueste Arbeiten zuerst.
+        Vier Projekte, ein Muster: die Zielgruppe finden, die alle anderen ignorieren, dann schnell den Funnel oder
+        das Produkt bauen, das sie erreicht. Das sind die, die es wert sind, ausführlich erzählt zu werden —
+        <a href="/de/projects">jedes Engagement gibt's auf der vollständigen Liste →</a>
       </p>
     </section>
 
-    <div class="ticker">
-      <div class="ticker-track">
-        <div class="ticker-seg">
-          {ticker.map((line) => <><span>{line}</span><span class="sep">&middot;</span></>)}
-        </div>
-        <div class="ticker-seg" aria-hidden="true">
-          {ticker.map((line) => <><span>{line}</span><span class="sep">&middot;</span></>)}
-        </div>
-      </div>
-    </div>
-
-    <section class="files">
+    <section class="stories">
       {
-        files.map((p, i) => (
-          <details class="file-card" data-reveal="fade-up" data-reveal-group="portfolio-files" open={i === 0}>
-            <summary class="file-summary">
-              <span class="file-num">{p.num}</span>
-              <span class="file-photo">
-                <img src={p.portfolioImage} alt={p.company} loading="lazy" />
-              </span>
-              <span class="file-headline">
-                <span class="file-head">
-                  <span class="file-company">{p.company}</span>
-                  <span class="file-role">{p.bioRole}</span>
-                  {p.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
-                </span>
-                <span class="file-title">{p.title}</span>
-              </span>
-              <span class="file-period">{p.bioPeriod}</span>
-              <span class="file-toggle" aria-hidden="true">+</span>
-            </summary>
-            <div class="file-body">
-              <div class="file-content">
-                <p class="file-summary-text">{p.summary}</p>
-                <ul class="file-achievements">
-                  {p.achievements.map((a) => <li>{a}</li>)}
-                </ul>
-                <div class="file-tags">
-                  {p.tech.map((tech) => <span class="tag">{tech}</span>)}
-                </div>
-                <a class="file-link" href={`/de/projects/${p.slug}`}>{t.project.viewFullCaseStudy}</a>
-              </div>
-              <div class="file-metrics">
-                {topSkills(p.skills).map((s) => (
-                  <div class="metric">
-                    <span class="metric-label">{s.label}</span>
-                    <div class="metric-row">
-                      <div class="metric-track"><div class="metric-fill" style={`width:${s.value}%`} /></div>
-                      <span class="metric-value">{s.value}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        flagships.map((p, i) => (
+          <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
+            <div class="story-media">
+              <img src={p.projectsHeroImage} alt={p.company} loading={i === 0 ? "eager" : "lazy"} />
             </div>
-          </details>
+            <div class="story-content">
+              <p class="story-eyebrow">
+                {p.company} · {p.bioRole} · {p.bioPeriod}
+              </p>
+              <h2>{p.title}</h2>
+
+              <div class="story-block">
+                <span class="story-label">Die Herausforderung</span>
+                <p>{p.challenge}</p>
+              </div>
+
+              <div class="story-block">
+                <span class="story-label">Der Plan</span>
+                <p>{p.approach[0]}</p>
+              </div>
+
+              <div class="story-block story-block--outcome">
+                <span class="story-label">Das Ergebnis</span>
+                <p>{p.achievements[0]}</p>
+              </div>
+
+              <a class="story-link" href={`/de/projects/${p.slug}`}>
+                Ganze Case Study lesen →
+              </a>
+            </div>
+          </article>
         ))
       }
     </section>
 
-    <section class="route">
-      <p class="section-title">Verlaufsprotokoll, neueste zuerst</p>
-      <div class="route-track">
-        {
-          files.map((p) => (
-            <div class="stop">
-              <span class="stop-dot" />
-              <span class="stop-period">{p.bioPeriod}</span>
-              <span class="stop-company">{p.company}</span>
-              <span class="stop-role">{p.bioRole}</span>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
     <div class="touch" data-reveal="fade-up">
-      <p>Gefällt dir, was du siehst?</p>
-      <a href="/de/projects#touch" class="btn-pill btn-accent">{t.nav.cta}</a>
+      <p>Willst du das vollständige Bild?</p>
+      <a href="/de/projects" class="btn-pill btn-ghost">Alle Projekte ansehen →</a>
+      <a href="/de/projects#touch" class="btn-pill btn-accent">Kontakt aufnehmen</a>
     </div>
   </main>
 </Base>
 
 <style>
   .wrap {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
     padding: var(--space-7) var(--space-5) var(--space-8);
   }
 
   .head {
     max-width: 62ch;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-8);
   }
 
   h1 {
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
     font-weight: 500;
     line-height: 1.1;
     margin: var(--space-4) 0;
@@ -145,429 +95,123 @@ const ticker = [...files]
     margin: 0;
   }
 
-  /* --- ticker --- */
-
-  .ticker {
-    overflow: hidden;
-    background: var(--ink);
-    border-radius: var(--radius);
-    margin-bottom: var(--space-7);
+  .lede a {
+    color: var(--text);
+    font-weight: 600;
   }
 
-  .ticker-track {
+  .stories {
     display: flex;
-    width: max-content;
-    animation: scroll-ticker 32s linear infinite;
+    flex-direction: column;
+    gap: var(--space-8);
   }
 
-  @keyframes scroll-ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  .ticker-seg {
-    display: flex;
-    white-space: nowrap;
-    font-family: monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    color: var(--bg);
-    padding: var(--space-3) 0;
-  }
-
-  .ticker-seg span.sep {
-    color: var(--accent);
-    margin: 0 14px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track {
-      animation: none;
-      overflow-x: auto;
-    }
-  }
-
-  /* --- file cards --- */
-
-  .files {
+  .story {
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-6);
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
-    margin-bottom: var(--space-7);
   }
 
-  .file-card {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
+  .story-media {
     border-radius: var(--radius);
-    transition: border-color 0.2s ease;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
   }
 
-  .file-card:hover,
-  .file-card[open] {
-    border-color: var(--ink);
-  }
-
-  .file-summary {
-    display: grid;
-    grid-template-columns: 2.25rem 60px 1fr auto auto;
-    align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-4) var(--space-5);
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .file-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .file-summary:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: -2px;
-  }
-
-  .file-num {
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .file-photo {
-    display: block;
-    width: 60px;
-    height: 60px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-  }
-
-  .file-photo img {
+  .story-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .file-headline {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-  }
-
-  .file-head {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 4px var(--space-3);
-  }
-
-  .file-company {
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  .file-role {
+  .story-eyebrow {
     font-family: monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .story-content h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 500;
+    margin: 0 0 var(--space-5);
+    text-wrap: balance;
+  }
+
+  .story-block {
+    margin-bottom: var(--space-4);
+  }
+
+  .story-block p {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+
+  .story-block--outcome p {
+    color: var(--text);
+  }
+
+  .story-label {
+    font-size: 0.7rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--text-muted);
+    color: var(--text);
   }
 
-  .status-badge {
-    font-size: 0.62rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    padding: 2px 9px;
-  }
-
-  .file-title {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .file-period {
-    display: inline-block;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: monospace;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    padding: 3px 9px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  .file-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    flex-shrink: 0;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1;
-    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .file-card[open] .file-toggle {
-    transform: rotate(45deg);
-    color: var(--ink);
-    border-color: var(--ink);
-  }
-
-  .file-body {
-    display: grid;
-    grid-template-columns: 1fr 210px;
-    gap: var(--space-5);
-    padding: 0 var(--space-5) var(--space-5);
-    border-top: 1px solid var(--line);
-    padding-top: var(--space-4);
-  }
-
-  @keyframes file-body-in {
-    from {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  .file-card[open] .file-body {
-    animation: file-body-in 0.25s ease;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .file-card[open] .file-body {
-      animation: none;
-    }
-  }
-
-  .file-summary-text {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0 0 var(--space-3);
-    max-width: 54ch;
-  }
-
-  .file-link {
+  .story-link {
     display: inline-flex;
-    align-items: center;
-    gap: 4px;
     margin-top: var(--space-2);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
   }
 
-  .file-link:hover {
+  .story-link:hover {
     color: var(--text-muted);
   }
-
-  .file-achievements {
-    list-style: none;
-    margin: 0 0 var(--space-3);
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .file-achievements li {
-    font-size: 0.82rem;
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .file-achievements li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-  }
-
-  .file-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    font-size: 0.72rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 3px 10px;
-    color: var(--text-muted);
-  }
-
-  .file-metrics {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: var(--space-3);
-    border-left: 1px solid var(--line);
-    padding-left: var(--space-4);
-  }
-
-  .metric-label {
-    font-family: monospace;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .metric-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .metric-track {
-    flex: 1;
-    height: 5px;
-    background: var(--line);
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
-  .metric-fill {
-    height: 100%;
-    width: 0;
-    background: var(--accent);
-    border-radius: 999px;
-  }
-
-  .metric-value {
-    font-family: monospace;
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    width: 22px;
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-
-  @media (max-width: 760px) {
-    .file-summary {
-      grid-template-columns: auto 1fr auto;
-      grid-template-areas:
-        "num photo toggle"
-        "headline headline headline"
-        "period period period";
-      row-gap: var(--space-2);
-    }
-    .file-num { grid-area: num; }
-    .file-photo { grid-area: photo; }
-    .file-toggle { grid-area: toggle; }
-    .file-headline { grid-area: headline; }
-    .file-period { grid-area: period; justify-self: start; }
-    .file-body {
-      grid-template-columns: 1fr;
-    }
-    .file-metrics {
-      border-left: none;
-      border-top: 1px solid var(--line);
-      padding-left: 0;
-      padding-top: var(--space-3);
-    }
-  }
-
-  /* --- route / field log --- */
-
-  .route {
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--line);
-    margin-bottom: var(--space-6);
-  }
-
-  .route-track {
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-
-  .stop {
-    flex: 0 0 auto;
-    min-width: 150px;
-    padding: 0 var(--space-4) 0 0;
-    position: relative;
-  }
-
-  .stop:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    right: 0;
-    height: 1px;
-    background-image: repeating-linear-gradient(90deg, var(--text-muted) 0 4px, transparent 4px 8px);
-  }
-
-  .stop-dot {
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-bottom: var(--space-2);
-  }
-
-  .stop-period {
-    font-family: monospace;
-    font-size: 0.66rem;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 3px;
-  }
-
-  .stop-company {
-    font-weight: 600;
-    font-size: 0.92rem;
-    display: block;
-  }
-
-  .stop-role {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-  }
-
-  /* --- contact --- */
 
   .touch {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-4);
-    padding: var(--space-6) 0 0;
+    gap: var(--space-3);
+    padding: var(--space-8) 0 0;
+    margin-top: var(--space-7);
+    border-top: 1px solid var(--line);
     flex-direction: column;
     text-align: center;
   }
 
   .touch p {
     color: var(--text-muted);
-    margin: 0;
+    margin: 0 0 var(--space-2);
     font-size: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .story {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .story-media {
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .touch {
+      flex-direction: row;
+    }
+    .touch p {
+      margin: 0 var(--space-3) 0 0;
+    }
   }
 </style>

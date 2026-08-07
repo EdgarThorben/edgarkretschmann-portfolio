@@ -49,6 +49,48 @@ export const projects: Project[] = [
     bioImage: "/images/bio/image03.jpg",
   },
   {
+    slug: "ironandzen",
+    company: "Iron & Zen",
+    url: "ironandzen.com",
+    title: "Founding a Men's Retreat",
+    summary:
+      "Iron & Zen is a one-week off-grid retreat I founded for men who want strength training, meditation, and real brotherhood — I built the brand, the site, and the Instagram-driven funnel that fills every cohort.",
+    challenge:
+      "Men looking for real transformation are stuck choosing between a fitness bootcamp or a meditation retreat — nobody was combining hard physical training with real stillness and unscripted brotherhood in one week. Iron & Zen needed to become that space from a standing start, with no existing brand, audience, or track record to point to.",
+    approach: [
+      "Founded and built the Iron & Zen brand from scratch — name, identity, and the Iron / Zen / Brotherhood structure",
+      "Ran an Instagram-led application funnel, driving prospective guests to a hand-reviewed apply form instead of instant checkout",
+      "Built and launched the site myself, from the daily-schedule storytelling to the application flow",
+    ],
+    achievements: [
+      "120+ men hosted across cohorts, with a 5/5 average rating",
+      "Every application read and vetted by hand, cohort after cohort",
+      "Next cohort opening in April",
+    ],
+    tech: ["Instagram", "Astro", "Vercel"],
+    skills: [
+      { label: "Building", value: 88 },
+      { label: "Campaigning", value: 80 },
+      { label: "Landing Pages", value: 78 },
+      { label: "Project Mgmt", value: 82 },
+      { label: "Automation", value: 58 },
+    ],
+    portfolioImage: "/images/ironandzen/card-dawn-stillness.jpg",
+    projectsHeroImage: "/images/ironandzen/hero-fire.jpg",
+    galleryImages: [
+      "/images/ironandzen/hero-fire.jpg",
+      "/images/ironandzen/card-iron-work.jpg",
+      "/images/ironandzen/gallery-retreat-1.jpg",
+      "/images/ironandzen/gallery-retreat-4.jpg",
+      "/images/ironandzen/facilitator-edgar.jpg",
+    ],
+    bioPeriod: "2025–",
+    bioRole: "Founder & Facilitator",
+    bioDescription:
+      "I founded Iron & Zen, a one-week off-grid retreat for men combining strength training, meditation, and brotherhood — building the brand, the site, and the funnel that's hosted 120+ men so far.",
+    bioImage: "/images/ironandzen/facilitator-edgar.jpg",
+  },
+  {
     slug: "pflegeplace",
     company: "Pflegeplace",
     url: "pflegeplace.com",
@@ -121,10 +163,10 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 55 },
     ],
     portfolioImage: "/images/projects/container10.jpg",
-    projectsHeroImage: "/images/projects/container17.jpg",
+    projectsHeroImage: "/images/portfolio/container04.jpg",
     galleryImages: [
       "/images/projects/container10.jpg",
-      "/images/projects/container17.jpg",
+      "/images/portfolio/container04.jpg",
       "/images/projects/container12.jpg",
       "/images/projects/container01.jpg",
       "/images/projects/container41.jpg",
@@ -219,17 +261,21 @@ export const projects: Project[] = [
     slug: "nomavillage",
     company: "Nomavillage",
     url: "nomavillage.com",
-    title: "High Class Colive",
+    title: "Finding Home in Lagos",
     summary:
-      "At Nomavillage, I manage marketing campaigns, automated lead funnels, and integrated SEM with social media strategies to drive growth and engagement.",
+      "Nomavillage grew from a single coliving house into a full coworking-and-coliving base in Lagos, Portugal — I built the marketing systems that took it from launch to a 4.8-star, 172-guest international community.",
     challenge:
-      "Nomavillage sits at the premium end of coliving, which means it's competing for a smaller, pickier audience than budget coliving brands — generic SEM and social posting wasn't going to convert people used to a higher bar.",
+      "Nomavillage competes for a small, picky audience: remote workers who could just as easily piece together an Airbnb, a coworking desk, and a yoga class themselves. Generic SEM and social posts don't convert someone comparing that against a real all-inclusive alternative — Nomavillage needed to prove it was cheaper and easier than doing it yourself in Lisbon, not just prettier.",
     approach: [
       "Built an automated lead funnel connecting Google Ads and Instagram to ActiveCampaign via Zapier",
-      "Ran and optimised SEM campaigns targeted at the premium coliving audience specifically",
+      "Ran and optimised SEM campaigns targeted at digital nomads weighing Lagos against Lisbon and other nomad hubs",
       "Integrated paid search with social content so channels reinforced each other instead of running in parallel",
     ],
-    achievements: ["Lead automation system deployed", "SEM campaigns launched and optimised", "Social growth across channels"],
+    achievements: [
+      "Grew to 172 guests from 27 countries with a 4.8-star Google rating",
+      "All-inclusive €990/month offer that undercuts a DIY Lisbon setup by €700+",
+      "Now expanding the space — closed for construction, reopening for the 2026/27 season",
+    ],
     tech: ["Google Ads", "Zapier", "ActiveCampaign", "Instagram"],
     skills: [
       { label: "Landing Pages", value: 82 },
@@ -247,10 +293,10 @@ export const projects: Project[] = [
       "/images/projects/container36.jpg",
       "/images/projects/container37.jpg",
     ],
-    bioPeriod: "2024",
+    bioPeriod: "2024–2026",
     bioRole: "Marketing Manager",
     bioDescription:
-      "At Nomavillage, I managed marketing campaigns, automated lead funnels, and integrated SEM with social media strategies to drive growth and engagement.",
+      "At Nomavillage, I built the marketing systems that grew a single Lagos coliving house into a 4.8-star, 172-guest international community, now expanding for the 2026/27 season.",
     bioImage: "/images/bio/image07.jpg",
   },
   {

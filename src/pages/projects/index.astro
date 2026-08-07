@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import { projects } from "../../data/projects";
 
-const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const visibleProjects = projects.filter((p) => !p.hidden);
 ---
 
@@ -14,9 +14,12 @@ const visibleProjects = projects.filter((p) => !p.hidden);
   <main class="wrap">
     <div class="head" data-reveal="fade-up">
       <a href="/" class="back-link">← Home</a>
-      <p class="eyebrow">Portfolio details</p>
-      <h1>All projects</h1>
-      <p class="lede">A deep dive into each engagement.</p>
+      <p class="eyebrow">The full archive</p>
+      <h1>Every engagement</h1>
+      <p class="lede">
+        The complete list, {visibleProjects.length} of them — for the four flagship stories told in full, see{" "}
+        <a href="/portfolio">the portfolio →</a>
+      </p>
     </div>
 
     <div class="project-list">
@@ -166,6 +169,11 @@ const visibleProjects = projects.filter((p) => !p.hidden);
   .head .lede {
     color: var(--text-muted);
     margin: 0;
+  }
+
+  .head .lede a {
+    color: var(--text);
+    font-weight: 600;
   }
 
   .project-list {

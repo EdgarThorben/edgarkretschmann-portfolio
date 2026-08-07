@@ -115,20 +115,44 @@ export const projectTranslations: Record<string, ProjectTranslation> = {
       "Bei DeutschAcademy habe ich eine Präsenz-Sprachschule in Manila aufgebaut, um philippinische Pflegekräfte zu gewinnen — inklusive WordPress-Seite, Investorensuche und Kundengewinnung.",
   },
   nomavillage: {
-    title: "Premium-Coliving",
+    title: "Zuhause finden in Lagos",
     summary:
-      "Bei Nomavillage steuere ich Marketingkampagnen, automatisierte Lead-Funnels und verzahne SEM mit Social-Media-Strategien, um Wachstum und Engagement voranzutreiben.",
+      "Nomavillage wuchs von einem einzelnen Coliving-Haus zu einer vollwertigen Coworking- und Coliving-Basis in Lagos, Portugal — ich habe die Marketing-Systeme aufgebaut, die es vom Start zu einer internationalen Community mit 172 Gästen und 4,8-Sterne-Bewertung brachten.",
     challenge:
-      "Nomavillage positioniert sich im Premium-Segment von Coliving und konkurriert damit um eine kleinere, anspruchsvollere Zielgruppe als Budget-Marken — generisches SEM und Social-Media-Posting würde bei Menschen, die einen höheren Standard gewohnt sind, nicht konvertieren.",
+      "Nomavillage konkurriert um eine kleine, anspruchsvolle Zielgruppe: Remote-Worker, die sich genauso gut selbst ein Airbnb, einen Coworking-Schreibtisch und eine Yoga-Klasse zusammenstellen könnten. Generisches SEM und Social-Media-Posts überzeugen niemanden, der das mit einer echten All-inclusive-Alternative vergleicht — Nomavillage musste beweisen, günstiger und einfacher zu sein als die Selbstorganisation in Lissabon, nicht nur hübscher.",
     approach: [
       "Automatisierten Lead-Funnel gebaut, der Google Ads und Instagram über Zapier mit ActiveCampaign verband",
-      "SEM-Kampagnen gezielt für die Premium-Coliving-Zielgruppe gesteuert und optimiert",
+      "SEM-Kampagnen gezielt für digitale Nomaden gesteuert und optimiert, die Lagos gegen Lissabon und andere Nomaden-Hubs abwägen",
       "Paid Search mit Social-Content verzahnt, damit sich die Kanäle gegenseitig verstärken statt nebeneinander zu laufen",
     ],
-    achievements: ["Lead-Automatisierungssystem implementiert", "SEM-Kampagnen gestartet und optimiert", "Social-Media-Wachstum über alle Kanäle"],
+    achievements: [
+      "Auf 172 Gäste aus 27 Ländern gewachsen, mit 4,8-Sterne-Bewertung bei Google",
+      "All-inclusive-Angebot für 990 €/Monat, über 700 € günstiger als die Selbstorganisation in Lissabon",
+      "Aktuell im Ausbau — wegen Bauarbeiten geschlossen, Wiedereröffnung zur Saison 2026/27",
+    ],
     bioRole: "Marketing-Manager",
     bioDescription:
-      "Bei Nomavillage habe ich Marketingkampagnen gesteuert, automatisierte Lead-Funnels aufgebaut und SEM mit Social-Media-Strategien verzahnt, um Wachstum und Engagement voranzutreiben.",
+      "Bei Nomavillage habe ich die Marketing-Systeme aufgebaut, die aus einem einzelnen Coliving-Haus in Lagos eine internationale Community mit 172 Gästen und 4,8-Sterne-Bewertung machten — aktuell im Ausbau für die Saison 2026/27.",
+  },
+  ironandzen: {
+    title: "Ein Männer-Retreat gegründet",
+    summary:
+      "Iron & Zen ist ein einwöchiges Off-Grid-Retreat, das ich für Männer gegründet habe, die Krafttraining, Meditation und echte Brüderlichkeit suchen — ich habe die Marke, die Website und den Instagram-Funnel gebaut, der jede Kohorte füllt.",
+    challenge:
+      "Männer auf der Suche nach echter Transformation müssen sich meist zwischen einem Fitness-Bootcamp und einem Meditations-Retreat entscheiden — niemand verband hartes körperliches Training mit echter Stille und ungeskripteter Brüderlichkeit in einer Woche. Iron & Zen musste dieser Ort werden, komplett bei null beginnend, ohne bestehende Marke, Zielgruppe oder Erfolgsnachweis.",
+    approach: [
+      "Die Marke Iron & Zen von Grund auf gegründet und aufgebaut — Name, Identität und die Struktur aus Iron, Zen und Brotherhood",
+      "Instagram-geführten Bewerbungs-Funnel gesteuert, der Interessenten zu einem von Hand geprüften Bewerbungsformular führt statt zum Sofort-Checkout",
+      "Die Website selbst gebaut und gelauncht — vom Storytelling des Tagesablaufs bis zum Bewerbungsprozess",
+    ],
+    achievements: [
+      "120+ Männer über mehrere Kohorten hinweg begleitet, mit 5/5-Durchschnittsbewertung",
+      "Jede Bewerbung wird Kohorte für Kohorte von Hand gelesen und geprüft",
+      "Nächste Kohorte startet im April",
+    ],
+    bioRole: "Gründer & Facilitator",
+    bioDescription:
+      "Ich habe Iron & Zen gegründet, ein einwöchiges Off-Grid-Retreat für Männer, das Krafttraining, Meditation und Brüderlichkeit verbindet — inklusive Marke, Website und dem Funnel, der bisher 120+ Männer begleitet hat.",
   },
   narangyoga: {
     title: "Yoga neu gedacht",

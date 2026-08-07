@@ -3,7 +3,7 @@ import Base from "../../../layouts/Base.astro";
 import { localizeProjects } from "../../../lib/i18n";
 import { ui } from "../../../i18n/ui";
 
-const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const t = ui.de;
 const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 ---
@@ -17,9 +17,12 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
   <main class="wrap">
     <div class="head" data-reveal="fade-up">
       <a href="/de" class="back-link">← Start</a>
-      <p class="eyebrow">Portfolio im Detail</p>
-      <h1>Alle Projekte</h1>
-      <p class="lede">Ein tiefer Einblick in jedes Projekt.</p>
+      <p class="eyebrow">Das vollständige Archiv</p>
+      <h1>Jedes Engagement</h1>
+      <p class="lede">
+        Die komplette Liste, {visibleProjects.length} Projekte — die vier Vorzeigeprojekte ausführlich erzählt gibt's im{" "}
+        <a href="/de/portfolio">Portfolio →</a>
+      </p>
     </div>
 
     <div class="project-list">
@@ -169,6 +172,11 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
   .head .lede {
     color: var(--text-muted);
     margin: 0;
+  }
+
+  .head .lede a {
+    color: var(--text);
+    font-weight: 600;
   }
 
   .project-list {

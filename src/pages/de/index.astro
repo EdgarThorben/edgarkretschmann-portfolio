@@ -1,9 +1,10 @@
 ---
 import Base from "../../layouts/Base.astro";
+import MarketingDiagnostic from "../../components/MarketingDiagnostic.astro";
 import { localizeProjects } from "../../lib/i18n";
 import { ui } from "../../i18n/ui";
 
-const CONTACT_EMAIL = "edgar.kretschmann@hotmail.com";
+const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const t = ui.de;
 const projects = localizeProjects("de");
 const visibleProjects = projects.filter((p) => !p.hidden);
@@ -23,15 +24,17 @@ const yearsActive = new Date().getFullYear() - foundingYear;
       <div class="hero-text">
         <p class="eyebrow" data-reveal="fade-up">München, weltweit unterwegs</p>
         <h1 data-reveal="fade-left">
-          KI-gestützte <em>Marketing-Systeme</em> für Unternehmen, die mehr brauchen als nur eine Website.
+          Marketing-Systeme, die dein Unternehmen <em>vor die Menschen bringen, die schon danach suchen.</em>
         </h1>
         <p class="lede" data-reveal="fade-up">
-          Ich baue Lead-Funnels und Content-Systeme — für Coliving-Communities, Yoga-Marken und eine deutschsprachige
-          Pipeline, die Pflegekräfte für Deutschland rekrutiert. Ich habe eine Sprachschule gegründet, Paid-Kampagnen
-          end-to-end gesteuert und nutze heute KI, um in Tagen zu bauen, wofür ein Team früher Wochen brauchte.
+          Gutes Marketing beginnt nicht mit mehr Budget — sondern damit, die eine Zielgruppe zu finden, die alle
+          anderen ignorieren, und dann schnell den Funnel oder das Produkt zu bauen, das sie erreicht. Genau das
+          mache ich seit 8 Jahren: für Coliving-Communities, Wellness-Retreats und eine Pflegekräfte-Pipeline nach
+          Deutschland — darunter Projekte, die ich selbst gegründet und geführt habe. Wenn genau das dein
+          Unternehmen als Nächstes braucht, lass uns reden.
         </p>
         <div class="cta-row" data-reveal="fade-up">
-          <a class="btn btn-primary" href="/de/portfolio">Meine Projekte ansehen →</a>
+          <a class="btn btn-primary" href="/de/portfolio">Zu den Arbeiten →</a>
           <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Kontakt aufnehmen</a>
         </div>
       </div>
@@ -48,6 +51,8 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         <div><strong>100%</strong>Remote, asynchrone Umsetzung</div>
       </div>
     </section>
+
+    <MarketingDiagnostic lang="de" />
 
     <section class="work" id="work">
       <div class="work-head">
@@ -266,7 +271,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
 
   .work-thumb {
     width: 140px;
-    height: 88px;
+    aspect-ratio: 16 / 9;
     border-radius: 6px;
     overflow: hidden;
     background: var(--bg-2);
@@ -360,7 +365,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
     }
     .work-thumb {
       width: 100%;
-      height: 160px;
+      aspect-ratio: 16 / 9;
     }
     .work-num,
     .work-arrow {
