@@ -47,7 +47,15 @@ const followUp = project.followUpSlug ? localizeProject(project.followUpSlug, "d
     </div>
 
     <section class="head" data-reveal="fade-up">
-      <p class="eyebrow">{project.url}</p>
+      <p class="eyebrow">
+        {project.linkUrl ? (
+          <a href={project.linkUrl} target="_blank" rel="noopener noreferrer">
+            {project.url}
+          </a>
+        ) : (
+          project.url
+        )}
+      </p>
       <h1>
         {project.company}
         {project.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}

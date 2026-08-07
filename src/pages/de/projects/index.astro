@@ -17,7 +17,6 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
   <main class="wrap">
     <div class="head" data-reveal="fade-up">
       <a href="/de" class="back-link">← Start</a>
-      <p class="eyebrow">Das vollständige Archiv</p>
       <h1>Jedes Engagement</h1>
       <p class="lede">
         Die komplette Liste, {visibleProjects.length} Projekte — die vier Vorzeigeprojekte ausführlich erzählt gibt's im{" "}
@@ -44,11 +43,23 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
               </div>
 
               <div class="project-body">
-                <div class="project-media">
+                <a
+                  class="project-media"
+                  href={`/de/projects/${project.slug}`}
+                  aria-label={`${t.project.viewFullDetails}: ${project.company}`}
+                >
                   <img src={project.projectsHeroImage} alt={project.company} />
-                </div>
+                </a>
                 <div class="project-text">
-                  <p class="project-url">{project.url}</p>
+                  <p class="project-url">
+                    {project.linkUrl ? (
+                      <a href={project.linkUrl} target="_blank" rel="noopener noreferrer">
+                        {project.url}
+                      </a>
+                    ) : (
+                      project.url
+                    )}
+                  </p>
                   <p>{project.challenge}</p>
 
                   <div class="project-grid">
@@ -97,7 +108,6 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 
     <!-- Contact -->
     <section id="touch" class="touch" data-reveal="fade-up">
-      <p class="eyebrow">{t.contact.eyebrow}</p>
       <h2>{t.contact.heading}</h2>
       <form id="contact-form" method="post" action="/api/contact">
         <input type="hidden" name="lang" value="de" />
@@ -240,11 +250,17 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
   }
 
   .project-media {
+    display: block;
     border-radius: var(--radius);
     overflow: hidden;
     flex-shrink: 0;
     width: 100%;
     aspect-ratio: 16 / 9;
+    transition: opacity 0.2s ease;
+  }
+
+  .project-media:hover {
+    opacity: 0.85;
   }
 
   @media (min-width: 768px) {
@@ -270,6 +286,17 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
     letter-spacing: 0.06em;
     font-weight: 600;
     margin: 0 0 var(--space-3);
+  }
+
+  .project-url a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .project-url a:hover {
+    border-bottom-color: currentColor;
   }
 
   .project-text p {

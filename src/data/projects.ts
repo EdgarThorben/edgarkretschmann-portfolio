@@ -18,7 +18,7 @@ export const projects: Project[] = [
     summary:
       "In our time and age working remotely is becoming the new norm for many people. With Innate I created unforgettable moments in communities.",
     challenge:
-      "A coliving house can be fully booked and still feel dead — bookings alone don't create the community that makes guests rebook and refer friends. Innate needed a way to turn remote workers who'd never met into a group that actually showed up for each other, not just a room.",
+      "A coliving house can be fully booked and still feel dead. Bookings alone don't create the community that makes guests rebook and refer friends. Innate needed a way to turn remote workers who'd never met into a group that actually showed up for each other, not just a room.",
     approach: [
       "Ran the community calendar and member touchpoints across every location, not just the booking funnel",
       "Built location-specific Unbounce landing pages feeding Typeform-qualified leads into ActiveCampaign nurture sequences",
@@ -54,11 +54,11 @@ export const projects: Project[] = [
     url: "ironandzen.com",
     title: "Founding a Men's Retreat",
     summary:
-      "Iron & Zen is a one-week off-grid retreat I founded for men who want strength training, meditation, and real brotherhood — I built the brand, the site, and the Instagram-driven funnel that fills every cohort.",
+      "Iron & Zen is a one-week off-grid retreat I founded for men who want strength training, meditation, and real brotherhood. I built the brand, the site, and the Instagram-driven funnel that fills every cohort.",
     challenge:
-      "Men looking for real transformation are stuck choosing between a fitness bootcamp or a meditation retreat — nobody was combining hard physical training with real stillness and unscripted brotherhood in one week. Iron & Zen needed to become that space from a standing start, with no existing brand, audience, or track record to point to.",
+      "Men looking for real transformation are stuck choosing between a fitness bootcamp or a meditation retreat. Nobody was combining hard physical training with real stillness and unscripted brotherhood in one week. Iron & Zen needed to become that space from a standing start, with no existing brand, audience, or track record to point to.",
     approach: [
-      "Founded and built the Iron & Zen brand from scratch — name, identity, and the Iron / Zen / Brotherhood structure",
+      "Founded and built the Iron & Zen brand from scratch: name, identity, and the Iron / Zen / Brotherhood structure",
       "Ran an Instagram-led application funnel, driving prospective guests to a hand-reviewed apply form instead of instant checkout",
       "Built and launched the site myself, from the daily-schedule storytelling to the application flow",
     ],
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     bioPeriod: "2025–",
     bioRole: "Founder & Facilitator",
     bioDescription:
-      "I founded Iron & Zen, a one-week off-grid retreat for men combining strength training, meditation, and brotherhood — building the brand, the site, and the funnel that's hosted 120+ men so far.",
+      "I founded Iron & Zen, a one-week off-grid retreat for men combining strength training, meditation, and brotherhood, building the brand, the site, and the funnel that's hosted 120+ men so far.",
     bioImage: "/images/ironandzen/facilitator-edgar.jpg",
   },
   {
@@ -98,11 +98,11 @@ export const projects: Project[] = [
     summary:
       "Finding sought-after professionals online isn't easy when the market is competitive. With Pflegeplace I built a funnel to recruit nurses in Germany.",
     challenge:
-      "Qualified nurses are in short supply everywhere, and the ones actively open to relocating are already fielding offers from agencies with bigger budgets. Generic job ads don't reach them — Pflegeplace needed to find and win over internationally trained nurses before the competition did, without an in-house recruiting team.",
+      "Qualified nurses are in short supply everywhere, and the ones actively open to relocating are already fielding offers from agencies with bigger budgets. Generic job ads don't reach them. Pflegeplace needed to find and win over internationally trained nurses before the competition did, without an in-house recruiting team.",
     approach: [
       "Built a self-made automation stack (Zapier, HubSpot, Mailchimp) so leads were qualified and routed without manual follow-up",
       "Ran LinkedIn Ads campaigns targeted specifically at nurses considering relocation to Germany",
-      "Owned the funnel end-to-end — landing pages, lead scoring, and nurture sequences",
+      "Owned the funnel end-to-end: landing pages, lead scoring, and nurture sequences",
     ],
     achievements: [
       "Automated lead funnel built end-to-end",
@@ -141,15 +141,15 @@ export const projects: Project[] = [
     summary:
       "Getting nurses into Germany was only ever half the problem. Pflegeplace.com is repositioning from a recruitment funnel into a self-serve hub that helps nurses already here pass the Kenntnisprüfung and get licensed.",
     challenge:
-      "Recruiting a nurse into Germany doesn't make her a licensed nurse — she still has to pass the Kenntnisprüfung, the professional recognition exam, before she's allowed to actually work. That's a harder, longer barrier than recruitment ever was, and most of the market is built around getting nurses into the country, not around getting them licensed once they're here. It's the same audience Pflegeplace already knows, at the next step they're stuck on.",
+      "Recruiting a nurse into Germany doesn't make her a licensed nurse. She still has to pass the Kenntnisprüfung, the professional recognition exam, before she's allowed to actually work. That's a harder, longer barrier than recruitment ever was, and most of the market is built around getting nurses into the country, not around getting them licensed once they're here. It's the same audience Pflegeplace already knows, at the next step they're stuck on.",
     approach: [
       "Repositioning pflegeplace.com from a recruitment funnel into a self-serve Kenntnisprüfung exam-prep hub",
-      "Building it myself with AI coding tools rather than briefing a dev team — the same approach used to build this site",
+      "Building it myself with AI coding tools rather than briefing a dev team, the same approach used to build this site",
       "Reusing what the original funnel already proved: the audience is reachable and already trusts the Pflegeplace name",
     ],
     achievements: [
       "Targets the exam-prep gap most competitors ignore, instead of another recruitment funnel",
-      "Aims at a stickier, higher-intent audience — nurses already committed to relocating, not cold outreach",
+      "Aims at a stickier, higher-intent audience: nurses already committed to relocating, not cold outreach",
       "In build on the existing pflegeplace.com domain and audience",
     ],
     status: "next",
@@ -180,12 +180,13 @@ export const projects: Project[] = [
   {
     slug: "icanspeak",
     company: "IcanSpeak",
-    url: "icanspeak.de",
+    url: "icanspeak.it",
+    linkUrl: "https://icanspeak.it",
     title: "Building an Online School",
     summary:
       "At IcanSpeak, I built an online language school to teach students German, managing campaigns and finding clients through LinkedIn.",
     challenge:
-      "German classes are a commodity — anyone can list a course. IcanSpeak needed to look like the credible choice to students who'd never heard of it, with no existing brand or student base to point to.",
+      "German classes are a commodity: anyone can list a course. IcanSpeak needed to look like the credible choice to students who'd never heard of it, with no existing brand or student base to point to.",
     approach: [
       "Built and launched the school on Teachable, from course structure to checkout",
       "Ran LinkedIn outreach and Google Ads to find first students without a referral base",
@@ -205,13 +206,11 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 86 },
     ],
     portfolioImage: "/images/portfolio/container13.jpg",
-    projectsHeroImage: "/images/projects/container20.jpg",
+    projectsHeroImage: "/images/projects/icanspeak/hero-viewport.jpg",
     galleryImages: [
-      "/images/projects/container15.jpg",
-      "/images/projects/container16.jpg",
-      "/images/projects/container24.jpg",
-      "/images/projects/container23.jpg",
-      "/images/projects/container25.jpg",
+      "/images/projects/icanspeak/gallery-quality.jpg",
+      "/images/projects/icanspeak/gallery-cards.jpg",
+      "/images/projects/icanspeak/gallery-testimonials.jpg",
     ],
     bioPeriod: "2021–22",
     bioRole: "Marketing + Project Management",
@@ -227,7 +226,7 @@ export const projects: Project[] = [
     summary:
       "At DeutschAcademy, I helped develop a brick-and-mortar language school in Manila to recruit Filipino nurses, building the WordPress site, securing investors, and finding clients.",
     challenge:
-      "The Philippines-to-Germany nurse pipeline runs through language certification first — but Manila had no school built specifically around that path, so students defaulted to generic German courses that didn't map to what German hospitals actually required.",
+      "The Philippines-to-Germany nurse pipeline runs through language certification first, but Manila had no school built specifically around that path, so students defaulted to generic German courses that didn't map to what German hospitals actually required.",
     approach: [
       "Co-founded a brick-and-mortar school in Manila built around the Philippines-to-Germany nurse pipeline",
       "Built the WordPress site and enrollment funnel from scratch",
@@ -263,9 +262,9 @@ export const projects: Project[] = [
     url: "nomavillage.com",
     title: "Finding Home in Lagos",
     summary:
-      "Nomavillage grew from a single coliving house into a full coworking-and-coliving base in Lagos, Portugal — I built the marketing systems that took it from launch to a 4.8-star, 172-guest international community.",
+      "Nomavillage grew from a single coliving house into a full coworking-and-coliving base in Lagos, Portugal. I built the marketing systems that took it from launch to a 4.8-star, 172-guest international community.",
     challenge:
-      "Nomavillage competes for a small, picky audience: remote workers who could just as easily piece together an Airbnb, a coworking desk, and a yoga class themselves. Generic SEM and social posts don't convert someone comparing that against a real all-inclusive alternative — Nomavillage needed to prove it was cheaper and easier than doing it yourself in Lisbon, not just prettier.",
+      "Nomavillage competes for a small, picky audience: remote workers who could just as easily piece together an Airbnb, a coworking desk, and a yoga class themselves. Generic SEM and social posts don't convert someone comparing that against a real all-inclusive alternative. Nomavillage needed to prove it was cheaper and easier than doing it yourself in Lisbon, not just prettier.",
     approach: [
       "Built an automated lead funnel connecting Google Ads and Instagram to ActiveCampaign via Zapier",
       "Ran and optimised SEM campaigns targeted at digital nomads weighing Lagos against Lisbon and other nomad hubs",
@@ -274,7 +273,7 @@ export const projects: Project[] = [
     achievements: [
       "Grew to 172 guests from 27 countries with a 4.8-star Google rating",
       "All-inclusive €990/month offer that undercuts a DIY Lisbon setup by €700+",
-      "Now expanding the space — closed for construction, reopening for the 2026/27 season",
+      "Now expanding the space: closed for construction, reopening for the 2026/27 season",
     ],
     tech: ["Google Ads", "Zapier", "ActiveCampaign", "Instagram"],
     skills: [
@@ -307,9 +306,9 @@ export const projects: Project[] = [
     summary:
       "At Narangyoga, I handled marketing campaigns, automated lead funnels, and managed SEM and social media efforts. I also worked as a brand creator and marketing strategist to shape the company's identity.",
     challenge:
-      "Narangyoga had no brand identity to market yet — before any campaign could work, the studio needed a visual and verbal identity that gave people a reason to choose it over every other yoga brand on Instagram.",
+      "Narangyoga had no brand identity to market yet. Before any campaign could work, the studio needed a visual and verbal identity that gave people a reason to choose it over every other yoga brand on Instagram.",
     approach: [
-      "Created the brand identity from scratch — name, visual direction, and voice",
+      "Created the brand identity from scratch: name, visual direction, and voice",
       "Built and automated the lead funnel from Google Ads and Instagram into Mailchimp",
       "Ran SEM and social campaigns to grow the audience around the new identity",
     ],

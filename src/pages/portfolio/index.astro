@@ -13,7 +13,6 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
 >
   <main class="wrap">
     <section class="head">
-      <p class="eyebrow">Portfolio</p>
       <h1>A few of the stories.</h1>
       <p class="lede">
         Four ventures, one pattern: find the audience everyone else is ignoring, then build the funnel or the
@@ -26,9 +25,9 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
       {
         flagships.map((p, i) => (
           <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
-            <div class="story-media">
+            <a class="story-media" href={`/projects/${p.slug}`} aria-label={`Read the full case study: ${p.company}`}>
               <img src={p.projectsHeroImage} alt={p.company} loading={i === 0 ? "eager" : "lazy"} />
-            </div>
+            </a>
             <div class="story-content">
               <p class="story-eyebrow">
                 {p.company} · {p.bioRole} · {p.bioPeriod}
@@ -114,9 +113,15 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
   }
 
   .story-media {
+    display: block;
     border-radius: var(--radius);
     overflow: hidden;
     aspect-ratio: 16 / 9;
+    transition: opacity 0.2s ease;
+  }
+
+  .story-media:hover {
+    opacity: 0.85;
   }
 
   .story-media img {

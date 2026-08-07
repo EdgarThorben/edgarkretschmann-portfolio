@@ -14,7 +14,6 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
 >
   <main class="wrap">
     <section class="head">
-      <p class="eyebrow">Portfolio</p>
       <h1>Ein paar der Geschichten.</h1>
       <p class="lede">
         Vier Projekte, ein Muster: die Zielgruppe finden, die alle anderen ignorieren, dann schnell den Funnel oder
@@ -27,9 +26,9 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
       {
         flagships.map((p, i) => (
           <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
-            <div class="story-media">
+            <a class="story-media" href={`/de/projects/${p.slug}`} aria-label={`Ganze Case Study lesen: ${p.company}`}>
               <img src={p.projectsHeroImage} alt={p.company} loading={i === 0 ? "eager" : "lazy"} />
-            </div>
+            </a>
             <div class="story-content">
               <p class="story-eyebrow">
                 {p.company} · {p.bioRole} · {p.bioPeriod}
@@ -115,9 +114,15 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
   }
 
   .story-media {
+    display: block;
     border-radius: var(--radius);
     overflow: hidden;
     aspect-ratio: 16 / 9;
+    transition: opacity 0.2s ease;
+  }
+
+  .story-media:hover {
+    opacity: 0.85;
   }
 
   .story-media img {
