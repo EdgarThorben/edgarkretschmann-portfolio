@@ -47,7 +47,7 @@ const bonusExperience = localizeBonusExperience("de");
         ))
       }
       <li>
-        <div class="entry entry--bonus" data-reveal="fade-up" data-reveal-group="bio-timeline">
+        <a class="entry entry--bonus" href="/de/bio/teacher" data-reveal="fade-up" data-reveal-group="bio-timeline">
           <span class="entry-period">{bonusExperience.period}</span>
           <span class="entry-thumb">
             <img src={bonusExperience.image} alt={bonusExperience.company} />
@@ -57,7 +57,8 @@ const bonusExperience = localizeBonusExperience("de");
             <span class="entry-title">Bonus: Sprachlehrer</span>
             <span class="entry-desc">{bonusExperience.description}</span>
           </span>
-        </div>
+          <span class="entry-arrow">→</span>
+        </a>
       </li>
     </ol>
 
