@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
   const smtpPass = import.meta.env.BREVO_SMTP_PASS;
 
   if (!smtpUser || !smtpPass) {
-    const body = { ok: false, error: "Contact form isn't configured yet — email me directly instead." };
+    const body = { ok: false, error: "Contact form isn't configured yet. Email me directly instead." };
     return wantsJson
       ? new Response(JSON.stringify(body), { status: 503, headers: { "Content-Type": "application/json" } })
       : new Response(body.error, { status: 503 });
@@ -54,7 +54,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (error) {
     console.error("Contact form send failed", error);
-    const body = { ok: false, error: "Message could not be sent — email me directly instead." };
+    const body = { ok: false, error: "Message could not be sent. Email me directly instead." };
     return wantsJson
       ? new Response(JSON.stringify(body), { status: 502, headers: { "Content-Type": "application/json" } })
       : new Response(body.error, { status: 502 });

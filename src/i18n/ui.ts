@@ -14,6 +14,7 @@ export const ui = {
       projects: "Projects",
       bio: "Bio",
       cta: "Get in touch",
+      menu: "Menu",
     },
     project: {
       inProgress: "In progress",
@@ -40,7 +41,7 @@ export const ui = {
       submit: "Submit",
       sending: "Sending…",
       success: "I will definitely get back to you!",
-      error: "Something went wrong — email me directly instead.",
+      error: "Something went wrong. Email me directly instead.",
       emailDirect: "✉ Email me directly",
       backToPortfolio: "← Back to Portfolio",
       bio: "Bio",
@@ -54,6 +55,7 @@ export const ui = {
       projects: "Projekte",
       bio: "Bio",
       cta: "Kontakt aufnehmen",
+      menu: "Menü",
     },
     project: {
       inProgress: "In Arbeit",
@@ -80,7 +82,7 @@ export const ui = {
       submit: "Absenden",
       sending: "Wird gesendet…",
       success: "Ich melde mich auf jeden Fall bei dir!",
-      error: "Etwas ist schiefgelaufen — schreib mir stattdessen direkt eine E-Mail.",
+      error: "Etwas ist schiefgelaufen. Schreib mir stattdessen direkt eine E-Mail.",
       emailDirect: "✉ Direkt anschreiben",
       backToPortfolio: "← Zurück zum Portfolio",
       bio: "Bio",

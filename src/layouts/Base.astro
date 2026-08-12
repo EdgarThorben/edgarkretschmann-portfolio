@@ -66,7 +66,19 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
   <body data-section={section}>
     <nav class="site-nav" aria-label={t.nav.primary}>
       <a class="site-nav__brand" href={lang === "en" ? "/" : "/de"}>Edgar Kretschmann</a>
-      <ul>
+      <button
+        type="button"
+        class="site-nav__toggle"
+        id="site-nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav-menu"
+        aria-label={t.nav.menu}
+      >
+        <span class="site-nav__toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+      <ul id="site-nav-menu" hidden>
         {
           nav.map((item) => (
             <li>
@@ -100,6 +112,7 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     </nav>
     <slot />
     <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/nav.ts"></script>
   </body>
 </html>
 
@@ -185,14 +198,112 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     color: var(--line);
   }
 
+  .site-nav ul[hidden] {
+    display: none;
+  }
+
+  @media (min-width: 641px) {
+    .site-nav ul[hidden] {
+      display: flex;
+    }
+  }
+
+  .site-nav__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .site-nav__toggle-bars {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 11px;
+  }
+
+  .site-nav__toggle-bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--text);
+    transition:
+      transform 0.2s ease,
+      opacity 0.15s ease,
+      top 0.2s ease;
+  }
+
+  .site-nav__toggle-bars span:nth-child(1) {
+    top: 0;
+  }
+
+  .site-nav__toggle-bars span:nth-child(2) {
+    top: 5px;
+  }
+
+  .site-nav__toggle-bars span:nth-child(3) {
+    top: 10px;
+  }
+
+  .site-nav.is-open .site-nav__toggle-bars span:nth-child(1) {
+    top: 5px;
+    transform: rotate(45deg);
+  }
+
+  .site-nav.is-open .site-nav__toggle-bars span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-nav.is-open .site-nav__toggle-bars span:nth-child(3) {
+    top: 5px;
+    transform: rotate(-45deg);
+  }
+
   @media (max-width: 640px) {
     .site-nav {
       padding: var(--space-3) var(--space-3);
       flex-wrap: wrap;
     }
+
+    .site-nav__toggle {
+      display: inline-flex;
+    }
+
     .site-nav ul {
-      gap: var(--space-3);
-      flex-wrap: wrap;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--line);
+    }
+
+    .site-nav ul > li {
+      width: 100%;
+    }
+
+    .site-nav ul > li > a:not(.site-nav__cta) {
+      display: block;
+      padding: var(--space-3) 0;
+    }
+
+    .site-nav__lang {
+      padding: var(--space-3) 0;
+      gap: var(--space-2);
+    }
+
+    .site-nav__cta {
+      display: inline-flex;
+      margin: var(--space-2) 0 var(--space-3);
     }
   }
 </style>

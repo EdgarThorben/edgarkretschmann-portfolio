@@ -62,7 +62,6 @@ interface CopyEntry {
     bottleneck: { label: string; options: Record<(typeof BOTTLENECK_VALUES)[number], string> };
   };
   submit: string;
-  loading: string;
   error: string;
   scoreLabels: { trafficCapture: string; leadCapture: string; followUp: string };
   gapsHeading: string;
@@ -75,7 +74,7 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
   en: {
     eyebrow: "Free 30-second tool",
     heading: "Where is your funnel actually leaking?",
-    sub: "Answer three questions and get a live read on your traffic capture, lead capture, and follow-up automation — the same framework I use with every client.",
+    sub: "Answer three questions and get a live read on your traffic capture, lead capture, and follow-up automation: the same framework I use with every client.",
     questions: {
       industry: {
         label: "What do you run?",
@@ -94,7 +93,7 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
           organic_social: "Organic social media",
           paid_ads: "Paid ads",
           cold_outreach: "Cold outreach",
-          none: "None yet — just starting",
+          none: "None yet, just starting",
         },
       },
       bottleneck: {
@@ -109,8 +108,7 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
       },
     },
     submit: "Run diagnostic",
-    loading: "Reading your answers…",
-    error: "The diagnostic couldn't run — email me directly instead.",
+    error: "The diagnostic couldn't run. Email me directly instead.",
     scoreLabels: {
       trafficCapture: "Traffic capture",
       leadCapture: "Lead capture",
@@ -119,12 +117,12 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     gapsHeading: "What's leaking",
     recommendationHeading: "Highest-leverage next step",
     cta: "Book a call about this →",
-    disclaimer: "Generated live by AI from your answers — no site data is collected or stored.",
+    disclaimer: "Calculated instantly in your browser from a fixed framework — no AI, nothing sent to a server.",
   },
   de: {
     eyebrow: "Kostenloses 30-Sekunden-Tool",
     heading: "Wo verliert dein Funnel wirklich Leads?",
-    sub: "Drei Fragen, dann bekommst du eine Live-Einschätzung zu Reichweite, Lead-Erfassung und automatisierter Nachfassung — das Framework, das ich bei jedem Kunden anwende.",
+    sub: "Drei Fragen, dann bekommst du eine Live-Einschätzung zu Reichweite, Lead-Erfassung und automatisierter Nachfassung: das Framework, das ich bei jedem Kunden anwende.",
     questions: {
       industry: {
         label: "Was betreibst du?",
@@ -143,7 +141,7 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
           organic_social: "Organische Social Media",
           paid_ads: "Bezahlte Anzeigen",
           cold_outreach: "Kaltakquise",
-          none: "Noch keine — gerade erst gestartet",
+          none: "Noch keine, gerade erst gestartet",
         },
       },
       bottleneck: {
@@ -158,8 +156,7 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
       },
     },
     submit: "Diagnose starten",
-    loading: "Antworten werden ausgewertet…",
-    error: "Die Diagnose konnte nicht laufen — schreib mir stattdessen direkt eine E-Mail.",
+    error: "Die Diagnose konnte nicht laufen. Schreib mir stattdessen direkt eine E-Mail.",
     scoreLabels: {
       trafficCapture: "Reichweite",
       leadCapture: "Lead-Erfassung",
@@ -168,15 +165,6 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     gapsHeading: "Wo es leckt",
     recommendationHeading: "Wirksamster nächster Schritt",
     cta: "Anruf dazu buchen →",
-    disclaimer: "Live von KI aus deinen Antworten generiert — es werden keine Website-Daten erfasst oder gespeichert.",
+    disclaimer: "Sofort in deinem Browser berechnet, nach einem festen Framework — keine KI, nichts wird an einen Server gesendet.",
   },
 };
-
-export function describeAnswers(lang: "en" | "de", answers: DiagnosticRequest) {
-  const c = diagnosticCopy[lang];
-  return [
-    `${c.questions.industry.label} ${c.questions.industry.options[answers.industry]}`,
-    `${c.questions.leadSource.label} ${c.questions.leadSource.options[answers.leadSource]}`,
-    `${c.questions.bottleneck.label} ${c.questions.bottleneck.options[answers.bottleneck]}`,
-  ].join("\n");
-}

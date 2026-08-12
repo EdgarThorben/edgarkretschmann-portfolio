@@ -9,8 +9,8 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 ---
 
 <Base
-  title="Projekte — Edgar Kretschmann"
-  description="Ein detaillierter Einblick in Edgar Kretschmanns Projekte — von Coliving-Communities über Recruiting-Funnels für Pflegekräfte bis zu Online-Sprachschulen."
+  title="Projekte · Edgar Kretschmann"
+  description="Ein detaillierter Einblick in Edgar Kretschmanns Projekte, von Coliving-Communities über Recruiting-Funnels für Pflegekräfte bis zu Online-Sprachschulen."
   section="projects"
   lang="de"
 >
@@ -19,7 +19,7 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
       <a href="/de" class="back-link">← Start</a>
       <h1>Jedes Engagement</h1>
       <p class="lede">
-        Die komplette Liste, {visibleProjects.length} Projekte — die vier Vorzeigeprojekte ausführlich erzählt gibt's im{" "}
+        Die komplette Liste, {visibleProjects.length} Projekte. Die vier Vorzeigeprojekte ausführlich erzählt gibt's im{" "}
         <a href="/de/portfolio">Portfolio →</a>
       </p>
     </div>
@@ -157,7 +157,7 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
       status.textContent = "Ich melde mich auf jeden Fall bei dir!";
       form.reset();
     } catch {
-      status.textContent = "Etwas ist schiefgelaufen — schreib mir stattdessen direkt eine E-Mail.";
+      status.textContent = "Etwas ist schiefgelaufen. Schreib mir stattdessen direkt eine E-Mail.";
     }
   });
 </script>

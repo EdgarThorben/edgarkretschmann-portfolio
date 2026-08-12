@@ -8,12 +8,25 @@ interface Props {
 const { lang } = Astro.props;
 const c = diagnosticCopy[lang];
 const CONTACT_EMAIL = "hello@edgarkretschmann.com";
+const MAIL_SUBJECT =
+  lang === "de" ? "Anfrage nach meinem Marketing-Diagnose-Ergebnis" : "Following up on my marketing diagnostic";
+
+const clientCopy = {
+  scoreLabels: c.scoreLabels,
+  gapsHeading: c.gapsHeading,
+  recommendationHeading: c.recommendationHeading,
+  cta: c.cta,
+  disclaimer: c.disclaimer,
+  error: c.error,
+  contactEmail: CONTACT_EMAIL,
+  mailSubject: MAIL_SUBJECT,
+};
 
 type QuestionKey = "industry" | "leadSource" | "bottleneck";
 const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
 ---
 
-<section class="diagnostic" id="diagnostic" data-reveal="fade-up">
+<section class="diagnostic" id="diagnostic" data-reveal="fade-up" data-copy={JSON.stringify(clientCopy)}>
   <div class="diagnostic-head">
     <p class="eyebrow">{c.eyebrow}</p>
     <h2>{c.heading}</h2>
@@ -47,24 +60,31 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
   <div class="diagnostic-result" id="diagnostic-result" hidden></div>
 </section>
 
-<script is:inline define:vars={{ lang, copy: c, contactEmail: CONTACT_EMAIL }}>
+<script>
+  import { diagnosticRequestSchema } from "../lib/diagnostic";
+  import { runDiagnostic, overallScore } from "../lib/diagnosticEngine";
+
+  const section = document.getElementById("diagnostic") as HTMLElement;
   const form = document.getElementById("diagnostic-form");
   const status = document.getElementById("diagnostic-status");
-  const resultBox = document.getElementById("diagnostic-result");
+  const resultBox = document.getElementById("diagnostic-result") as HTMLDivElement;
+  const copy = JSON.parse(section?.dataset.copy || "{}");
 
-  function escapeHtml(value) {
+  function escapeHtml(value: string) {
     const div = document.createElement("div");
     div.textContent = value;
     return div.innerHTML;
   }
 
-  function renderResult(result, overall) {
+  function renderResult(result: ReturnType<typeof runDiagnostic>, overall: number) {
     if (!resultBox) return;
-    const scoreRows = [
-      ["trafficCapture", copy.scoreLabels.trafficCapture],
-      ["leadCapture", copy.scoreLabels.leadCapture],
-      ["followUp", copy.scoreLabels.followUp],
-    ]
+    const scoreRows = (
+      [
+        ["trafficCapture", copy.scoreLabels.trafficCapture],
+        ["leadCapture", copy.scoreLabels.leadCapture],
+        ["followUp", copy.scoreLabels.followUp],
+      ] as const
+    )
       .map(([key, label]) => {
         const score = Math.max(0, Math.min(100, Math.round(result.scores[key])));
         return `
@@ -77,11 +97,8 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
       .join("");
 
     const gapItems = result.gaps.map((gap) => `<li>${escapeHtml(gap)}</li>`).join("");
-
-    const mailSubject =
-      lang === "de" ? "Anfrage nach meinem Marketing-Diagnose-Ergebnis" : "Following up on my marketing diagnostic";
     const mailBody = `${result.verdict}\n\n${result.recommendation}`;
-    const mailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    const mailHref = `mailto:${copy.contactEmail}?subject=${encodeURIComponent(copy.mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
     resultBox.innerHTML = `
       <p class="result-overall">${overall}<span>/100</span></p>
@@ -102,7 +119,7 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
     resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
-  form?.addEventListener("submit", async (event) => {
+  form?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!status || !(form instanceof HTMLFormElement)) return;
 
@@ -121,26 +138,21 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
       return;
     }
 
-    status.textContent = copy.loading;
-    resultBox.hidden = true;
-    const submitBtn = form.querySelector("button[type=submit]");
-    if (submitBtn) submitBtn.disabled = true;
-
-    try {
-      const response = await fetch("/api/diagnostic", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json = await response.json();
-      if (!response.ok || !json.ok) throw new Error(json.error || "Request failed");
-      status.textContent = "";
-      renderResult(json.result, json.overall);
-    } catch {
+    // honeypot tripped — pretend nothing happened, same as a real failure
+    if (payload.website) {
       status.textContent = copy.error;
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
+      return;
     }
+
+    const parsed = diagnosticRequestSchema.safeParse(payload);
+    if (!parsed.success) {
+      status.textContent = copy.error;
+      return;
+    }
+
+    status.textContent = "";
+    const result = runDiagnostic(parsed.data);
+    renderResult(result, overallScore(result.scores));
   });
 </script>
 
