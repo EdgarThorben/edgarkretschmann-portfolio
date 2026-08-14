@@ -78,7 +78,7 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
           <span></span><span></span><span></span>
         </span>
       </button>
-      <ul id="site-nav-menu" hidden>
+      <ul id="site-nav-menu">
         {
           nav.map((item) => (
             <li>
@@ -198,16 +198,6 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     color: var(--line);
   }
 
-  .site-nav ul[hidden] {
-    display: none;
-  }
-
-  @media (min-width: 641px) {
-    .site-nav ul[hidden] {
-      display: flex;
-    }
-  }
-
   .site-nav__toggle {
     display: none;
     align-items: center;
@@ -278,6 +268,7 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     }
 
     .site-nav ul {
+      display: none;
       flex-basis: 100%;
       flex-direction: column;
       align-items: stretch;
@@ -285,6 +276,10 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
       margin-top: var(--space-3);
       padding-top: var(--space-3);
       border-top: 1px solid var(--line);
+    }
+
+    .site-nav ul.is-open {
+      display: flex;
     }
 
     .site-nav ul > li {

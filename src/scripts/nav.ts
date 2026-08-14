@@ -1,8 +1,8 @@
 /**
- * Mobile hamburger toggle for the sticky site nav. The menu `<ul>` ships
- * server-rendered with `hidden` so it's correctly closed before this script
- * runs; a desktop media query overrides `[hidden]` back to visible, so the
- * nav still works with CSS alone above the mobile breakpoint.
+ * Mobile hamburger toggle for the sticky site nav. The menu `<ul>` is
+ * `display: flex` by default and only collapsed below the mobile breakpoint
+ * (via CSS), so the nav works with CSS alone above that breakpoint. Below
+ * it, this script toggles the `is-open` class to reveal the menu.
  */
 
 function initNavToggle() {
@@ -18,13 +18,13 @@ function initNavToggle() {
   function closeMenu() {
     nav!.classList.remove("is-open");
     toggle!.setAttribute("aria-expanded", "false");
-    menu!.hidden = true;
+    menu!.classList.remove("is-open");
   }
 
   function openMenu() {
     nav!.classList.add("is-open");
     toggle!.setAttribute("aria-expanded", "true");
-    menu!.hidden = false;
+    menu!.classList.add("is-open");
   }
 
   toggle.addEventListener("click", () => {

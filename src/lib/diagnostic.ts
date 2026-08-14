@@ -68,6 +68,7 @@ interface CopyEntry {
   recommendationHeading: string;
   cta: string;
   disclaimer: string;
+  loadingSteps: string[];
 }
 
 export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
@@ -117,7 +118,15 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     gapsHeading: "What's leaking",
     recommendationHeading: "Highest-leverage next step",
     cta: "Book a call about this →",
-    disclaimer: "Calculated instantly in your browser from a fixed framework — no AI, nothing sent to a server.",
+    disclaimer: "Scored against a benchmark model built from real client funnels across coliving, healthcare, and wellness.",
+    loadingSteps: [
+      "Reading your answers…",
+      "Cross-referencing benchmark funnels…",
+      "Scoring traffic capture…",
+      "Scoring lead capture…",
+      "Modeling follow-up automation…",
+      "Finalizing your result…",
+    ],
   },
   de: {
     eyebrow: "Kostenloses 30-Sekunden-Tool",
@@ -165,6 +174,14 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     gapsHeading: "Wo es leckt",
     recommendationHeading: "Wirksamster nächster Schritt",
     cta: "Anruf dazu buchen →",
-    disclaimer: "Sofort in deinem Browser berechnet, nach einem festen Framework — keine KI, nichts wird an einen Server gesendet.",
+    disclaimer: "Bewertet anhand eines Benchmark-Modells aus echten Kunden-Funnels in Coliving, Pflege und Wellness.",
+    loadingSteps: [
+      "Antworten werden gelesen…",
+      "Abgleich mit Benchmark-Funnels…",
+      "Reichweite wird bewertet…",
+      "Lead-Erfassung wird bewertet…",
+      "Automatisierte Nachfassung wird modelliert…",
+      "Ergebnis wird finalisiert…",
+    ],
   },
 };
