@@ -170,6 +170,46 @@ export const projectTranslations: Record<string, ProjectTranslation> = {
     bioDescription:
       "Bei Narangyoga habe ich Marketingkampagnen und automatisierte Lead-Funnels betreut sowie SEM und Social Media gesteuert. Zusätzlich habe ich als Brand Creator und Marketingstratege die Markenidentität mitgestaltet.",
   },
+  colevitate: {
+    title: "Vier Persönlichkeitsmodelle vereint",
+    summary:
+      "Colevitate kombiniert MBTI, Big Five, Human Design und die 4 Farbtypen zu einem einzigen Persönlichkeitsprofil, bewertet über vier Achsen, statt sich auf ein einzelnes Modell zu verlassen.",
+    challenge:
+      "Jedes Persönlichkeitsmodell hat seine Anhänger und seine Skeptiker, und jedes erzählt nur einen Teil der Geschichte. Niemand kombinierte MBTI, Big Five, Human Design und die 4 Farbtypen zu einem einzigen Profil – wer sich selbst besser verstehen wollte, musste sich für ein Modell entscheiden und die anderen ignorieren, oder vier getrennte Tests machen, ohne eine Möglichkeit, einen selbstbewussten Fühler im einen Test mit einem kühleren Denker im anderen in Einklang zu bringen.",
+    approach: [
+      "Das komplette Produkt selbst in Next.js gebaut: vier unabhängige Assessments, eine gewichtete Scoring-Matrix über vier kombinierte Achsen (Energie, Struktur, Menschen, Neuheit) und eine teilbare Export-Karte",
+      "Google- und E-Mail-Magic-Link-Login sowie ein Postgres-Backend über Supabase eingerichtet, wobei Ergebnisse standardmäßig clientseitig gespeichert werden, damit niemand sich anmelden muss, nur um sich selbst zu sehen",
+      "Auch die Geschäftsanalyse selbst durchgeführt: die Wettbewerbslandschaft kartiert und bestätigt, dass kein direkter Konkurrent so viele Modelle in einem Profil vereint",
+    ],
+    achievements: [
+      "Live auf colevitate.com, alle vier Assessments funktionieren durchgängig",
+      "Vollständige Auth- und Datenbankschicht ausgeliefert, bereit für gespeicherte Profile und Verlauf",
+      "Team-/Workplace-Funktion und Kompatibilitäts-Matching als nächster Ausbauschritt geplant",
+    ],
+    bioRole: "Gründer & Entwickler",
+    bioDescription:
+      "Ich habe Colevitate selbst gebaut: ein Persönlichkeits-Studio, das MBTI, Big Five, Human Design und die 4 Farbtypen zu einem bewerteten Profil vereint, live auf colevitate.com mit einer echten Auth- und Datenbankschicht dahinter.",
+  },
+  nimbusvault: {
+    title: "Eine echte CMDB gebaut",
+    summary:
+      "NimbusVault ist ein Single-Tenant-Tool für IT-Dokumentation und CMDB, das ich für die IT-Abteilung eines Kunden gebaut habe: typisierte Infrastrukturdatensätze, Versionsverlauf, ein Beziehungsgraph und verschlüsselte Zugangsdaten, anstelle der vorherigen Excel-Tabellen.",
+    challenge:
+      "Die IT-Abteilung des Kunden verfolgte Server, Storage und Kundenumgebungen in Excel-Tabellen und verstreuten Dokumenten: kein Versionsverlauf, keine Möglichkeit zu sehen, was von was abhängt, und Zugangsdaten im Klartext, wo auch immer sie zuletzt eingefügt wurden. Fertige CMDB-Tools wie Docusnap oder i-doit sind für Teams gebaut, die Hunderte Assets über viele Kunden hinweg verwalten, nicht für eine einzelne interne Abteilung, die eher ein strukturiertes Wiki brauchte.",
+    approach: [
+      "Eine Single-Tenant-Astro-App von Grund auf gebaut: typisierte Datensätze (Server, Datenbanken, Anwendungen und Freitext-Dokumente) mit strukturierten Feldern, vollständigem, diffbasiertem Versionsverlauf und einem gerichteten Beziehungsgraphen mit Zyklen-Erkennung",
+      "Eine verschlüsselte Zugangsdaten-Ebene ergänzt (AES-256-GCM, standardmäßig maskiert, jede Freigabe protokolliert), damit Lizenzschlüssel und Passwörter nicht mehr im Klartext herumliegen",
+      "Nach echten Kundenanforderungen weiterentwickelt: ein frühes Wiki-Modell und eine nachträglich angeflanschte Asset-Tabelle zu einer einheitlichen Collections-und-Items-Struktur zusammengeführt, nachdem sich in der echten Nutzung zeigte, dass die Trennung eher verwirrte als half",
+    ],
+    achievements: [
+      "Im aktiven Einsatz bei der IT-Abteilung des Kunden, verfolgt echte Server und Infrastruktur",
+      "Jede Freigabe von Zugangsdaten protokolliert; jede Änderung an einem Datensatz diffbasiert im Versionsverlauf festgehalten",
+      "Deployed auf Vercel + Neon Postgres, mit einem live umschaltbaren Englisch/Deutsch-UI",
+    ],
+    bioRole: "Entwickler",
+    bioDescription:
+      "Ich habe NimbusVault für die IT-Abteilung eines Kunden gebaut: ein CMDB-Tool mit typisierten Datensätzen, Versionsverlauf, Beziehungsgraph und verschlüsselten Zugangsdaten, anstelle der Excel-Tabellen, die sie vorher genutzt haben.",
+  },
 };
 
 export const bonusExperienceDe = {

@@ -336,6 +336,90 @@ export const projects: Project[] = [
       "At Narangyoga, I handled marketing campaigns, automated lead funnels, and managed SEM and social media efforts. I also worked as a brand creator and marketing strategist to shape the company's identity.",
     bioImage: "/images/bio/image08.jpg",
   },
+  {
+    slug: "colevitate",
+    company: "Colevitate",
+    url: "colevitate.com",
+    linkUrl: "https://colevitate.com",
+    title: "Merging Four Personality Frameworks",
+    summary:
+      "Colevitate takes MBTI, Big Five, Human Design, and 4 Color Types and weaves the results into one combined personality profile, scored across four axes instead of picking a single framework to trust.",
+    challenge:
+      "Every personality framework has its true believers and its skeptics, and each one only tells part of the story. Nobody was combining MBTI, Big Five, Human Design, and 4 Color Types into a single profile, so anyone curious about themselves had to pick one lens and ignore the others, or run four separate quizzes with no way to reconcile a self-aware Feeler on one test against a colder Thinker on another.",
+    approach: [
+      "Built the full product myself in Next.js: four independent assessments, a weighted scoring matrix across four combined axes (Energy, Structure, People, Novelty), and a shareable export card",
+      "Wired up Google and email-magic-link auth on a Postgres backend via Supabase, with results saved client-side by default so nobody has to sign up just to see themselves",
+      "Ran the business analysis myself too: mapped the competitive landscape and confirmed no direct consumer competitor combines this many frameworks into one profile",
+    ],
+    achievements: [
+      "Live at colevitate.com with all four assessments working end-to-end",
+      "Full auth and database layer shipped, ready for saved profiles and retake history",
+      "Team/workplace and compatibility-matching features mapped as the next build",
+    ],
+    tech: ["Next.js", "Supabase", "Stripe", "Vercel"],
+    skills: [
+      { label: "Building", value: 90 },
+      { label: "Automation", value: 65 },
+      { label: "Project Mgmt", value: 75 },
+      { label: "Landing Pages", value: 55 },
+      { label: "Campaigning", value: 35 },
+    ],
+    portfolioImage: "/images/colevitate/gallery-combined-profile.jpg",
+    projectsHeroImage: "/images/colevitate/hero-landing.jpg",
+    galleryImages: [
+      "/images/colevitate/hero-landing.jpg",
+      "/images/colevitate/gallery-frameworks.jpg",
+      "/images/colevitate/gallery-combined-profile.jpg",
+      "/images/colevitate/gallery-archetype.jpg",
+      "/images/colevitate/gallery-connections-graph.jpg",
+    ],
+    bioPeriod: "2026–",
+    bioRole: "Founder & Builder",
+    bioDescription:
+      "I built Colevitate myself: a personality-assessment studio that combines MBTI, Big Five, Human Design, and 4 Color Types into one scored profile, live at colevitate.com with a real auth and database layer behind it.",
+    bioImage: "/images/colevitate/hero-landing.jpg",
+  },
+  {
+    slug: "nimbusvault",
+    company: "NimbusVault",
+    url: "Private client deployment",
+    title: "Building a Real CMDB",
+    summary:
+      "NimbusVault is a single-tenant IT-documentation and CMDB tool I built for a client's IT department: typed infrastructure records, revision history, a relationship graph, and encrypted credentials, replacing the spreadsheets they were using before.",
+    challenge:
+      "The client's IT department was tracking servers, storage, and client environments in spreadsheets and scattered docs: no revision history, no way to see what depended on what, and credentials sitting in plain text wherever someone last pasted them. Off-the-shelf CMDB tools like Docusnap or i-doit are built for teams managing hundreds of assets across many customers, not a single in-house department that needed something closer to a structured wiki.",
+    approach: [
+      "Built a single-tenant Astro app from scratch: typed records (servers, databases, applications, and free-text docs) with structured fields, full diffed revision history, and a directed relationship graph with cycle detection",
+      "Added an encrypted credentials layer (AES-256-GCM, masked by default, every reveal audit-logged) so license keys and passwords stop living in plain text",
+      "Iterated against real client requirements: consolidated an early wiki-shaped model and a bolted-on asset table into one unified Collections + Items structure once real usage showed the split was more confusing than useful",
+    ],
+    achievements: [
+      "In active use by the client's IT department, tracking real servers and infrastructure",
+      "Every credential reveal audit-logged; every record change diffed and kept in revision history",
+      "Deployed on Vercel + Neon Postgres, with a live English/German UI toggle",
+    ],
+    tech: ["Astro", "Postgres", "Drizzle", "Vercel"],
+    skills: [
+      { label: "Building", value: 92 },
+      { label: "Automation", value: 58 },
+      { label: "Project Mgmt", value: 72 },
+      { label: "Landing Pages", value: 20 },
+      { label: "Campaigning", value: 10 },
+    ],
+    portfolioImage: "/images/nimbusvault/gallery-item-fields.jpg",
+    projectsHeroImage: "/images/nimbusvault/hero-collection.jpg",
+    galleryImages: [
+      "/images/nimbusvault/hero-collection.jpg",
+      "/images/nimbusvault/gallery-item-fields.jpg",
+      "/images/nimbusvault/gallery-login.jpg",
+      "/images/nimbusvault/gallery-relationships.jpg",
+    ],
+    bioPeriod: "2026–",
+    bioRole: "Builder",
+    bioDescription:
+      "I built NimbusVault for a client's IT department: a CMDB tool with typed records, revision history, a relationship graph, and encrypted credentials, replacing the spreadsheets they used before.",
+    bioImage: "/images/nimbusvault/gallery-item-fields.jpg",
+  },
 ];
 
 export const bonusExperience = {
