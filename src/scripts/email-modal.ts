@@ -1,46 +1,49 @@
 /**
  * Mailto links silently no-op when the browser has no default mail client
  * configured, which reads as a broken button. Intercept every mailto: click
- * site-wide and show a small dialog with the address (copyable) instead,
- * plus a fallback link that still attempts the real mailto: navigation
- * (preserving any subject/body query params from the original link).
+ * site-wide and open a dialog with a real message form (posts to
+ * /api/contact) instead, plus a fallback link that still attempts the real
+ * mailto: navigation (preserving any subject/body query params).
  */
 
 function initEmailModal() {
   const dialog = document.getElementById("email-modal") as HTMLDialogElement | null;
-  const addressEl = document.getElementById("email-modal-address");
-  const copyBtn = document.getElementById("email-modal-copy") as HTMLButtonElement | null;
+  const form = document.getElementById("email-modal-form") as HTMLFormElement | null;
+  const status = document.getElementById("email-modal-status");
   const openLink = document.getElementById("email-modal-open") as HTMLAnchorElement | null;
-  if (!dialog || !addressEl || !copyBtn || !openLink) return;
+  if (!dialog || !form || !status || !openLink) return;
 
-  let copyResetTimer: ReturnType<typeof setTimeout> | null = null;
+  const sendingText = dialog.dataset.sending ?? "Sending…";
+  const successText = dialog.dataset.success ?? "Sent.";
+  const errorText = dialog.dataset.error ?? "Something went wrong.";
 
   document.addEventListener("click", (event) => {
     const link = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="mailto:"]');
-    if (!link) return;
+    if (!link || link.id === "email-modal-open") return;
     event.preventDefault();
 
-    const email = decodeURIComponent(link.href.replace(/^mailto:/i, "").split("?")[0]);
-    addressEl.textContent = email;
     openLink.href = link.href;
-    copyBtn.textContent = "Copy email";
+    form.reset();
+    status.textContent = "";
     dialog.showModal();
   });
 
-  copyBtn.addEventListener("click", () => {
-    const email = addressEl.textContent || "";
-    if (!email || !navigator.clipboard) return;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    status.textContent = sendingText;
 
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        copyBtn.textContent = "Copied!";
-        if (copyResetTimer) clearTimeout(copyResetTimer);
-        copyResetTimer = setTimeout(() => {
-          copyBtn.textContent = "Copy email";
-        }, 2000);
-      })
-      .catch(() => {});
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error("Request failed");
+      status.textContent = successText;
+      form.reset();
+    } catch {
+      status.textContent = errorText;
+    }
   });
 
   dialog.addEventListener("click", (event) => {

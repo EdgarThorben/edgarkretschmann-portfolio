@@ -115,18 +115,37 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
 
     <WhatsAppButton />
 
-    <dialog id="email-modal" class="email-modal">
+    <dialog
+      id="email-modal"
+      class="email-modal"
+      data-sending={t.contact.sending}
+      data-success={t.contact.success}
+      data-error={t.contact.error}
+    >
       <form method="dialog" class="email-modal__close-form">
         <button type="submit" class="email-modal__close" aria-label={t.emailModal.close}>×</button>
       </form>
       <h2 class="email-modal__heading">{t.emailModal.heading}</h2>
-      <p class="email-modal__address" id="email-modal-address"></p>
-      <div class="email-modal__actions">
-        <button type="button" class="btn-pill btn-accent" id="email-modal-copy">{t.emailModal.copy}</button>
-        <a class="btn-pill btn-ghost" id="email-modal-open" href="mailto:hello@edgarkretschmann.com"
-          >{t.emailModal.open}</a
-        >
-      </div>
+      <form id="email-modal-form" class="email-modal__form" method="post" action="/api/contact">
+        <input type="hidden" name="lang" value={lang} />
+        <div class="field">
+          <label for="email-modal-name">{t.contact.name}</label>
+          <input id="email-modal-name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email-modal-email">{t.contact.email}</label>
+          <input id="email-modal-email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="email-modal-message">{t.contact.message}</label>
+          <textarea id="email-modal-message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-pill btn-accent submit-btn">{t.contact.submit}</button>
+        <p id="email-modal-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <a class="email-modal__fallback" id="email-modal-open" href="mailto:hello@edgarkretschmann.com"
+        >{t.contact.emailDirect}</a
+      >
     </dialog>
 
     <script src="../scripts/reveal.ts"></script>
@@ -326,7 +345,7 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     top: 50%;
     left: 50%;
     z-index: 100;
-    width: min(22rem, calc(100vw - var(--space-5)));
+    width: min(24rem, calc(100vw - var(--space-5)));
     margin: 0;
     padding: var(--space-5);
     border: 1px solid var(--line);
@@ -369,16 +388,56 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
     font-size: 1.15rem;
   }
 
-  .email-modal__address {
+  .email-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
     margin: 0 0 var(--space-4);
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    word-break: break-all;
   }
 
-  .email-modal__actions {
+  .email-modal__form .field {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .email-modal__form .field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .email-modal__form .field input,
+  .email-modal__form .field textarea {
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--text);
+    padding: var(--space-2) var(--space-3);
+    font: inherit;
+    resize: vertical;
+  }
+
+  .email-modal__form .submit-btn {
+    align-self: flex-start;
+    margin-top: var(--space-1);
+  }
+
+  .email-modal__form .form-status {
+    min-height: 1.2em;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .email-modal__fallback {
+    display: inline-block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-decoration: underline;
+  }
+
+  .email-modal__fallback:hover {
+    color: var(--text);
   }
 </style>

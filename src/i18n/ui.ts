@@ -47,9 +47,7 @@ export const ui = {
       bio: "Bio",
     },
     emailModal: {
-      heading: "Email me",
-      copy: "Copy email",
-      open: "Open in mail app",
+      heading: "Get in touch",
       close: "Close",
     },
   },
@@ -94,9 +92,7 @@ export const ui = {
       bio: "Bio",
     },
     emailModal: {
-      heading: "Kontakt per E-Mail",
-      copy: "E-Mail kopieren",
-      open: "In Mail-App öffnen",
+      heading: "Kontakt aufnehmen",
       close: "Schließen",
     },
   },
