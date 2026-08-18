@@ -21,6 +21,8 @@
   --line: #dedcd4;
   --accent: #e2b53d;
   --accent-foreground: #161513;
+  --whatsapp: #2f6f61;
+  --whatsapp-hover: #244f45;
 
   /* kept for compatibility with components still referencing these */
   --accent-2: var(--accent);

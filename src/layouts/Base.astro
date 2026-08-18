@@ -3,6 +3,7 @@ import "../styles/global.css";
 import type { Lang } from "../lib/i18n";
 import { altLocalePath } from "../lib/i18n";
 import { ui, languageLabels } from "../i18n/ui";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 
 interface Props {
   title: string;
@@ -111,8 +112,26 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
       </ul>
     </nav>
     <slot />
+
+    <WhatsAppButton />
+
+    <dialog id="email-modal" class="email-modal">
+      <form method="dialog" class="email-modal__close-form">
+        <button type="submit" class="email-modal__close" aria-label={t.emailModal.close}>×</button>
+      </form>
+      <h2 class="email-modal__heading">{t.emailModal.heading}</h2>
+      <p class="email-modal__address" id="email-modal-address"></p>
+      <div class="email-modal__actions">
+        <button type="button" class="btn-pill btn-accent" id="email-modal-copy">{t.emailModal.copy}</button>
+        <a class="btn-pill btn-ghost" id="email-modal-open" href="mailto:hello@edgarkretschmann.com"
+          >{t.emailModal.open}</a
+        >
+      </div>
+    </dialog>
+
     <script src="../scripts/reveal.ts"></script>
     <script src="../scripts/nav.ts"></script>
+    <script src="../scripts/email-modal.ts"></script>
   </body>
 </html>
 
@@ -300,5 +319,66 @@ const dePath = lang === "de" ? Astro.url.pathname : alt.path;
       display: inline-flex;
       margin: var(--space-2) 0 var(--space-3);
     }
+  }
+
+  .email-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    width: min(22rem, calc(100vw - var(--space-5)));
+    margin: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    transform: translate(-50%, -50%);
+  }
+
+  .email-modal::backdrop {
+    background: rgba(22, 21, 19, 0.45);
+  }
+
+  .email-modal__close-form {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 var(--space-2);
+  }
+
+  .email-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .email-modal__close:hover {
+    color: var(--text);
+  }
+
+  .email-modal__heading {
+    margin: 0 0 var(--space-2);
+    font-size: 1.15rem;
+  }
+
+  .email-modal__address {
+    margin: 0 0 var(--space-4);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+
+  .email-modal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
   }
 </style>

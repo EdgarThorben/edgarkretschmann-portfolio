@@ -46,6 +46,12 @@ export const ui = {
       backToPortfolio: "← Back to Portfolio",
       bio: "Bio",
     },
+    emailModal: {
+      heading: "Email me",
+      copy: "Copy email",
+      open: "Open in mail app",
+      close: "Close",
+    },
   },
   de: {
     nav: {
@@ -86,6 +92,12 @@ export const ui = {
       emailDirect: "✉ Direkt anschreiben",
       backToPortfolio: "← Zurück zum Portfolio",
       bio: "Bio",
+    },
+    emailModal: {
+      heading: "Kontakt per E-Mail",
+      copy: "E-Mail kopieren",
+      open: "In Mail-App öffnen",
+      close: "Schließen",
     },
   },
 } as const;

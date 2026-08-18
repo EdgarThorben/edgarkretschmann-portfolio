@@ -1,0 +1,68 @@
+---
+const WHATSAPP_NUMBER = "4915784928200";
+---
+
+<a
+  class="whatsapp-fab"
+  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp"
+>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path
+      d="M12.001 2c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.345 4.997L2 22l5.146-1.345c1.463.799 3.116 1.22 4.855 1.22h.004c5.514 0 9.997-4.483 9.997-9.997C22 6.483 17.517 2 12.001 2zm5.471 12.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+    ></path>
+  </svg>
+  <span>WhatsApp</span>
+</a>
+
+<style>
+  .whatsapp-fab {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 55;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-4);
+    line-height: 2.75rem;
+    border-radius: 999px;
+    background: var(--whatsapp);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid var(--whatsapp-hover);
+    transition:
+      background 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .whatsapp-fab:hover {
+    background: var(--whatsapp-hover);
+  }
+
+  .whatsapp-fab:active {
+    transform: scale(0.97);
+  }
+
+  .whatsapp-fab svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .whatsapp-fab {
+      width: 2.75rem;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .whatsapp-fab span {
+      display: none;
+    }
+  }
+</style>
