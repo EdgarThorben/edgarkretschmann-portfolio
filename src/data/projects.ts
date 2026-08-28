@@ -14,6 +14,7 @@ export const projects: Project[] = [
     slug: "innate",
     company: "Innate",
     url: "innate.global",
+    linkUrl: "https://innate.global",
     title: "Redefining Co-living",
     summary:
       "In our time and age working remotely is becoming the new norm for many people. With Innate I created unforgettable moments in communities.",
@@ -52,6 +53,7 @@ export const projects: Project[] = [
     slug: "ironandzen",
     company: "Iron & Zen",
     url: "ironandzen.com",
+    linkUrl: "https://ironandzen.com",
     title: "Founding a Men's Retreat",
     summary:
       "Iron & Zen is a one-week off-grid retreat I founded for men who want strength training, meditation, and real brotherhood. I built the brand, the site, and the Instagram-driven funnel that fills every cohort.",
@@ -94,6 +96,7 @@ export const projects: Project[] = [
     slug: "pflegeplace",
     company: "Pflegeplace",
     url: "pflegeplace.com",
+    linkUrl: "https://pflegeplace.com",
     title: "Creating Nurse Lead Funnels",
     summary:
       "Finding sought-after professionals online isn't easy when the market is competitive. With Pflegeplace I built a funnel to recruit nurses in Germany.",
@@ -137,6 +140,7 @@ export const projects: Project[] = [
     slug: "pflegeplace-hub",
     company: "Pflegeplace",
     url: "pflegeplace.com",
+    linkUrl: "https://pflegeplace.com",
     title: "Becoming a Kenntnisprüfung Hub",
     summary:
       "Getting nurses into Germany was only ever half the problem. Pflegeplace.com is repositioning from a recruitment funnel into a self-serve hub that helps nurses already here pass the Kenntnisprüfung and get licensed.",
@@ -222,6 +226,7 @@ export const projects: Project[] = [
     slug: "deutschacademy",
     company: "DeutschAcademy",
     url: "deutschacademy.com",
+    linkUrl: "https://deutschacademy.com/former-site",
     title: "Brick and Mortar German School",
     summary:
       "At DeutschAcademy, I helped develop a brick-and-mortar language school in Manila to recruit Filipino nurses, building the WordPress site, securing investors, and finding clients.",
@@ -260,6 +265,7 @@ export const projects: Project[] = [
     slug: "nomavillage",
     company: "Nomavillage",
     url: "nomavillage.com",
+    linkUrl: "https://nomavillage.com",
     title: "Finding Home in Lagos",
     summary:
       "Nomavillage grew from a single coliving house into a full coworking-and-coliving base in Lagos, Portugal. I built the marketing systems that took it from launch to a 4.8-star, 172-guest international community.",
@@ -383,6 +389,7 @@ export const projects: Project[] = [
     slug: "nimbusvault",
     company: "NimbusVault",
     url: "Private client deployment",
+    linkUrl: "https://vlogato.com",
     title: "Building a Real CMDB",
     summary:
       "NimbusVault is a single-tenant IT-documentation and CMDB tool I built for a client's IT department: typed infrastructure records, revision history, a relationship graph, and encrypted credentials, replacing the spreadsheets they were using before.",
