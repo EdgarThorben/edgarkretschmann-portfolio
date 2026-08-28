@@ -56,6 +56,8 @@ interface CopyEntry {
   eyebrow: string;
   heading: string;
   sub: string;
+  start: string;
+  close: string;
   questions: {
     industry: { label: string; options: Record<(typeof INDUSTRY_VALUES)[number], string> };
     leadSource: { label: string; options: Record<(typeof LEAD_SOURCE_VALUES)[number], string> };
@@ -76,6 +78,8 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     eyebrow: "Free 30-second tool",
     heading: "Where is your funnel actually leaking?",
     sub: "Answer three questions and get a live read on your traffic capture, lead capture, and follow-up automation: the same framework I use with every client.",
+    start: "Take the 30-second diagnostic →",
+    close: "Hide the diagnostic",
     questions: {
       industry: {
         label: "What do you run?",
@@ -132,6 +136,8 @@ export const diagnosticCopy: Record<"en" | "de", CopyEntry> = {
     eyebrow: "Kostenloses 30-Sekunden-Tool",
     heading: "Wo verliert dein Funnel wirklich Leads?",
     sub: "Drei Fragen, dann bekommst du eine Live-Einschätzung zu Reichweite, Lead-Erfassung und automatisierter Nachfassung: das Framework, das ich bei jedem Kunden anwende.",
+    start: "30-Sekunden-Diagnose starten →",
+    close: "Diagnose ausblenden",
     questions: {
       industry: {
         label: "Was betreibst du?",

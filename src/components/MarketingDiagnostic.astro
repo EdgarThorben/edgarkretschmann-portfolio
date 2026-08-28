@@ -21,6 +21,8 @@ const clientCopy = {
   error: c.error,
   contactEmail: CONTACT_EMAIL,
   mailSubject: MAIL_SUBJECT,
+  start: c.start,
+  close: c.close,
 };
 
 type QuestionKey = "industry" | "leadSource" | "bottleneck";
@@ -32,42 +34,55 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
     <p class="eyebrow">{c.eyebrow}</p>
     <h2>{c.heading}</h2>
     <p class="diagnostic-sub">{c.sub}</p>
+    <button
+      type="button"
+      class="btn-pill btn-accent diagnostic-toggle"
+      id="diagnostic-toggle"
+      aria-expanded="false"
+      aria-controls="diagnostic-panel"
+    >
+      <span data-label>{c.start}</span>
+    </button>
   </div>
 
-  <form class="diagnostic-form" id="diagnostic-form" novalidate>
-    <input type="hidden" name="lang" value={lang} />
-    <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <div class="diagnostic-panel" id="diagnostic-panel">
+    <div class="diagnostic-panel-inner">
+      <form class="diagnostic-form" id="diagnostic-form" novalidate>
+        <input type="hidden" name="lang" value={lang} />
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-    {
-      questionKeys.map((key) => (
-        <fieldset>
-          <legend>{c.questions[key].label}</legend>
-          <div class="pill-group">
-            {Object.entries(c.questions[key].options).map(([value, label]) => (
-              <label class="pill">
-                <input type="radio" name={key} value={value} required />
-                <span>{label}</span>
-              </label>
-            ))}
+        {
+          questionKeys.map((key) => (
+            <fieldset>
+              <legend>{c.questions[key].label}</legend>
+              <div class="pill-group">
+                {Object.entries(c.questions[key].options).map(([value, label]) => (
+                  <label class="pill">
+                    <input type="radio" name={key} value={value} required />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ))
+        }
+
+        <button type="submit" class="btn-pill btn-accent diagnostic-submit">{c.submit}</button>
+        <p id="diagnostic-status" class="diagnostic-status" role="status" aria-live="polite"></p>
+
+        <div class="diagnostic-output">
+          <div class="diagnostic-loading" id="diagnostic-loading" hidden>
+            <div class="loading-graphic" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="loading-step" id="diagnostic-loading-step"></p>
           </div>
-        </fieldset>
-      ))
-    }
 
-    <button type="submit" class="btn-pill btn-accent diagnostic-submit">{c.submit}</button>
-    <p id="diagnostic-status" class="diagnostic-status" role="status" aria-live="polite"></p>
-
-    <div class="diagnostic-output">
-      <div class="diagnostic-loading" id="diagnostic-loading" hidden>
-        <div class="loading-graphic" aria-hidden="true">
-          <span></span><span></span><span></span>
+          <div class="diagnostic-result" id="diagnostic-result" hidden></div>
         </div>
-        <p class="loading-step" id="diagnostic-loading-step"></p>
-      </div>
-
-      <div class="diagnostic-result" id="diagnostic-result" hidden></div>
+      </form>
     </div>
-  </form>
+  </div>
 </section>
 
 <script>
@@ -75,6 +90,9 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
   import { runDiagnostic, overallScore } from "../lib/diagnosticEngine";
 
   const section = document.getElementById("diagnostic") as HTMLElement;
+  const toggle = document.getElementById("diagnostic-toggle") as HTMLButtonElement;
+  const panel = document.getElementById("diagnostic-panel") as HTMLDivElement;
+  const toggleLabel = toggle?.querySelector("[data-label]") as HTMLSpanElement;
   const form = document.getElementById("diagnostic-form");
   const status = document.getElementById("diagnostic-status");
   const submitBtn = form?.querySelector<HTMLButtonElement>(".diagnostic-submit");
@@ -155,6 +173,17 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
     resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
+  toggle?.addEventListener("click", () => {
+    const isOpen = panel.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    if (toggleLabel) toggleLabel.textContent = isOpen ? copy.close : copy.start;
+    if (isOpen) {
+      panel.addEventListener("transitionend", () => panel.scrollIntoView({ behavior: "smooth", block: "nearest" }), {
+        once: true,
+      });
+    }
+  });
+
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!status || !(form instanceof HTMLFormElement)) return;
@@ -221,10 +250,30 @@ const questionKeys: QuestionKey[] = ["industry", "leadSource", "bottleneck"];
     margin: 0;
   }
 
+  .diagnostic-toggle {
+    margin-top: var(--space-4);
+  }
+
+  .diagnostic-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+  }
+
+  .diagnostic-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .diagnostic-panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
   .diagnostic-form {
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
+    padding-top: var(--space-6);
   }
 
   fieldset {
