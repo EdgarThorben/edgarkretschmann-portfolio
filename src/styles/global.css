@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
 
 /*
   Minimal / editorial design system — one quiet palette across every
@@ -11,6 +12,7 @@
 :root {
   --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
   --font-heading: var(--font-body);
+  --font-logo: "Space Grotesk Variable", "Space Grotesk", sans-serif;
   --radius: 10px;
 
   --bg: #f6f5f1;
@@ -21,6 +23,7 @@
   --line: #dedcd4;
   --accent: #e2b53d;
   --accent-foreground: #161513;
+  --logo-accent: #8a4b2a;
   --whatsapp: #2f6f61;
   --whatsapp-hover: #244f45;
 
