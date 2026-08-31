@@ -1,0 +1,400 @@
+---
+/**
+ * "The Workbench" — pegboard-style skill inventory for /bio. Every tool from
+ * a decade of freelance work, grouped into bins, hoverable to reveal exactly
+ * where it was used (linking to the matching /projects/[slug] case study, or
+ * a short general-experience note when no single case study covers it).
+ *
+ * Popover open/close is CSS-only (:hover / :focus-within) — no JS needed,
+ * and it keeps the usage links out of tab order until the tool is focused
+ * or hovered (visibility:hidden removes hidden elements from tab order).
+ */
+import { localizeToolBins, localizeProjects } from "../lib/i18n";
+import type { Lang } from "../lib/i18n";
+import { ui } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].workbench;
+const bins = localizeToolBins(lang);
+const projectMap = new Map(localizeProjects(lang).map((p) => [p.slug, p]));
+const projectsBase = lang === "de" ? "/de/projects" : "/projects";
+
+const toolCount = bins.reduce((sum, bin) => sum + bin.items.length, 0);
+const binCount = bins.length;
+---
+
+<section class="wb-breakout" data-reveal="fade-up">
+  <div class="workbench">
+    <header class="wb-head">
+      <div class="wb-heading">
+        <p class="wb-eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p class="wb-tagline">{t.tagline}</p>
+      </div>
+      <div class="wb-tally">{toolCount} tools · {binCount} bins</div>
+    </header>
+
+    <div class="board">
+      {
+        bins.map((bin) => (
+          <div class="bin">
+            <div class="bin-plate">
+              <h3>{bin.label}</h3>
+              <span class="n">{bin.items.length}</span>
+            </div>
+            <p class="bin-blurb">{bin.blurb}</p>
+            <div class="tools">
+              {bin.items.map((item) => (
+                <div class={`tool${item.cert ? " cert" : ""}`}>
+                  <button type="button" class="tag">
+                    {item.name}
+                    {item.cert && (
+                      <span class="star" aria-hidden="true">
+                        ★
+                      </span>
+                    )}
+                  </button>
+                  <div class="popover">
+                    <p class="popover-name">
+                      {item.name}
+                      {item.cert && <span class="cert-badge">Certified</span>}
+                    </p>
+                    <ul>
+                      {item.usedIn.map((usage) =>
+                        usage.type === "project" ? (
+                          <li>
+                            <a href={`${projectsBase}/${usage.slug}`}>
+                              <span class="usage-source">{projectMap.get(usage.slug)?.company ?? usage.slug}</span>
+                              <span class="usage-note">{usage.note}</span>
+                              <span class="usage-link">{t.viewCaseStudy}</span>
+                            </a>
+                          </li>
+                        ) : (
+                          <li class="usage-context">
+                            <span class="usage-source">
+                              {usage.label}
+                              <em>{t.generalExperience}</em>
+                            </span>
+                            <span class="usage-note">{usage.note}</span>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .wb-breakout {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-7);
+    overflow-anchor: none;
+  }
+
+  .workbench {
+    --board: #23261f;
+    --hole: #171912;
+    --plate: #1b1d18;
+    --tag: #2f322a;
+    --tag-line: #454a3c;
+    --wb-text: #eeece3;
+    --wb-muted: #a4a495;
+    --wb-accent: var(--accent);
+    --wb-accent-ink: #3a2e0d;
+    background:
+      radial-gradient(circle at center, var(--hole) 0 2.2px, transparent 2.3px) 0 0/34px 34px,
+      var(--board);
+    color: var(--wb-text);
+    padding: var(--space-7) clamp(1rem, 4vw, 3rem) var(--space-8);
+  }
+
+  .wb-head {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding-bottom: var(--space-6);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .wb-eyebrow {
+    font-family: var(--font-logo);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--wb-accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .wb-head h2 {
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    letter-spacing: -0.01em;
+    line-height: 1.02;
+    margin: 0 0 var(--space-2);
+    text-wrap: balance;
+  }
+
+  .wb-tagline {
+    font-size: 0.9rem;
+    color: var(--wb-muted);
+    max-width: 38ch;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .wb-tally {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--wb-accent);
+    white-space: nowrap;
+  }
+
+  .board {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .bin {
+    background: color-mix(in srgb, var(--board) 92%, black);
+    border: 1px solid #3a3d33;
+    border-radius: var(--radius);
+    padding: 0 0 var(--space-4);
+  }
+
+  .bin-plate {
+    background: var(--plate);
+    margin: var(--space-3) var(--space-3) var(--space-3);
+    border: 1px solid #3a3d33;
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .bin-plate h3 {
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: var(--wb-text);
+  }
+
+  .bin-plate .n {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--wb-accent);
+    border: 1px solid var(--wb-accent);
+    border-radius: 4px;
+    padding: 1px 6px;
+    flex-shrink: 0;
+  }
+
+  .bin-blurb {
+    font-size: 0.8rem;
+    color: var(--wb-muted);
+    line-height: 1.5;
+    margin: 0 var(--space-3) var(--space-3);
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 var(--space-3);
+  }
+
+  .tool {
+    position: relative;
+  }
+
+  .tag {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--tag);
+    border: 1px solid var(--tag-line);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--wb-text);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .tool.cert .tag {
+    border-color: var(--wb-accent);
+    color: var(--wb-accent);
+  }
+
+  .tag .star {
+    color: var(--wb-accent);
+    font-size: 0.7rem;
+  }
+
+  .tool:hover .tag,
+  .tool:focus-within .tag {
+    background: color-mix(in srgb, var(--tag) 60%, var(--wb-accent) 12%);
+  }
+
+  /* ---------- popover (CSS-only: hover / focus-within) ---------- */
+  .popover {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+    width: max(240px, min(300px, 80vw));
+    background: #14150f;
+    border: 1px solid #454a3c;
+    border-radius: 10px;
+    padding: var(--space-3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
+    z-index: 20;
+  }
+
+  .tool:hover .popover,
+  .tool:focus-within .popover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .popover-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--wb-text);
+    margin: 0 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3a3d33;
+  }
+
+  .cert-badge {
+    font-family: monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wb-accent-ink);
+    background: var(--wb-accent);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  .popover ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .popover li + li {
+    padding-top: 8px;
+    border-top: 1px dashed #33362c;
+  }
+
+  .popover a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 6px;
+    margin: -4px;
+    padding: 4px;
+    transition: background 0.15s ease;
+  }
+
+  .popover a:hover,
+  .popover a:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .usage-source {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--wb-accent);
+    margin-bottom: 2px;
+  }
+
+  .usage-context .usage-source em {
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--wb-muted);
+    margin-top: 1px;
+  }
+
+  .usage-note {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--wb-muted);
+  }
+
+  .usage-link {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--wb-text);
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 520px) {
+    .popover {
+      left: 0;
+      transform: none;
+      width: min(280px, 86vw);
+    }
+
+    .tool:hover .popover,
+    .tool:focus-within .popover {
+      transform: translateY(-2px);
+    }
+  }
+</style>

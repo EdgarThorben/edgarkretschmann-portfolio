@@ -185,7 +185,7 @@ export const projects: Project[] = [
     slug: "icanspeak",
     company: "IcanSpeak",
     url: "icanspeak.it",
-    linkUrl: "https://icanspeak.it",
+    linkUrl: "https://www.icanspeak.it/former-site",
     title: "Building an Online School",
     summary:
       "At IcanSpeak, I built an online language school to teach students German, managing campaigns and finding clients through LinkedIn.",
@@ -383,7 +383,7 @@ export const projects: Project[] = [
     bioRole: "Founder & Builder",
     bioDescription:
       "I built Colevitate myself: a personality-assessment studio that combines MBTI, Big Five, Human Design, and 4 Color Types into one scored profile, live at colevitate.com with a real auth and database layer behind it.",
-    bioImage: "/images/colevitate/hero-landing.jpg",
+    bioImage: "/images/colevitate/bio-mirror-reflection.jpg",
   },
   {
     slug: "nimbusvault",
@@ -425,7 +425,7 @@ export const projects: Project[] = [
     bioRole: "Builder",
     bioDescription:
       "I built NimbusVault for a client's IT department: a CMDB tool with typed records, revision history, a relationship graph, and encrypted credentials, replacing the spreadsheets they used before.",
-    bioImage: "/images/nimbusvault/gallery-item-fields.jpg",
+    bioImage: "/images/nimbusvault/bio-server-room.jpg",
   },
 ];
 

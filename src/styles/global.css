@@ -80,6 +80,9 @@ h3 {
       filter var(--reveal-duration) ease-out;
     backface-visibility: hidden;
     opacity: 0;
+    /* animated + lazy-loaded content below the fold can otherwise trigger
+       the browser's scroll anchoring and snap an in-progress scroll back */
+    overflow-anchor: none;
   }
 
   [data-reveal="fade-up"] {

@@ -50,6 +50,14 @@ export const ui = {
       heading: "Get in touch",
       close: "Close",
     },
+    workbench: {
+      eyebrow: "The workbench",
+      title: "Every tool, hung on the wall",
+      tagline: "A decade of freelance builds, campaigns and rollouts — hover any tool to see where it was used.",
+      usedIn: "Used in",
+      generalExperience: "General experience",
+      viewCaseStudy: "View case study →",
+    },
   },
   de: {
     nav: {
@@ -94,6 +102,14 @@ export const ui = {
     emailModal: {
       heading: "Kontakt aufnehmen",
       close: "Schließen",
+    },
+    workbench: {
+      eyebrow: "Die Werkbank",
+      title: "Jedes Werkzeug, an der Wand",
+      tagline: "Ein Jahrzehnt freiberuflicher Projekte, Kampagnen und Rollouts — mit dem Cursor über ein Werkzeug fahren, um zu sehen, wo es eingesetzt wurde.",
+      usedIn: "Eingesetzt bei",
+      generalExperience: "Allgemeine Erfahrung",
+      viewCaseStudy: "Case Study ansehen →",
     },
   },
 } as const;

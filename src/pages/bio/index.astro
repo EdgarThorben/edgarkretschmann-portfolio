@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import { projects, bonusExperience } from "../../data/projects";
 import { sortProjectsDesc } from "../../lib/timeline";
+import Workbench from "../../components/Workbench.astro";
 
 const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
 ---
@@ -58,6 +59,8 @@ const timeline = sortProjectsDesc(projects.filter((p) => !p.hidden));
         </a>
       </li>
     </ol>
+
+    <Workbench lang="en" />
 
     <footer data-reveal="fade-up">
       <div class="footer-grid">

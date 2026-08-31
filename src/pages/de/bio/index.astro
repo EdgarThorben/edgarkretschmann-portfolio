@@ -2,6 +2,7 @@
 import Base from "../../../layouts/Base.astro";
 import { localizeProjects, localizeBonusExperience } from "../../../lib/i18n";
 import { sortProjectsDesc } from "../../../lib/timeline";
+import Workbench from "../../../components/Workbench.astro";
 
 const timeline = sortProjectsDesc(localizeProjects("de").filter((p) => !p.hidden));
 const bonusExperience = localizeBonusExperience("de");
@@ -60,6 +61,8 @@ const bonusExperience = localizeBonusExperience("de");
         </a>
       </li>
     </ol>
+
+    <Workbench lang="de" />
 
     <footer data-reveal="fade-up">
       <div class="footer-grid">
