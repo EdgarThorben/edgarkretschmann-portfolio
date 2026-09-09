@@ -1,11 +1,14 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { localizeProjects } from "../../../lib/i18n";
+import { localizeProjects, localizeProject } from "../../../lib/i18n";
 import { ui } from "../../../i18n/ui";
 
 const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const t = ui.de;
 const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
+
+const FLAGSHIP_SLUGS = ["pflegeplace", "ironandzen", "nomavillage", "innate"];
+const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filter((p) => p !== undefined);
 ---
 
 <Base
@@ -19,12 +22,51 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
       <a href="/de" class="back-link">← Start</a>
       <h1>Jedes Engagement</h1>
       <p class="lede">
-        Die komplette Liste, {visibleProjects.length} Projekte. Die vier Vorzeigeprojekte ausführlich erzählt gibt's im{" "}
-        <a href="/de/portfolio">Portfolio →</a>
+        Zehn Jahre freiberufliche Arbeit, {visibleProjects.length} Projekte insgesamt. Vier Vorzeigeprojekte
+        ausführlich erzählt weiter unten, dann das komplette Archiv.
       </p>
     </div>
 
+    <section class="stories" aria-label="Ausgewählte Geschichten">
+      <h2 class="section-heading">Ausgewählte Geschichten</h2>
+      {
+        flagships.map((p, i) => (
+          <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
+            <a class="story-media" href={`/de/projects/${p.slug}`} aria-label={`Ganze Case Study lesen: ${p.company}`}>
+              <img src={p.projectsHeroImage} alt={p.company} loading={i === 0 ? "eager" : "lazy"} />
+            </a>
+            <div class="story-content">
+              <p class="story-eyebrow">
+                {p.company} · {p.bioRole} · {p.bioPeriod}
+              </p>
+              <h3>{p.title}</h3>
+
+              <div class="story-block">
+                <span class="story-label">Die Herausforderung</span>
+                <p>{p.challenge}</p>
+              </div>
+
+              <div class="story-block">
+                <span class="story-label">Der Plan</span>
+                <p>{p.approach[0]}</p>
+              </div>
+
+              <div class="story-block story-block--outcome">
+                <span class="story-label">Das Ergebnis</span>
+                <p>{p.achievements[0]}</p>
+              </div>
+
+              <a class="story-link" href={`/de/projects/${p.slug}`}>
+                Ganze Case Study lesen →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
     <div class="project-list">
+      <h2 class="section-heading">Das komplette Archiv</h2>
       {
         visibleProjects.map((project, index) => {
           const prev = index > 0 ? visibleProjects[index - 1] : undefined;
@@ -132,7 +174,6 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
       </form>
       <div class="touch__alt">
         <a href={`mailto:${CONTACT_EMAIL}`} class="btn-pill btn-ghost">{t.contact.emailDirect}</a>
-        <a href="/de/portfolio" class="btn-pill btn-ghost">{t.contact.backToPortfolio}</a>
         <a href="/de/bio" class="btn-pill btn-ghost">{t.contact.bio}</a>
       </div>
     </section>
@@ -187,6 +228,120 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
   .head .lede a {
     color: var(--text);
     font-weight: 600;
+  }
+
+  .section-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-5);
+  }
+
+  .stories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-7);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .story {
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .stories .story:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .story-media {
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    transition: opacity 0.2s ease;
+  }
+
+  .story-media:hover {
+    opacity: 0.85;
+  }
+
+  .story-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-eyebrow {
+    font-family: monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: 0 0 var(--space-2);
+  }
+
+  .story-content h3 {
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 500;
+    margin: 0 0 var(--space-5);
+    text-wrap: balance;
+  }
+
+  .story-block {
+    margin-bottom: var(--space-4);
+  }
+
+  .story-block p {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    max-width: 62ch;
+  }
+
+  .story-block--outcome p {
+    color: var(--text);
+  }
+
+  .story-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+  }
+
+  .story-link {
+    display: inline-flex;
+    margin-top: var(--space-2);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .story-link:hover {
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 700px) {
+    .story {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .story-media {
+      width: 300px;
+      flex-shrink: 0;
+    }
   }
 
   .project-list {

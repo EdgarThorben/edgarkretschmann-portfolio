@@ -49,20 +49,12 @@ const binCount = bins.length;
             <p class="bin-blurb">{bin.blurb}</p>
             <div class="tools">
               {bin.items.map((item) => (
-                <div class={`tool${item.cert ? " cert" : ""}`}>
+                <div class="tool">
                   <button type="button" class="tag">
                     {item.name}
-                    {item.cert && (
-                      <span class="star" aria-hidden="true">
-                        ★
-                      </span>
-                    )}
                   </button>
                   <div class="popover">
-                    <p class="popover-name">
-                      {item.name}
-                      {item.cert && <span class="cert-badge">Certified</span>}
-                    </p>
+                    <p class="popover-name">{item.name}</p>
                     <ul>
                       {item.usedIn.map((usage) =>
                         usage.type === "project" ? (
@@ -117,7 +109,6 @@ const binCount = bins.length;
     --wb-text: #eeece3;
     --wb-muted: #a4a495;
     --wb-accent: var(--accent);
-    --wb-accent-ink: #3a2e0d;
     background:
       radial-gradient(circle at center, var(--hole) 0 2.2px, transparent 2.3px) 0 0/34px 34px,
       var(--board);
@@ -236,6 +227,17 @@ const binCount = bins.length;
     position: relative;
   }
 
+  /* invisible bridge so the pointer can cross the visual gap between the
+     tag and the popover above it without breaking :hover */
+  .tool::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 10px;
+  }
+
   .tag {
     appearance: none;
     display: flex;
@@ -251,16 +253,6 @@ const binCount = bins.length;
     color: var(--wb-text);
     cursor: pointer;
     white-space: nowrap;
-  }
-
-  .tool.cert .tag {
-    border-color: var(--wb-accent);
-    color: var(--wb-accent);
-  }
-
-  .tag .star {
-    color: var(--wb-accent);
-    font-size: 0.7rem;
   }
 
   .tool:hover .tag,
@@ -307,18 +299,6 @@ const binCount = bins.length;
     margin: 0 0 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid #3a3d33;
-  }
-
-  .cert-badge {
-    font-family: monospace;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--wb-accent-ink);
-    background: var(--wb-accent);
-    border-radius: 4px;
-    padding: 2px 6px;
   }
 
   .popover ul {

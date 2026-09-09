@@ -370,7 +370,7 @@ export const projects: Project[] = [
       { label: "Landing Pages", value: 55 },
       { label: "Campaigning", value: 35 },
     ],
-    portfolioImage: "/images/colevitate/gallery-combined-profile.jpg",
+    portfolioImage: "/images/colevitate/gallery-frameworks.jpg",
     projectsHeroImage: "/images/colevitate/hero-landing.jpg",
     galleryImages: [
       "/images/colevitate/hero-landing.jpg",
@@ -413,7 +413,7 @@ export const projects: Project[] = [
       { label: "Landing Pages", value: 20 },
       { label: "Campaigning", value: 10 },
     ],
-    portfolioImage: "/images/nimbusvault/gallery-item-fields.jpg",
+    portfolioImage: "/images/nimbusvault/bio-server-room.jpg",
     projectsHeroImage: "/images/nimbusvault/hero-collection.jpg",
     galleryImages: [
       "/images/nimbusvault/hero-collection.jpg",

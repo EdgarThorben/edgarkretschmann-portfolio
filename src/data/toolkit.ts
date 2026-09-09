@@ -25,7 +25,6 @@ export type ToolUsage = ProjectUsage | ContextUsage;
 
 export interface ToolItem {
   name: string;
-  cert?: boolean;
   usedIn: ToolUsage[];
 }
 
@@ -158,8 +157,7 @@ export const TOOL_BINS: ToolBin[] = [
         ],
       },
       {
-        name: "Google Ads — Search & Display",
-        cert: true,
+        name: "Google Ads",
         usedIn: [
           { type: "project", slug: "icanspeak", note: "Ran Google Ads to find IcanSpeak's first students without a referral base." },
           { type: "project", slug: "nomavillage", note: "Drove nomad-intent search traffic into the Nomavillage lead funnel." },
@@ -167,8 +165,7 @@ export const TOOL_BINS: ToolBin[] = [
         ],
       },
       {
-        name: "Meta Ads — Certified Associate",
-        cert: true,
+        name: "Meta Ads",
         usedIn: [
           { type: "project", slug: "innate", note: "Targeted digital nomads by travel/work intent instead of generic coliving keywords." },
           { type: "project", slug: "deutschacademy", note: "Acquired German healthcare clients as placement partners." },
@@ -272,7 +269,7 @@ export const TOOL_BINS: ToolBin[] = [
   {
     id: "pm",
     label: "Project & Agile Systems",
-    blurb: "Scrum since 2021 — from a Philippine lead-gen startup to a 4,000-seat M365 rollout.",
+    blurb: "Scrum since 2021 — from a Philippine lead-gen startup to a 4,000-seat enterprise rollout.",
     items: [
       {
         name: "ClickUp",
@@ -287,7 +284,7 @@ export const TOOL_BINS: ToolBin[] = [
           {
             type: "context",
             label: "Enterprise IT contract",
-            note: "Tracked the migration backlog for a 4,000-seat Microsoft 365 rollout.",
+            note: "Tracked the migration backlog for a 4,000-seat enterprise IT rollout.",
           },
         ],
       },
@@ -307,7 +304,7 @@ export const TOOL_BINS: ToolBin[] = [
           {
             type: "context",
             label: "Running since 2021",
-            note: "From a Philippine lead-gen startup through to the enterprise M365 rollout.",
+            note: "From a Philippine lead-gen startup through to the enterprise IT rollout.",
           },
         ],
       },
@@ -346,55 +343,6 @@ export const TOOL_BINS: ToolBin[] = [
             label: "Enterprise IT contract",
             note: "Tracked migration progress across the 4,000-seat rollout.",
           },
-        ],
-      },
-    ],
-  },
-  {
-    id: "it",
-    label: "Microsoft & IT Infrastructure",
-    blurb: "Ran training and migration for a 4,000-employee M365 rollout — 700 file servers moved to cloud.",
-    items: [
-      {
-        name: "Microsoft 365",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Trained 4,000 employees through the migration." },
-        ],
-      },
-      {
-        name: "SharePoint",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Rebuilt the file-server structure as SharePoint sites." },
-        ],
-      },
-      {
-        name: "MS Teams",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Rolled out Teams as the new collaboration default." },
-        ],
-      },
-      {
-        name: "Cloud & Data Migration",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Moved 700 file servers to the cloud." },
-        ],
-      },
-      {
-        name: "2nd/3rd-Level Support",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Provided escalation support through and after the migration." },
-        ],
-      },
-      {
-        name: "Zendesk",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Ran support tickets through the migration and beyond." },
-        ],
-      },
-      {
-        name: "Zendesk Sunshine",
-        usedIn: [
-          { type: "context", label: "Enterprise M365 rollout", note: "Extended the ticketing data model for the rollout's support workflows." },
         ],
       },
     ],
@@ -495,5 +443,4 @@ export const TOOL_BINS: ToolBin[] = [
 export const toolkitTotals = {
   toolCount: TOOL_BINS.reduce((sum, bin) => sum + bin.items.length, 0),
   binCount: TOOL_BINS.length,
-  certCount: TOOL_BINS.flatMap((b) => b.items).filter((i) => i.cert).length,
 };

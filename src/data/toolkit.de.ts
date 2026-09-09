@@ -24,11 +24,7 @@ export const binLabelsDe: Record<string, { label: string; blurb: string }> = {
   },
   pm: {
     label: "Projekt- & Agile-Systeme",
-    blurb: "Scrum seit 2021 — von einem philippinischen Lead-Gen-Startup bis zum M365-Rollout für 4.000 Mitarbeitende.",
-  },
-  it: {
-    label: "Microsoft & IT-Infrastruktur",
-    blurb: "Schulung und Migration für einen M365-Rollout mit 4.000 Mitarbeitenden geleitet — 700 Fileserver in die Cloud verschoben.",
+    blurb: "Scrum seit 2021 — von einem philippinischen Lead-Gen-Startup bis zum Enterprise-Rollout für 4.000 Mitarbeitende.",
   },
   ai: {
     label: "KI & E-Learning-Plattformen",
@@ -81,12 +77,12 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
   ],
 
   "SEO / SEM": [{ notes: ["SEM-Kampagnen für Nomaden gesteuert, die Lagos gegen Lissabon abwägten."] }],
-  "Google Ads — Search & Display": [
+  "Google Ads": [
     { notes: ["Google Ads gesteuert, um IcanSpeaks erste Studierenden ohne Empfehlungsbasis zu finden."] },
     { notes: ["Suchverkehr mit Nomaden-Intent in den Nomavillage-Funnel geleitet."] },
     { notes: ["Die Reichweite der neuen Narangyoga-Identität über die Suche ausgebaut."] },
   ],
-  "Meta Ads — Certified Associate": [
+  "Meta Ads": [
     { notes: ["Digitale Nomaden nach Reise-/Arbeitsabsicht statt nach generischen Coliving-Keywords angesprochen."] },
     { notes: ["Deutsche Gesundheitseinrichtungen als Vermittlungspartner gewonnen."] },
   ],
@@ -135,13 +131,13 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
     { notes: ["Die Kampagnen- und Automatisierungs-Roadmap end-to-end getrackt."] },
   ],
   Jira: [
-    { contextLabel: "Unternehmens-IT-Auftrag", notes: ["Das Migrations-Backlog für einen M365-Rollout mit 4.000 Mitarbeitenden getrackt."] },
+    { contextLabel: "Unternehmens-IT-Auftrag", notes: ["Das Migrations-Backlog für einen Enterprise-Rollout mit 4.000 Mitarbeitenden getrackt."] },
   ],
   Roadmunk: [{ contextLabel: "Unternehmens-IT-Auftrag", notes: ["Die Roadmap für die Migration von 700 Fileservern in die Cloud sequenziert."] }],
   Scrum: [
     {
       contextLabel: "Seit 2021 im Einsatz",
-      notes: ["Von einem philippinischen Lead-Gen-Startup bis zum Unternehmens-M365-Rollout."],
+      notes: ["Von einem philippinischen Lead-Gen-Startup bis zum Unternehmens-IT-Rollout."],
     },
   ],
   Kanban: [
@@ -151,14 +147,6 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
   "MoSCoW Method": [{ contextLabel: "Unternehmens-IT-Auftrag", notes: ["Den Scope der Cloud-Migration von 700 Servern priorisiert."] }],
   "User Stories": [{ contextLabel: "Unternehmens-IT-Auftrag", notes: ["Migrationsanforderungen aus Sicht der betroffenen Teams formuliert."] }],
   "Release Burn-up Charts": [{ contextLabel: "Unternehmens-IT-Auftrag", notes: ["Den Fortschritt über den Rollout mit 4.000 Mitarbeitenden getrackt."] }],
-
-  "Microsoft 365": [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["4.000 Mitarbeitende durch die Migration geschult."] }],
-  SharePoint: [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["Die Fileserver-Struktur als SharePoint-Sites neu aufgebaut."] }],
-  "MS Teams": [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["Teams als neuen Standard für die Zusammenarbeit ausgerollt."] }],
-  "Cloud & Data Migration": [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["700 Fileserver in die Cloud verschoben."] }],
-  "2nd/3rd-Level Support": [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["Eskalations-Support während und nach der Migration geleistet."] }],
-  Zendesk: [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["Support-Tickets während der Migration und darüber hinaus bearbeitet."] }],
-  "Zendesk Sunshine": [{ contextLabel: "Unternehmens-M365-Rollout", notes: ["Das Ticketing-Datenmodell für die Support-Workflows des Rollouts erweitert."] }],
 
   ChatGPT: [
     { notes: ["KI-Coding-Tools genutzt, um den Prüfungsvorbereitungs-Hub allein statt mit einem Dev-Team zu bauen."] },

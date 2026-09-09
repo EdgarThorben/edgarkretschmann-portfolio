@@ -11,5 +11,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel()
+  adapter: vercel(),
+
+  redirects: {
+    '/portfolio': '/projects',
+    '/de/portfolio': '/de/projects'
+  }
 });

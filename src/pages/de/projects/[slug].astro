@@ -39,10 +39,10 @@ const followUp = project.followUpSlug ? localizeProject(project.followUpSlug, "d
         prev ? (
           <a href={`/de/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/de/portfolio">{t.project.backToPortfolio}</a>
+          <a href="/de/projects">{t.project.backToProjects}</a>
         )
       }
-      <a href="/de/portfolio" class="nav-strip__mid">{t.project.allProjects}</a>
+      <a href="/de/projects" class="nav-strip__mid">{t.project.allProjects}</a>
       {next && <a href={`/de/projects/${next.slug}`}>{next.company} →</a>}
     </div>
 
@@ -120,10 +120,10 @@ const followUp = project.followUpSlug ? localizeProject(project.followUpSlug, "d
         prev ? (
           <a href={`/de/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/de/portfolio">{t.project.backToPortfolio}</a>
+          <a href="/de/projects">{t.project.backToProjects}</a>
         )
       }
-      <a href="/de/portfolio" class="nav-strip__mid">{t.project.allProjects}</a>
+      <a href="/de/projects" class="nav-strip__mid">{t.project.allProjects}</a>
       {next && <a href={`/de/projects/${next.slug}`}>{next.company} →</a>}
     </div>
   </main>

@@ -35,10 +35,10 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
         prev ? (
           <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/portfolio">← Portfolio</a>
+          <a href="/projects">← All projects</a>
         )
       }
-      <a href="/portfolio" class="nav-strip__mid">All projects</a>
+      <a href="/projects" class="nav-strip__mid">All projects</a>
       {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
     </div>
 
@@ -116,10 +116,10 @@ const followUp = project.followUpSlug ? getProject(project.followUpSlug) : undef
         prev ? (
           <a href={`/projects/${prev.slug}`}>← {prev.company}</a>
         ) : (
-          <a href="/portfolio">← Portfolio</a>
+          <a href="/projects">← All projects</a>
         )
       }
-      <a href="/portfolio" class="nav-strip__mid">All projects</a>
+      <a href="/projects" class="nav-strip__mid">All projects</a>
       {next && <a href={`/projects/${next.slug}`}>{next.company} →</a>}
     </div>
   </main>

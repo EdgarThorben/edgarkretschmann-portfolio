@@ -10,7 +10,6 @@ export const ui = {
     nav: {
       primary: "Primary",
       home: "Home",
-      portfolio: "Portfolio",
       projects: "Projects",
       bio: "Bio",
       cta: "Get in touch",
@@ -25,7 +24,7 @@ export const ui = {
       techStack: "Tech stack",
       skillSet: "Skill set",
       allProjects: "All projects",
-      backToPortfolio: "← Portfolio",
+      backToProjects: "← All projects",
       viewFullCaseStudy: "View full case study →",
       viewFullDetails: "View full details →",
       stillInMotion: "Still in motion",
@@ -43,7 +42,6 @@ export const ui = {
       success: "I will definitely get back to you!",
       error: "Something went wrong. Email me directly instead.",
       emailDirect: "✉ Email me directly",
-      backToPortfolio: "← Back to Portfolio",
       bio: "Bio",
     },
     emailModal: {
@@ -63,7 +61,6 @@ export const ui = {
     nav: {
       primary: "Hauptnavigation",
       home: "Start",
-      portfolio: "Portfolio",
       projects: "Projekte",
       bio: "Bio",
       cta: "Kontakt aufnehmen",
@@ -78,7 +75,7 @@ export const ui = {
       techStack: "Tech-Stack",
       skillSet: "Skill-Set",
       allProjects: "Alle Projekte",
-      backToPortfolio: "← Portfolio",
+      backToProjects: "← Alle Projekte",
       viewFullCaseStudy: "Ganze Case Study ansehen →",
       viewFullDetails: "Alle Details ansehen →",
       stillInMotion: "Noch in Bewegung",
@@ -96,7 +93,6 @@ export const ui = {
       success: "Ich melde mich auf jeden Fall bei dir!",
       error: "Etwas ist schiefgelaufen. Schreib mir stattdessen direkt eine E-Mail.",
       emailDirect: "✉ Direkt anschreiben",
-      backToPortfolio: "← Zurück zum Portfolio",
       bio: "Bio",
     },
     emailModal: {
