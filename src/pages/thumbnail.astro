@@ -12,66 +12,64 @@ import DetailsThumbnail from "../components/DetailsThumbnail.astro";
 <Base title="Thumbnail test · Edgar Kretschmann" description="Draft preview of Details thumbnail cards." section="projects">
   <main class="wrap">
     <div class="head">
-      <h1>Thumbnail test</h1>
+      <h1>Thumbnail test — v2</h1>
       <p class="lede">
-        Draft "Details" cards for the 5 projects that don't have this layout yet. Geometry (block size, accent bar,
-        corner square, text position) is sampled pixel-for-pixel from the existing narangyoga/pflegeplace/etc. cards.
-        The logo marks below are hand-drawn approximations, not extracted real logos — for review only, nothing here
-        is wired into real project data yet.
+        Same 5 draft cards, now with real brand assets instead of hand-drawn guesses: Pflegeplace-Hub reuses a
+        pixel-cropped export of the actual Pflege Place logo, Iron &amp; Zen is set in the real Marcellus typeface
+        sampled from ironandzen.com's own CSS, and IcanSpeak uses the actual logo.svg pulled from their WordPress
+        site. Colevitate uses its real Space Grotesk wordmark (the same font this site's own nav already loads) and
+        a cropped export of its real gradient icon. NimbusVault has no public brand to match — it's a private
+        client tool — so that one stays a deliberate custom mark, just cleaned up.
       </p>
     </div>
 
     <div class="grid">
       <figure>
         <DetailsThumbnail domain="pflegeplace.com/hub">
-          <circle cx="36" cy="70" r="28" fill="#b9c6ea" />
-          <rect x="20" y="88" width="56" height="56" rx="16" fill="#7c89aa" transform="rotate(45 48 116)" />
-          <text x="110" y="122" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="84" fill="#37415c">Pflege Place</text>
-          <text x="110" y="168" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="30" letter-spacing="2" fill="#7c89aa">KENNTNISPRÜFUNG HUB</text>
+          <image href="/images/thumbnail-test/pflegeplace-hub-logo.png" x="0" y="0" width="560" height="191" />
+          <text x="4" y="222" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="26" letter-spacing="2" fill="#7c89aa">KENNTNISPRÜFUNG HUB</text>
         </DetailsThumbnail>
-        <figcaption>Pflegeplace-Hub <span>— no real photo exists yet (in build); reuses the Pflege Place mark</span></figcaption>
+        <figcaption>Pflegeplace-Hub <span>— no real photo exists yet (in build); real Pflege Place logo, cropped from the existing card</span></figcaption>
       </figure>
 
       <figure>
         <DetailsThumbnail domain="ironandzen.com">
-          <text x="0" y="110" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="76" letter-spacing="4" fill="#1a1a1a">IRON &amp; ZEN</text>
-          <rect x="0" y="136" width="520" height="4" fill="#1a1a1a" />
+          <text x="0" y="120" font-family="Marcellus, serif" font-weight="400" font-size="96" letter-spacing="21" fill="#262019">IRON ✦ ZEN</text>
         </DetailsThumbnail>
-        <figcaption>Iron &amp; Zen <span>— currently uses a real retreat photo instead</span></figcaption>
+        <figcaption>Iron &amp; Zen <span>— currently uses a real retreat photo instead; wordmark set in the site's real Marcellus font</span></figcaption>
       </figure>
 
       <figure>
         <DetailsThumbnail domain="icanspeak.it">
-          <circle cx="40" cy="92" r="40" fill="#1f8a8a" />
-          <text x="24" y="106" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="46" fill="#ffffff">i</text>
-          <text x="110" y="112" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="78" fill="#17324a">icanspeak<tspan fill="#e8792c">.it</tspan></text>
+          <image href="/images/thumbnail-test/icanspeak-logo.svg" x="0" y="-30" width="300" height="225" />
         </DetailsThumbnail>
-        <figcaption>IcanSpeak <span>— currently uses a real site screenshot instead</span></figcaption>
+        <figcaption>IcanSpeak <span>— currently uses a real site screenshot instead; real logo.svg pulled from their WordPress uploads</span></figcaption>
       </figure>
 
       <figure>
         <DetailsThumbnail domain="colevitate.com">
-          <circle cx="30" cy="62" r="15" fill="#8b5cf6" />
-          <circle cx="64" cy="62" r="15" fill="#14b8a6" />
-          <circle cx="30" cy="96" r="15" fill="#f59e0b" />
-          <circle cx="64" cy="96" r="15" fill="#f43f5e" />
-          <text x="104" y="110" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="80" fill="#1e1b2e">colevitate</text>
+          <image href="/images/thumbnail-test/colevitate-icon.png" x="0" y="34" width="112" height="112" />
+          <text x="130" y="118" font-family="'Space Grotesk Variable', 'Space Grotesk', sans-serif" font-weight="700" font-size="80" fill="#10131c">Colevitate</text>
         </DetailsThumbnail>
-        <figcaption>Colevitate <span>— currently uses a real app screenshot instead</span></figcaption>
+        <figcaption>Colevitate <span>— currently uses a real app screenshot instead; real gradient icon + real Space Grotesk wordmark</span></figcaption>
       </figure>
 
       <figure>
         <DetailsThumbnail domain="Private client deployment">
           <rect x="8" y="48" width="64" height="80" rx="10" fill="#334155" />
           <circle cx="40" cy="88" r="11" fill="#94a3b8" />
-          <text x="100" y="98" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="76" fill="#1e293b">Nimbus<tspan fill="#3b82f6">Vault</tspan></text>
-          <text x="100" y="140" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="28" letter-spacing="2" fill="#64748b">SINGLE-TENANT CMDB</text>
+          <text x="100" y="98" font-family="'Space Grotesk Variable', 'Space Grotesk', sans-serif" font-weight="700" font-size="72" fill="#1e293b">Nimbus<tspan fill="#3b82f6">Vault</tspan></text>
+          <text x="100" y="140" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="26" letter-spacing="2" fill="#64748b">SINGLE-TENANT CMDB</text>
         </DetailsThumbnail>
-        <figcaption>NimbusVault <span>— currently uses a real app screenshot instead</span></figcaption>
+        <figcaption>NimbusVault <span>— currently uses a real app screenshot instead; no public brand exists, so this stays a custom mark (now in Space Grotesk to match the rest of this site)</span></figcaption>
       </figure>
     </div>
   </main>
 </Base>
+
+<style is:global>
+  @import "@fontsource/marcellus";
+</style>
 
 <style>
   .wrap {
