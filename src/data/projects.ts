@@ -78,7 +78,7 @@ export const projects: Project[] = [
       { label: "Automation", value: 58 },
     ],
     portfolioImage: "/images/ironandzen/card-dawn-stillness.jpg",
-    projectsHeroImage: "/images/ironandzen/hero-fire.jpg",
+    projectsHeroImage: "/images/ironandzen/hero-details.jpg",
     galleryImages: [
       "/images/ironandzen/hero-fire.jpg",
       "/images/ironandzen/card-iron-work.jpg",
@@ -167,7 +167,7 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 55 },
     ],
     portfolioImage: "/images/projects/container10.jpg",
-    projectsHeroImage: "/images/portfolio/container04.jpg",
+    projectsHeroImage: "/images/projects/pflegeplace-hub-details.jpg",
     galleryImages: [
       "/images/projects/container10.jpg",
       "/images/portfolio/container04.jpg",
@@ -210,7 +210,7 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 86 },
     ],
     portfolioImage: "/images/portfolio/container13.jpg",
-    projectsHeroImage: "/images/projects/icanspeak/hero-viewport.jpg",
+    projectsHeroImage: "/images/projects/icanspeak/hero-details.jpg",
     galleryImages: [
       "/images/projects/icanspeak/gallery-quality.jpg",
       "/images/projects/icanspeak/gallery-cards.jpg",
@@ -371,7 +371,7 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 35 },
     ],
     portfolioImage: "/images/colevitate/gallery-frameworks.jpg",
-    projectsHeroImage: "/images/colevitate/hero-landing.jpg",
+    projectsHeroImage: "/images/colevitate/hero-details.jpg",
     galleryImages: [
       "/images/colevitate/hero-landing.jpg",
       "/images/colevitate/gallery-frameworks.jpg",
@@ -414,7 +414,7 @@ export const projects: Project[] = [
       { label: "Campaigning", value: 10 },
     ],
     portfolioImage: "/images/nimbusvault/bio-server-room.jpg",
-    projectsHeroImage: "/images/nimbusvault/hero-collection.jpg",
+    projectsHeroImage: "/images/nimbusvault/hero-details.jpg",
     galleryImages: [
       "/images/nimbusvault/hero-collection.jpg",
       "/images/nimbusvault/gallery-item-fields.jpg",
