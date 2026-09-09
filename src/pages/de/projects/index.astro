@@ -1,5 +1,6 @@
 ---
 import Base from "../../../layouts/Base.astro";
+import ProjectOverviewGrid from "../../../components/ProjectOverviewGrid.astro";
 import { localizeProjects, localizeProject } from "../../../lib/i18n";
 import { ui } from "../../../i18n/ui";
 
@@ -149,6 +150,8 @@ const archiveProjects = visibleProjects.filter((p) => !FLAGSHIP_SLUGS.includes(p
         })
       }
     </div>
+
+    <ProjectOverviewGrid projects={visibleProjects} projectsBase="/de/projects" lang="de" />
 
     <!-- Contact -->
     <section id="touch" class="touch" data-reveal="fade-up">

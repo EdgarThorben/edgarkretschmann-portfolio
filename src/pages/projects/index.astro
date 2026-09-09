@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import ProjectOverviewGrid from "../../components/ProjectOverviewGrid.astro";
 import { projects, getProject } from "../../data/projects";
 
 const CONTACT_EMAIL = "hello@edgarkretschmann.com";
@@ -146,6 +147,8 @@ const archiveProjects = visibleProjects.filter((p) => !FLAGSHIP_SLUGS.includes(p
         })
       }
     </div>
+
+    <ProjectOverviewGrid projects={visibleProjects} projectsBase="/projects" lang="en" />
 
     <!-- Contact -->
     <section id="touch" class="touch" data-reveal="fade-up">

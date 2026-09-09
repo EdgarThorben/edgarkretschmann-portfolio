@@ -56,6 +56,12 @@ export const ui = {
       generalExperience: "General experience",
       viewCaseStudy: "View case study →",
     },
+    projectsGrid: {
+      eyebrow: "The birds-eye view",
+      title: "Every project, at a glance",
+      tagline: "Hover any card for the real logo and the numbers that mattered — click through for the full case study.",
+      tally: "projects",
+    },
   },
   de: {
     nav: {
@@ -106,6 +112,12 @@ export const ui = {
       usedIn: "Eingesetzt bei",
       generalExperience: "Allgemeine Erfahrung",
       viewCaseStudy: "Case Study ansehen →",
+    },
+    projectsGrid: {
+      eyebrow: "Die Vogelperspektive",
+      title: "Jedes Projekt auf einen Blick",
+      tagline: "Mit dem Cursor über eine Karte fahren für das echte Logo und die Zahlen, die zählten — klicken für die ganze Case Study.",
+      tally: "Projekte",
     },
   },
 } as const;
