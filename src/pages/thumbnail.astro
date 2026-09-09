@@ -1,0 +1,128 @@
+---
+/**
+ * TEST PAGE — not linked from navigation, not used by any project data yet.
+ * Preview of the "Details" placeholder hero card (see DetailsThumbnail.astro)
+ * applied to the 5 projects that don't currently use it, so the design can
+ * be reviewed before touching real project data.
+ */
+import Base from "../layouts/Base.astro";
+import DetailsThumbnail from "../components/DetailsThumbnail.astro";
+---
+
+<Base title="Thumbnail test · Edgar Kretschmann" description="Draft preview of Details thumbnail cards." section="projects">
+  <main class="wrap">
+    <div class="head">
+      <h1>Thumbnail test</h1>
+      <p class="lede">
+        Draft "Details" cards for the 5 projects that don't have this layout yet. Geometry (block size, accent bar,
+        corner square, text position) is sampled pixel-for-pixel from the existing narangyoga/pflegeplace/etc. cards.
+        The logo marks below are hand-drawn approximations, not extracted real logos — for review only, nothing here
+        is wired into real project data yet.
+      </p>
+    </div>
+
+    <div class="grid">
+      <figure>
+        <DetailsThumbnail domain="pflegeplace.com/hub">
+          <circle cx="36" cy="70" r="28" fill="#b9c6ea" />
+          <rect x="20" y="88" width="56" height="56" rx="16" fill="#7c89aa" transform="rotate(45 48 116)" />
+          <text x="110" y="122" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="84" fill="#37415c">Pflege Place</text>
+          <text x="110" y="168" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="30" letter-spacing="2" fill="#7c89aa">KENNTNISPRÜFUNG HUB</text>
+        </DetailsThumbnail>
+        <figcaption>Pflegeplace-Hub <span>— no real photo exists yet (in build); reuses the Pflege Place mark</span></figcaption>
+      </figure>
+
+      <figure>
+        <DetailsThumbnail domain="ironandzen.com">
+          <text x="0" y="110" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="76" letter-spacing="4" fill="#1a1a1a">IRON &amp; ZEN</text>
+          <rect x="0" y="136" width="520" height="4" fill="#1a1a1a" />
+        </DetailsThumbnail>
+        <figcaption>Iron &amp; Zen <span>— currently uses a real retreat photo instead</span></figcaption>
+      </figure>
+
+      <figure>
+        <DetailsThumbnail domain="icanspeak.it">
+          <circle cx="40" cy="92" r="40" fill="#1f8a8a" />
+          <text x="24" y="106" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="46" fill="#ffffff">i</text>
+          <text x="110" y="112" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="78" fill="#17324a">icanspeak<tspan fill="#e8792c">.it</tspan></text>
+        </DetailsThumbnail>
+        <figcaption>IcanSpeak <span>— currently uses a real site screenshot instead</span></figcaption>
+      </figure>
+
+      <figure>
+        <DetailsThumbnail domain="colevitate.com">
+          <circle cx="30" cy="62" r="15" fill="#8b5cf6" />
+          <circle cx="64" cy="62" r="15" fill="#14b8a6" />
+          <circle cx="30" cy="96" r="15" fill="#f59e0b" />
+          <circle cx="64" cy="96" r="15" fill="#f43f5e" />
+          <text x="104" y="110" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="80" fill="#1e1b2e">colevitate</text>
+        </DetailsThumbnail>
+        <figcaption>Colevitate <span>— currently uses a real app screenshot instead</span></figcaption>
+      </figure>
+
+      <figure>
+        <DetailsThumbnail domain="Private client deployment">
+          <rect x="8" y="48" width="64" height="80" rx="10" fill="#334155" />
+          <circle cx="40" cy="88" r="11" fill="#94a3b8" />
+          <text x="100" y="98" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="76" fill="#1e293b">Nimbus<tspan fill="#3b82f6">Vault</tspan></text>
+          <text x="100" y="140" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="28" letter-spacing="2" fill="#64748b">SINGLE-TENANT CMDB</text>
+        </DetailsThumbnail>
+        <figcaption>NimbusVault <span>— currently uses a real app screenshot instead</span></figcaption>
+      </figure>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-8);
+  }
+
+  .head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .lede {
+    color: var(--text-muted);
+    max-width: 68ch;
+    line-height: 1.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 800px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figure :global(svg) {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  figcaption {
+    margin-top: var(--space-2);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  figcaption span {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+</style>

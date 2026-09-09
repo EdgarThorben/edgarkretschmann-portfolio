@@ -1,0 +1,37 @@
+---
+/**
+ * "Details" placeholder hero card — the layout already used for narangyoga,
+ * deutschacademy, pflegeplace, innate, and nomavillage (public/images/projects/
+ * container11.jpg etc.). Geometry below was sampled pixel-for-pixel from
+ * container11.jpg (1920×1080) via canvas so new cards match those exactly.
+ *
+ * The logo mark for each brand is passed as slotted SVG content, positioned
+ * in a local coordinate space of 802×184 starting at (1020,208) — the
+ * measured bounding box of the existing logos.
+ */
+interface Props {
+  domain: string;
+}
+
+const { domain } = Astro.props;
+---
+
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" class="details-thumb" role="img" aria-label={`${domain} — details`}>
+  <rect x="0" y="0" width="1920" height="1080" fill="#ffffff" />
+  <rect x="0" y="0" width="972" height="972" fill="#5f6867" />
+  <rect x="0" y="252" width="46" height="467" fill="#919a99" />
+  <rect x="1451" y="811" width="469" height="269" fill="#081d18" />
+  <text x="182" y="384" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="128" fill="#ffffff">Details</text>
+  <text x="268" y="552" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="46" fill="#c9cfce">{domain}</text>
+  <g transform="translate(1020,208)">
+    <slot />
+  </g>
+</svg>
+
+<style>
+  .details-thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

@@ -7,6 +7,7 @@ const visibleProjects = projects.filter((p) => !p.hidden);
 
 const FLAGSHIP_SLUGS = ["pflegeplace", "ironandzen", "nomavillage", "innate"];
 const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p !== undefined);
+const archiveProjects = visibleProjects.filter((p) => !FLAGSHIP_SLUGS.includes(p.slug));
 ---
 
 <Base
@@ -19,13 +20,13 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
       <a href="/" class="back-link">← Home</a>
       <h1>Every engagement</h1>
       <p class="lede">
-        Ten years of freelance work, {visibleProjects.length} projects in all. Four flagship stories told in full
-        below, then the complete archive.
+        Ten years of freelance marketing work, {visibleProjects.length} projects in all. Four flagship campaigns
+        told in full below, then every other engagement.
       </p>
     </div>
 
-    <section class="stories" aria-label="Selected stories">
-      <h2 class="section-heading">Selected stories</h2>
+    <section class="stories" aria-label="Flagship marketing campaigns">
+      <h2 class="section-heading">Flagship marketing campaigns</h2>
       {
         flagships.map((p, i) => (
           <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
@@ -39,17 +40,17 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
               <h3>{p.title}</h3>
 
               <div class="story-block">
-                <span class="story-label">The problem</span>
+                <span class="story-label">The marketing problem</span>
                 <p>{p.challenge}</p>
               </div>
 
               <div class="story-block">
-                <span class="story-label">The plan</span>
+                <span class="story-label">The marketing plan</span>
                 <p>{p.approach[0]}</p>
               </div>
 
               <div class="story-block story-block--outcome">
-                <span class="story-label">The outcome</span>
+                <span class="story-label">The marketing result</span>
                 <p>{p.achievements[0]}</p>
               </div>
 
@@ -63,22 +64,23 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
     </section>
 
     <div class="project-list">
-      <h2 class="section-heading">The complete archive</h2>
+      <h2 class="section-heading">Every other engagement</h2>
       {
-        visibleProjects.map((project, index) => {
-          const prev = index > 0 ? visibleProjects[index - 1] : undefined;
-          const next = index < visibleProjects.length - 1 ? visibleProjects[index + 1] : undefined;
+        archiveProjects.map((project, index) => {
+          const prev = index > 0 ? archiveProjects[index - 1] : undefined;
+          const next = index < archiveProjects.length - 1 ? archiveProjects[index + 1] : undefined;
           return (
             <section id={project.slug} class="project" data-reveal="fade-up" data-reveal-group="projects-list">
               <div class="project-head">
                 <span class="project-index">
-                  {String(index + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}
+                  {String(index + 1).padStart(2, "0")} / {String(archiveProjects.length).padStart(2, "0")}
                 </span>
                 <h2>
                   {project.company}
                   {project.status === "next" && <span class="status-badge">In progress</span>}
                 </h2>
                 <p class="project-subtitle">{project.title}</p>
+                <p class="project-role">{project.bioRole} · {project.bioPeriod}</p>
               </div>
 
               <div class="project-body">
@@ -103,7 +105,7 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
 
                   <div class="project-grid">
                     <div>
-                      <h4>Approach</h4>
+                      <h4>Marketing approach</h4>
                       <ul>
                         {project.approach.map((step) => (
                           <li>{step}</li>
@@ -111,7 +113,7 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
                       </ul>
                     </div>
                     <div>
-                      <h4>{project.status === "next" ? "What's next" : "Outcome"}</h4>
+                      <h4>{project.status === "next" ? "What's next" : "Marketing outcome"}</h4>
                       <ul>
                         {project.achievements.map((a) => (
                           <li>{a}</li>
@@ -386,6 +388,15 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => getProject(slug)).filter((p) => p
   .project-subtitle {
     color: var(--text-muted);
     margin: 4px 0 0;
+  }
+
+  .project-role {
+    font-family: monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: var(--space-2) 0 0;
   }
 
   .project-body {

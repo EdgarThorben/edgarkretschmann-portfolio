@@ -9,6 +9,7 @@ const visibleProjects = localizeProjects("de").filter((p) => !p.hidden);
 
 const FLAGSHIP_SLUGS = ["pflegeplace", "ironandzen", "nomavillage", "innate"];
 const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filter((p) => p !== undefined);
+const archiveProjects = visibleProjects.filter((p) => !FLAGSHIP_SLUGS.includes(p.slug));
 ---
 
 <Base
@@ -22,13 +23,13 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
       <a href="/de" class="back-link">← Start</a>
       <h1>Jedes Engagement</h1>
       <p class="lede">
-        Zehn Jahre freiberufliche Arbeit, {visibleProjects.length} Projekte insgesamt. Vier Vorzeigeprojekte
-        ausführlich erzählt weiter unten, dann das komplette Archiv.
+        Zehn Jahre freiberufliche Marketingarbeit, {visibleProjects.length} Projekte insgesamt. Vier Vorzeige-Kampagnen
+        ausführlich erzählt weiter unten, dann jedes weitere Engagement.
       </p>
     </div>
 
-    <section class="stories" aria-label="Ausgewählte Geschichten">
-      <h2 class="section-heading">Ausgewählte Geschichten</h2>
+    <section class="stories" aria-label="Vorzeige-Marketingkampagnen">
+      <h2 class="section-heading">Vorzeige-Marketingkampagnen</h2>
       {
         flagships.map((p, i) => (
           <article class="story" data-reveal="fade-up" data-reveal-group="portfolio-stories">
@@ -42,17 +43,17 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
               <h3>{p.title}</h3>
 
               <div class="story-block">
-                <span class="story-label">Die Herausforderung</span>
+                <span class="story-label">Die Marketing-Herausforderung</span>
                 <p>{p.challenge}</p>
               </div>
 
               <div class="story-block">
-                <span class="story-label">Der Plan</span>
+                <span class="story-label">Der Marketing-Plan</span>
                 <p>{p.approach[0]}</p>
               </div>
 
               <div class="story-block story-block--outcome">
-                <span class="story-label">Das Ergebnis</span>
+                <span class="story-label">Das Marketing-Ergebnis</span>
                 <p>{p.achievements[0]}</p>
               </div>
 
@@ -66,22 +67,23 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
     </section>
 
     <div class="project-list">
-      <h2 class="section-heading">Das komplette Archiv</h2>
+      <h2 class="section-heading">Jedes weitere Engagement</h2>
       {
-        visibleProjects.map((project, index) => {
-          const prev = index > 0 ? visibleProjects[index - 1] : undefined;
-          const next = index < visibleProjects.length - 1 ? visibleProjects[index + 1] : undefined;
+        archiveProjects.map((project, index) => {
+          const prev = index > 0 ? archiveProjects[index - 1] : undefined;
+          const next = index < archiveProjects.length - 1 ? archiveProjects[index + 1] : undefined;
           return (
             <section id={project.slug} class="project" data-reveal="fade-up" data-reveal-group="projects-list">
               <div class="project-head">
                 <span class="project-index">
-                  {String(index + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}
+                  {String(index + 1).padStart(2, "0")} / {String(archiveProjects.length).padStart(2, "0")}
                 </span>
                 <h2>
                   {project.company}
                   {project.status === "next" && <span class="status-badge">{t.project.inProgress}</span>}
                 </h2>
                 <p class="project-subtitle">{project.title}</p>
+                <p class="project-role">{project.bioRole} · {project.bioPeriod}</p>
               </div>
 
               <div class="project-body">
@@ -106,7 +108,7 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
 
                   <div class="project-grid">
                     <div>
-                      <h4>{t.project.theApproach}</h4>
+                      <h4>Marketing-Ansatz</h4>
                       <ul>
                         {project.approach.map((step) => (
                           <li>{step}</li>
@@ -114,7 +116,7 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
                       </ul>
                     </div>
                     <div>
-                      <h4>{project.status === "next" ? t.project.whatsNext : t.project.outcome}</h4>
+                      <h4>{project.status === "next" ? t.project.whatsNext : "Marketing-Ergebnis"}</h4>
                       <ul>
                         {project.achievements.map((a) => (
                           <li>{a}</li>
@@ -389,6 +391,15 @@ const flagships = FLAGSHIP_SLUGS.map((slug) => localizeProject(slug, "de")).filt
   .project-subtitle {
     color: var(--text-muted);
     margin: 4px 0 0;
+  }
+
+  .project-role {
+    font-family: monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin: var(--space-2) 0 0;
   }
 
   .project-body {
