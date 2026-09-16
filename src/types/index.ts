@@ -25,4 +25,13 @@ export interface Project {
   bioRole: string;
   bioDescription: string;
   bioImage: string;
+  location?: string; // where the engagement ran, e.g. "Augsburg", "Lagos, Portugal · remote"
+  engagement?: string; // engagement form when it's worth naming, e.g. "Retainer", "Advisory retainer"
+}
+
+/** A career entry that has no project case study of its own — employment and study. */
+export interface CareerEntry {
+  period: string;
+  title: string;
+  detail?: string;
 }

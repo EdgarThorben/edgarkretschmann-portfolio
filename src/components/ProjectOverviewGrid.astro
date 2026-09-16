@@ -22,8 +22,9 @@ const { projects, projectsBase, lang } = Astro.props;
 const t = ui[lang].projectsGrid;
 
 // Real, cropped brand logos (transparent PNGs cut from the Details-card
-// heroes, or the actual asset for icanspeak/colevitate). NimbusVault has no
-// public brand, so its mark is generated inline below instead of a file.
+// heroes, or the actual asset for icanspeak/colevitate). unit.cloud and
+// NimbusVault have no logo asset here yet, so their mark is generated inline
+// below instead of read from a file.
 const LOGOS: Partial<Record<string, string>> = {
   innate: "/images/logos/innate.png",
   ironandzen: "/images/logos/ironandzen.png",
@@ -35,8 +36,8 @@ const LOGOS: Partial<Record<string, string>> = {
   colevitate: "/images/logos/colevitate.png",
 };
 
-// bioImage is a photo of Edgar himself for ironandzen (he's the facilitator)
-// — use a real retreat photo instead for the card face.
+// bioImage is a photo of Edgar himself for ironandzen (he co-hosts the
+// cohorts) — use a real retreat photo instead for the card face.
 const PHOTO_OVERRIDE: Partial<Record<string, string>> = {
   ironandzen: "/images/ironandzen/hero-fire.jpg",
 };
@@ -45,30 +46,35 @@ const PHOTO_OVERRIDE: Partial<Record<string, string>> = {
 // points a prospective client would actually weigh, not a generic skill
 // score. Three per project, none padded to look "full."
 const FACTS_EN: Record<string, { value: string; label: string }[]> = {
+  unitcloud: [
+    { value: "LinkedIn", label: "B2B lead pipeline, not broad paid" },
+    { value: "1 click", label: "human-written post to published" },
+    { value: "2 builds", label: "new website and NimbusVault" },
+  ],
   innate: [
-    { value: "Sold out", label: "every cohort" },
-    { value: "Excellent", label: "guest reviews" },
-    { value: "High", label: "repeat-guest retention" },
+    { value: "100%", label: "occupancy of available places" },
+    { value: "0→1", label: "brand and storytelling" },
+    { value: "End to end", label: "marketing, qualifying, closing" },
   ],
   ironandzen: [
-    { value: "120+", label: "men hosted across cohorts" },
-    { value: "5.0★", label: "average rating" },
-    { value: "100%", label: "applications hand-vetted" },
+    { value: "7 days", label: "men's retreat in Portugal" },
+    { value: "Systemised", label: "content, not a weekly scramble" },
+    { value: "€0", label: "SaaS bought for the pipeline" },
   ],
   pflegeplace: [
-    { value: "0→1", label: "automation stack, self-built" },
+    { value: "A→Z", label: "candidate funnel, contact to handover" },
     { value: "↓ CPL", label: "cost-per-lead via targeting" },
-    { value: "Nurses placed", label: "into German hospitals" },
+    { value: "Nurses placed", label: "with German employers" },
   ],
   icanspeak: [
-    { value: "0→1", label: "school launched and scaled" },
-    { value: "100s", label: "students enrolled" },
-    { value: "LinkedIn", label: "outbound pipeline built" },
+    { value: "120", label: "new participants in one half-year" },
+    { value: "€0", label: "paid acquisition spend" },
+    { value: "LinkedIn", label: "drip campaign to enrolment" },
   ],
   deutschacademy: [
-    { value: "Founded", label: "brick-and-mortar school" },
-    { value: "Investors", label: "secured" },
-    { value: "Hospital clients", label: "acquired as partners" },
+    { value: "412+", label: "learners on the platform" },
+    { value: "664", label: "exercises, 60+ grammar topics" },
+    { value: "A1–C1", label: "telc, Goethe, TestDaF, DTZ prep" },
   ],
   nomavillage: [
     { value: "172", label: "guests from 27 countries" },
@@ -86,37 +92,42 @@ const FACTS_EN: Record<string, { value: string; label: string }[]> = {
     { value: "Shipped", label: "in a single build cycle" },
   ],
   nimbusvault: [
-    { value: "In production", label: "client IT department" },
+    { value: "In production", label: "unit.cloud's IT department" },
     { value: "Audit-logged", label: "every credential reveal" },
     { value: "EN / DE", label: "live UI toggle" },
   ],
 };
 
 const FACTS_DE: Record<string, { value: string; label: string }[]> = {
+  unitcloud: [
+    { value: "LinkedIn", label: "B2B-Lead-Pipeline statt breitem Paid" },
+    { value: "1 Klick", label: "vom Text zum veröffentlichten Beitrag" },
+    { value: "2 Builds", label: "neue Website und NimbusVault" },
+  ],
   innate: [
-    { value: "Ausgebucht", label: "jede Kohorte" },
-    { value: "Exzellent", label: "Gästebewertungen" },
-    { value: "Hoch", label: "Wiederkehrquote der Gäste" },
+    { value: "100 %", label: "Auslastung der verfügbaren Plätze" },
+    { value: "0→1", label: "Marke und Storytelling" },
+    { value: "End-to-End", label: "Marketing, Qualifizierung, Abschluss" },
   ],
   ironandzen: [
-    { value: "120+", label: "Männer über alle Kohorten hinweg begleitet" },
-    { value: "5.0★", label: "Durchschnittsbewertung" },
-    { value: "100%", label: "Bewerbungen manuell geprüft" },
+    { value: "7 Tage", label: "Männer-Retreat in Portugal" },
+    { value: "Systematisiert", label: "Content statt wöchentlicher Hetzjagd" },
+    { value: "0 €", label: "SaaS für die Pipeline eingekauft" },
   ],
   pflegeplace: [
-    { value: "0→1", label: "Automatisierungs-Stack, selbst gebaut" },
+    { value: "A→Z", label: "Kandidaten-Funnel, Kontakt bis Übergabe" },
     { value: "↓ CPL", label: "Cost-per-Lead durch gezieltes Targeting" },
-    { value: "Pflegekräfte vermittelt", label: "an deutsche Kliniken" },
+    { value: "Pflegekräfte vermittelt", label: "an deutsche Arbeitgeber" },
   ],
   icanspeak: [
-    { value: "0→1", label: "Schule gegründet und skaliert" },
-    { value: "Hunderte", label: "eingeschriebene Studierende" },
-    { value: "LinkedIn", label: "Outbound-Pipeline aufgebaut" },
+    { value: "120", label: "neue Teilnehmende in einem Halbjahr" },
+    { value: "0 €", label: "Ausgaben für Paid Acquisition" },
+    { value: "LinkedIn", label: "Drip-Kampagne bis zur Anmeldung" },
   ],
   deutschacademy: [
-    { value: "Gegründet", label: "Präsenz-Sprachschule" },
-    { value: "Investoren", label: "gewonnen" },
-    { value: "Klinik-Partner", label: "als Kunden gewonnen" },
+    { value: "412+", label: "Lernende auf der Plattform" },
+    { value: "664", label: "Übungen, 60+ Grammatikthemen" },
+    { value: "A1–C1", label: "telc, Goethe, TestDaF, DTZ" },
   ],
   nomavillage: [
     { value: "172", label: "Gäste aus 27 Ländern" },
@@ -134,7 +145,7 @@ const FACTS_DE: Record<string, { value: string; label: string }[]> = {
     { value: "Ausgeliefert", label: "in einem einzigen Build-Zyklus" },
   ],
   nimbusvault: [
-    { value: "In Produktion", label: "IT-Abteilung des Kunden" },
+    { value: "In Produktion", label: "IT-Abteilung von unit.cloud" },
     { value: "Audit-geloggt", label: "jede Zugangsdaten-Anzeige" },
     { value: "EN / DE", label: "Live-UI-Umschalter" },
   ],

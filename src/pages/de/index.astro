@@ -8,14 +8,22 @@ const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const t = ui.de;
 const projects = localizeProjects("de");
 const visibleProjects = projects.filter((p) => !p.hidden);
-const industries = new Set(["Coliving", "Pflegekräfte-Recruiting", "Sprachbildung", "Wellness"]);
-const foundingYear = 2018;
+// Die fünf Branchen aus dem Freelance-Profil.
+const industries = new Set([
+  "Cloud & IT-Services",
+  "Hospitality & Coliving",
+  "Healthcare-Recruiting",
+  "Bildung",
+  "Wellness",
+]);
+// Erste Growth-Marketing-Station im Werdegang des Profils.
+const foundingYear = 2021;
 const yearsActive = new Date().getFullYear() - foundingYear;
 ---
 
 <Base
   title="Edgar Kretschmann"
-  description="KI-gestützte Marketing-Systeme für KMU. Aus München, weltweit unterwegs."
+  description="Freelance Growth Marketing: Ich finde die Zielgruppe, auf die niemand bietet, und baue den Funnel, der sie erreicht. München & Berlin, Remote-first."
   section="home"
   lang="de"
 >
@@ -28,12 +36,13 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         <p class="lede" data-reveal="fade-up">
           Gutes Marketing beginnt nicht mit mehr Budget, sondern damit, die eine Zielgruppe zu finden, die alle
           anderen ignorieren, und dann schnell den Funnel oder das Produkt zu bauen, das sie erreicht. Genau das
-          mache ich seit 8 Jahren: für Coliving-Communities, Wellness-Retreats und eine Pflegekräfte-Pipeline nach
-          Deutschland, darunter Projekte, die ich selbst gegründet und geführt habe. Wenn genau das dein
-          Unternehmen als Nächstes braucht, lass uns reden.
+          mache ich seit {yearsActive} Jahren: für B2B-Cloud und IT-Services, Coliving-Communities, Wellness-Retreats und
+          eine Pflegekräfte-Pipeline nach Deutschland, darunter Projekte, die ich selbst gegründet und geführt
+          habe. Wenn genau das dein Unternehmen als Nächstes braucht, lass uns reden.
         </p>
         <div class="cta-row" data-reveal="fade-up">
           <a class="btn btn-primary" href="/de/projects">Zu den Arbeiten →</a>
+          <a class="btn btn-ghost" href="/de/profile">Freelance-Profil</a>
           <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Kontakt aufnehmen</a>
         </div>
       </div>
@@ -47,7 +56,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         <div><strong>{visibleProjects.length}</strong>Projekte aufgebaut oder skaliert</div>
         <div><strong>{industries.size}</strong>Branchen bedient</div>
         <div><strong>{yearsActive}+</strong>Jahre im Growth Marketing</div>
-        <div><strong>100%</strong>Remote, asynchrone Umsetzung</div>
+        <div><strong>Remote-first</strong>Vor Ort in München, Berlin, Augsburg</div>
       </div>
     </section>
 

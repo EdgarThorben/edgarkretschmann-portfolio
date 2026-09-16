@@ -8,7 +8,7 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
 interface Props {
   title: string;
   description: string;
-  section: "home" | "projects" | "bio";
+  section: "home" | "projects" | "bio" | "profile";
   lang?: Lang;
   ogImage?: string;
 }
@@ -20,6 +20,7 @@ const nav = [
   { href: lang === "en" ? "/" : "/de", label: t.nav.home },
   { href: lang === "en" ? "/projects" : "/de/projects", label: t.nav.projects },
   { href: lang === "en" ? "/bio" : "/de/bio", label: t.nav.bio },
+  { href: lang === "en" ? "/profile" : "/de/profile", label: t.nav.profile },
 ];
 
 const alt = altLocalePath(Astro.url.pathname);

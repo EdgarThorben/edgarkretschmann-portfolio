@@ -40,7 +40,7 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
     { notes: ["Die Scoring-Engine für die vier Assessments und das Profil-UI in Next.js gebaut."] },
     { notes: ["Die typisierten Datensätze und die Versionsverlauf-UI der CMDB in Astro gebaut."] },
   ],
-  PHP: [{ notes: ["Das WordPress-Backend für die Website der Manila-Schule templated."] }],
+  PHP: [{ notes: ["Das WordPress-Backend für die DeutschAcademy-Website templated."] }],
   WordPress: [{ notes: ["Die Anmeldeseite und den Funnel von Grund auf gebaut."] }],
   Elementor: [{ notes: ["Kurs- und Preisseiten auf dem WordPress-Aufbau layoutet."] }],
   "D3.js": [{ notes: ["Den interaktiven Graphen gebaut, der die Ergebnisse der Persönlichkeitsmodelle verknüpft."] }],
@@ -62,7 +62,7 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
     { notes: ["Die Markenidentität von Grund auf entwickelt: Name, Zeichen, visuelle Richtung."] },
   ],
   Canva: [
-    { notes: ["Kampagnen-Creatives für die Anmeldung der Manila-Schule produziert."] },
+    { notes: ["Kampagnen-Creatives für die Anmeldung bei DeutschAcademy produziert."] },
     { notes: ["Social- und Kampagnen-Creatives rund um die neue Markenidentität produziert."] },
   ],
   Figma: [
@@ -79,7 +79,7 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
   "SEO / SEM": [{ notes: ["SEM-Kampagnen für Nomaden gesteuert, die Lagos gegen Lissabon abwägten."] }],
   "Google Ads": [
     { notes: ["Google Ads gesteuert, um IcanSpeaks erste Studierenden ohne Empfehlungsbasis zu finden."] },
-    { notes: ["Suchverkehr mit Nomaden-Intent in den Nomavillage-Funnel geleitet."] },
+    { notes: ["Suchverkehr mit Nomaden-Intent in den NomaVillage-Funnel geleitet."] },
     { notes: ["Die Reichweite der neuen Narangyoga-Identität über die Suche ausgebaut."] },
   ],
   "Meta Ads": [
@@ -98,7 +98,7 @@ export const itemNotesDe: Record<string, { contextLabel?: string; notes: string[
   ],
   "Persona Research": [
     { notes: ["Digitale Nomaden nach Reise-/Arbeitsabsicht statt nach generischen Keywords profiliert."] },
-    { notes: ["Nomavillage gegen einen DIY-Aufbau in Lissabon für dieselbe Zielgruppe positioniert."] },
+    { notes: ["NomaVillage gegen einen DIY-Aufbau in Lissabon für dieselbe Zielgruppe positioniert."] },
   ],
 
   ActiveCampaign: [

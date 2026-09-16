@@ -1,0 +1,594 @@
+---
+/**
+ * The freelance profile as a web page — the layout of the PDF one-pager
+ * (Edgar-Kretschmann-Profil_5.pdf) rebuilt in the site's own type and tokens:
+ * a left rail of section labels against a single column of content, hairline
+ * rules between blocks.
+ *
+ * Content comes from src/data/profile.ts (the at-a-glance facts, headline
+ * results and capability blocks) and src/data/projects.ts (the engagements and
+ * the career chronology), so nothing here is a second copy of the facts.
+ */
+import type { Lang } from "../lib/i18n";
+import { localizeCareerEntries, localizeProfile, localizeProjects } from "../lib/i18n";
+import { sortProjectsDesc } from "../lib/timeline";
+import { ALSO_BUILT_SLUGS } from "../data/profile";
+import { ui } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].profile;
+const { tagline, contact, atAGlance, results, capabilities } = localizeProfile(lang);
+
+const projectsBase = lang === "en" ? "/projects" : "/de/projects";
+const projects = localizeProjects(lang).filter((p) => !p.hidden);
+const bySlug = new Map(projects.map((p) => [p.slug, p]));
+
+// The profile leads with the engagements, then lists everything as a
+// chronology. "Also built" projects are held back for their own short row.
+const alsoBuilt = ALSO_BUILT_SLUGS.map((slug) => bySlug.get(slug)).filter((p) => p !== undefined);
+// The profile's Werdegang lists client engagements only; the self-built
+// products sit in their own "also built" row, as in the PDF.
+const chronology = sortProjectsDesc(projects.filter((p) => !ALSO_BUILT_SLUGS.includes(p.slug)));
+const engagements = chronology;
+const careerEntries = localizeCareerEntries(lang);
+---
+
+<article class="sheet">
+  <header class="sheet-head" data-reveal="fade-up">
+    <p class="rail-label rail-label--head">{t.eyebrow}</p>
+    <div class="head-body">
+      <h1>Edgar Kretschmann</h1>
+      <div class="head-split">
+        <p class="tagline">{tagline}</p>
+        <ul class="contact">
+          <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+          <li><a href={`https://${contact.site}`}>{contact.site}</a></li>
+          <li><a href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer">{contact.linkedin}</a></li>
+          <li class="contact-plain">{contact.base}</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.atAGlance}</h2>
+    <dl class="facts">
+      {
+        atAGlance.map((fact) => (
+          <div class="fact">
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.results}</h2>
+    <div class="results">
+      <div class="results-head" aria-hidden="true">
+        <span>{t.colProject}</span>
+        <span>{t.colResult}</span>
+        <span>{t.colContext}</span>
+      </div>
+      <ul class="results-list">
+        {
+          results.map((result) => (
+            <li class="result">
+              <span class="result-project">
+                {result.slug ? <a href={`${projectsBase}/${result.slug}`}>{result.project}</a> : result.project}
+              </span>
+              <span class="result-metric">
+                {result.metric}
+                {result.metricSuffix && <small>{result.metricSuffix}</small>}
+              </span>
+              <span class="result-context">{result.context}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.whatIDo}</h2>
+    <div class="capabilities">
+      {
+        capabilities.map((capability) => (
+          <div class="capability">
+            <h3>{capability.title}</h3>
+            <p>{capability.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.selectedProjects}</h2>
+    <div class="engagements">
+      <p class="row-tagline">{t.selectedProjectsTagline}</p>
+      <ol class="engagement-list">
+        {
+          engagements.map((project) => (
+            <li class="engagement" data-reveal="fade-up" data-reveal-group="profile-engagements">
+              <div class="engagement-meta">
+                <span class="engagement-period">{project.bioPeriod}</span>
+                {project.engagement && <span class="engagement-form">{project.engagement}</span>}
+                {project.location && <span class="engagement-location">{project.location}</span>}
+              </div>
+              <div class="engagement-body">
+                <h3>
+                  <a href={`${projectsBase}/${project.slug}`}>{project.company}</a>
+                </h3>
+                <p class="engagement-role">{project.bioRole}</p>
+                <p class="engagement-desc">{project.bioDescription}</p>
+                <p class="engagement-outcome">{project.achievements[0]}</p>
+                <a class="engagement-link" href={`${projectsBase}/${project.slug}`}>
+                  {t.viewCaseStudy}
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.career}</h2>
+    <ol class="career">
+      {
+        chronology.map((project) => (
+          <li class="career-entry">
+            <span class="career-period">
+              {project.bioPeriod}
+              {project.engagement && <span class="career-form">{project.engagement}</span>}
+            </span>
+            <span class="career-title">
+              <a href={`${projectsBase}/${project.slug}`}>{project.company}</a>
+              <span class="career-sep"> — </span>
+              {project.bioRole}
+              {project.location && <span class="career-detail"> · {project.location}</span>}
+            </span>
+          </li>
+        ))
+      }
+      {
+        careerEntries.map((entry) => (
+          <li class="career-entry">
+            <span class="career-period">{entry.period}</span>
+            <span class="career-title">
+              {entry.title}
+              {entry.detail && <span class="career-detail"> · {entry.detail}</span>}
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="row" data-reveal="fade-up">
+    <h2 class="rail-label">{t.alsoBuilt}</h2>
+    <div class="capabilities">
+      {
+        alsoBuilt.map((project) => (
+          <div class="capability">
+            <h3>
+              <a href={`${projectsBase}/${project.slug}`}>{project.company}</a>
+            </h3>
+            <p>{project.summary}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <footer class="sheet-foot" data-reveal="fade-up">
+    <p>
+      {t.footer} <a href={`mailto:${contact.email}`}>{contact.email}</a>
+    </p>
+  </footer>
+</article>
+
+<style>
+  .sheet {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5) var(--space-8);
+  }
+
+  /* --- the left rail of section labels, as in the printed profile --- */
+  .rail-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-5);
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .row-tagline {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 var(--space-5);
+    max-width: 52ch;
+  }
+
+  /* --- header --- */
+  .sheet-head {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+
+  .rail-label--head {
+    max-width: 7ch;
+  }
+
+  .head-body h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: 0 0 var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .head-split {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .tagline {
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: 1.45;
+    font-style: italic;
+    margin: 0;
+    max-width: 24ch;
+    flex: 1 1 18rem;
+  }
+
+  .contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.9;
+    flex: 0 1 auto;
+  }
+
+  .contact a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact a:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .contact-plain {
+    color: var(--text-muted);
+  }
+
+  /* --- at a glance --- */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5) var(--space-4);
+    margin: 0;
+  }
+
+  .fact dt {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .fact dd {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  /* --- results --- */
+  .results-head {
+    display: grid;
+    grid-template-columns: 11rem 6rem 1fr;
+    gap: var(--space-4);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .results-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .result {
+    display: grid;
+    grid-template-columns: 11rem 6rem 1fr;
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .result-project {
+    font-weight: 600;
+  }
+
+  .result-project a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .result-project a:hover {
+    color: var(--text-muted);
+  }
+
+  .result-metric {
+    font-size: 1.5rem;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .result-metric small {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: 3px;
+  }
+
+  .result-context {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* --- what I do / also built --- */
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5) var(--space-6);
+  }
+
+  .capability h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+  }
+
+  .capability h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .capability h3 a:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .capability p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* --- selected projects --- */
+  .engagement-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .engagement {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .engagement-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.78rem;
+  }
+
+  .engagement-period {
+    font-weight: 600;
+  }
+
+  .engagement-form {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .engagement-location {
+    color: var(--text-muted);
+  }
+
+  .engagement-body h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0 0 4px;
+  }
+
+  .engagement-body h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .engagement-body h3 a:hover {
+    color: var(--text-muted);
+  }
+
+  .engagement-role {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-3);
+  }
+
+  .engagement-desc {
+    margin: 0 0 var(--space-3);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .engagement-outcome {
+    margin: 0 0 var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-2);
+    border-left: 2px solid var(--ink);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .engagement-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .engagement-link:hover {
+    color: var(--text-muted);
+  }
+
+  /* --- career chronology --- */
+  .career {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .career-entry {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .career-entry:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .career-period {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .career-form::before {
+    content: " · ";
+  }
+
+  .career-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .career-title a:hover {
+    border-bottom-color: var(--ink);
+  }
+
+  .career-sep,
+  .career-detail {
+    color: var(--text-muted);
+  }
+
+  /* --- footer --- */
+  .sheet-foot {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+
+  .sheet-foot p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .sheet-foot a {
+    color: var(--text);
+  }
+
+  @media (max-width: 860px) {
+    .facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .sheet {
+      padding: var(--space-5) var(--space-4) var(--space-7);
+    }
+    .sheet-head,
+    .row,
+    .engagement,
+    .career-entry {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .rail-label--head {
+      max-width: none;
+    }
+    .facts,
+    .capabilities {
+      grid-template-columns: 1fr;
+    }
+    .results-head {
+      display: none;
+    }
+    .result {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+    .engagement-meta {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: baseline;
+    }
+  }
+</style>

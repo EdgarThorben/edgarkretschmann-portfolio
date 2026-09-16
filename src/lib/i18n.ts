@@ -1,8 +1,10 @@
-import type { Project } from "../types";
-import { projects, bonusExperience } from "../data/projects";
-import { projectTranslations, skillLabelsDe, bonusExperienceDe } from "../data/projects.de";
+import type { CareerEntry, Project } from "../types";
+import { projects, bonusExperience, careerEntries } from "../data/projects";
+import { projectTranslations, skillLabelsDe, bonusExperienceDe, careerEntriesDe } from "../data/projects.de";
 import { TOOL_BINS, type ToolBin } from "../data/toolkit";
 import { binLabelsDe, itemNotesDe } from "../data/toolkit.de";
+import { AT_A_GLANCE, CAPABILITIES, CONTACT, RESULTS, TAGLINE } from "../data/profile";
+import { AT_A_GLANCE_DE, CAPABILITIES_DE, CONTACT_DE, RESULTS_DE, TAGLINE_DE } from "../data/profile.de";
 
 export type Lang = "en" | "de";
 
@@ -33,6 +35,24 @@ export function localizeProject(slug: string, lang: Lang): Project | undefined {
 
 export function localizeBonusExperience(lang: Lang) {
   return lang === "en" ? bonusExperience : { ...bonusExperience, ...bonusExperienceDe };
+}
+
+export function localizeCareerEntries(lang: Lang): CareerEntry[] {
+  return lang === "en" ? careerEntries : careerEntriesDe;
+}
+
+/** The /profile page's content, assembled for the given locale. */
+export function localizeProfile(lang: Lang) {
+  if (lang === "en") {
+    return { tagline: TAGLINE, contact: CONTACT, atAGlance: AT_A_GLANCE, results: RESULTS, capabilities: CAPABILITIES };
+  }
+  return {
+    tagline: TAGLINE_DE,
+    contact: { ...CONTACT, ...CONTACT_DE },
+    atAGlance: AT_A_GLANCE_DE,
+    results: RESULTS_DE,
+    capabilities: CAPABILITIES_DE,
+  };
 }
 
 /** Returns `TOOL_BINS` with bin labels/blurbs and usage notes swapped in for the given locale. */

@@ -63,7 +63,7 @@ export const TOOL_BINS: ToolBin[] = [
       {
         name: "PHP",
         usedIn: [
-          { type: "project", slug: "deutschacademy", note: "Templated the WordPress backend for the Manila school's site." },
+          { type: "project", slug: "deutschacademy", note: "Templated the WordPress backend for the DeutschAcademy site." },
         ],
       },
       {
@@ -122,7 +122,7 @@ export const TOOL_BINS: ToolBin[] = [
       {
         name: "Canva",
         usedIn: [
-          { type: "project", slug: "deutschacademy", note: "Produced enrollment campaign creative for the Manila school." },
+          { type: "project", slug: "deutschacademy", note: "Produced enrollment campaign creative for DeutschAcademy." },
           { type: "project", slug: "narangyoga", note: "Produced social and campaign creative around the new brand identity." },
         ],
       },
@@ -160,7 +160,7 @@ export const TOOL_BINS: ToolBin[] = [
         name: "Google Ads",
         usedIn: [
           { type: "project", slug: "icanspeak", note: "Ran Google Ads to find IcanSpeak's first students without a referral base." },
-          { type: "project", slug: "nomavillage", note: "Drove nomad-intent search traffic into the Nomavillage lead funnel." },
+          { type: "project", slug: "nomavillage", note: "Drove nomad-intent search traffic into the NomaVillage lead funnel." },
           { type: "project", slug: "narangyoga", note: "Grew the new Narangyoga identity's audience through search." },
         ],
       },
@@ -196,7 +196,7 @@ export const TOOL_BINS: ToolBin[] = [
         name: "Persona Research",
         usedIn: [
           { type: "project", slug: "innate", note: "Profiled digital nomads by travel/work intent rather than generic keywords." },
-          { type: "project", slug: "nomavillage", note: "Positioned Nomavillage against a DIY Lisbon setup for the same audience." },
+          { type: "project", slug: "nomavillage", note: "Positioned NomaVillage against a DIY Lisbon setup for the same audience." },
         ],
       },
     ],

@@ -5,12 +5,24 @@ import { projects } from "../data/projects";
 
 const CONTACT_EMAIL = "hello@edgarkretschmann.com";
 const visibleProjects = projects.filter((p) => !p.hidden);
-const industries = new Set(["Coliving", "Healthcare recruitment", "Language education", "Wellness"]);
-const foundingYear = 2018;
+// The five industries named on the freelance profile.
+const industries = new Set([
+  "Cloud & IT services",
+  "Hospitality & coliving",
+  "Healthcare recruiting",
+  "Education",
+  "Wellness",
+]);
+// First growth-marketing engagement on the profile's Werdegang.
+const foundingYear = 2021;
 const yearsActive = new Date().getFullYear() - foundingYear;
 ---
 
-<Base title="Edgar Kretschmann" description="AI-augmented marketing systems for SMBs. Munich-based, remote everywhere." section="home">
+<Base
+  title="Edgar Kretschmann"
+  description="Freelance growth marketing: I find the audience nobody is bidding on and build the funnel that reaches them. Munich & Berlin, remote-first."
+  section="home"
+>
   <main class="wrap">
     <section class="hero">
       <div class="hero-text">
@@ -19,12 +31,14 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         </h1>
         <p class="lede" data-reveal="fade-up">
           Good marketing doesn't start with a bigger budget. It starts with finding the exact audience everyone
-          else is ignoring, then building the funnel or product that reaches them fast. I've spent 8 years doing
-          exactly that: for coliving communities, wellness retreats, and a nurse-recruitment pipeline into Germany,
-          including ventures I've built and run myself. If that's what your business needs next, let's talk.
+          else is ignoring, then building the funnel or product that reaches them fast. I've spent {yearsActive} years doing
+          exactly that: for B2B cloud and IT services, coliving communities, wellness retreats, and a
+          nurse-recruitment pipeline into Germany, including ventures I've built and run myself. If that's what
+          your business needs next, let's talk.
         </p>
         <div class="cta-row" data-reveal="fade-up">
           <a class="btn btn-primary" href="/projects">See the work →</a>
+          <a class="btn btn-ghost" href="/profile">Freelance profile</a>
           <a class="btn btn-ghost" href={`mailto:${CONTACT_EMAIL}`}>Get in touch</a>
         </div>
       </div>
@@ -38,7 +52,7 @@ const yearsActive = new Date().getFullYear() - foundingYear;
         <div><strong>{visibleProjects.length}</strong>Ventures built or scaled</div>
         <div><strong>{industries.size}</strong>Industries served</div>
         <div><strong>{yearsActive}+</strong>Years in growth marketing</div>
-        <div><strong>100%</strong>Remote, async delivery</div>
+        <div><strong>Remote-first</strong>On-site in Munich, Berlin, Augsburg</div>
       </div>
     </section>
 
