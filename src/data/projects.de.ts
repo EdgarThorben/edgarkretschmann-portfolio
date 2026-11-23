@@ -247,11 +247,11 @@ export const projectTranslations: Record<string, ProjectTranslation> = {
 };
 
 export const bonusExperienceDe = {
-  period: "2015–2020",
+  period: "2015–heute",
   role: "Sprachlehrer",
   company: "Fons, inlingua, Start LF, Alpadia, Eurasia",
   description:
-    "Vor der Marketingarbeit habe ich fünf Jahre lang Sprachen unterrichtet, in Deutschland und im Ausland, für Fons, inlingua, Start LF, Alpadia und Eurasia. China, Korea, die Philippinen und natürlich Deutschland, wo ich Geflüchtete und einwandernde Fachkräfte unterrichtet habe.",
+    "Seit 2015 unterrichte ich Sprachen, bis heute, in Deutschland und im Ausland, für Fons, inlingua, Start LF, Alpadia und Eurasia, und inzwischen BAMF-Integrationskurse online. China, Korea, die Philippinen und natürlich Deutschland, wo ich Geflüchtete und einwandernde Fachkräfte unterrichtet habe.",
 };
 
 /** German copy for `careerEntries` (src/data/projects.ts), same order. */
@@ -262,7 +262,7 @@ export const careerEntriesDe = [
     detail: "Internationale Partnerakquise",
   },
   {
-    period: "2015–2020",
+    period: "2015–heute",
     title: "Sprachunterricht — Fons, inlingua, Start LF, Alpadia, Eurasia",
     detail: "Deutschland und Ausland",
   },

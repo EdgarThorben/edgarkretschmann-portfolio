@@ -498,11 +498,11 @@ export const projects: Project[] = [
 ];
 
 export const bonusExperience = {
-  period: "2015–2020",
+  period: "2015–today",
   role: "Language Teacher",
   company: "Fons, inlingua, Start LF, Alpadia, Eurasia",
   description:
-    "Before the marketing work I taught language for five years, in Germany and abroad, for Fons, inlingua, Start LF, Alpadia and Eurasia. China, Korea, the Philippines, and of course Germany, teaching refugees and immigrating professionals.",
+    "I started teaching language in 2015 and I still teach today, in Germany and abroad, for Fons, inlingua, Start LF, Alpadia and Eurasia, and now BAMF integration courses online. China, Korea, the Philippines, and of course Germany, teaching refugees and immigrating professionals.",
   image: "/images/bio/image02.jpg",
 };
 
@@ -517,7 +517,7 @@ export const careerEntries: CareerEntry[] = [
     detail: "International partner acquisition",
   },
   {
-    period: "2015–2020",
+    period: "2015–today",
     title: "Language teaching — Fons, inlingua, Start LF, Alpadia, Eurasia",
     detail: "Germany and abroad",
   },
