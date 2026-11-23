@@ -1,0 +1,597 @@
+---
+import type { Lang } from "../lib/i18n";
+import { teacherStory, teacherPortrait } from "../data/teacherStory";
+import { teacherPhotos } from "../data/teacherGallery";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = teacherStory[lang];
+const caption = (p: (typeof teacherPhotos)[number]) => (lang === "de" ? p.captionDe : p.captionEn);
+---
+
+<main class="wrap">
+  <a href={t.back.href} class="back-link" data-reveal="fade-up">{t.back.label}</a>
+
+  <section class="hero" data-reveal="fade-up">
+    <img class="portrait" src={teacherPortrait} alt={t.portraitAlt} width="240" height="240" />
+    <div class="hero-text">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h1>{t.heading}</h1>
+      <p class="lede">{t.lede}</p>
+    </div>
+  </section>
+
+  <ul class="stats" data-reveal="fade-up">
+    {
+      t.stats.map((s) => (
+        <li>
+          <strong>{s.value}</strong>
+          <span>{s.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <section class="story" data-reveal="fade-up">
+    <h2>{t.storyHeading}</h2>
+    <div class="story-body">
+      {t.story.map((p) => <p>{p}</p>)}
+      <blockquote>{t.quote}</blockquote>
+    </div>
+  </section>
+
+  <section class="stations">
+    <h2 data-reveal="fade-up">{t.stationsHeading}</h2>
+    <ol>
+      {
+        t.stations.map((s) => (
+          <li class:list={["station", { "has-image": s.image }]} data-reveal="fade-up">
+            <div class="station-text">
+              <span class="station-meta">
+                {s.period} · {s.place}
+              </span>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+            {s.image && <img src={s.image.src} alt={s.image.alt} loading="lazy" decoding="async" />}
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="bridge" data-reveal="fade-up">
+    <h2>{t.bridgeHeading}</h2>
+    {t.bridge.map((p) => <p>{p}</p>)}
+    <ul class="bridge-links">
+      {
+        t.bridgeLinks.map((l) => (
+          <li>
+            <a href={l.href}>
+              <strong>{l.label} →</strong>
+              <span>{l.note}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="facts" data-reveal="fade-up">
+    <div>
+      <h2>{t.trainingHeading}</h2>
+      <ul class="training">
+        {t.training.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>{t.languagesHeading}</h2>
+      <ul class="chips">
+        {t.languages.map((l) => <li>{l}</li>)}
+      </ul>
+      <p class="note">{t.languagesNote}</p>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <h2 data-reveal="fade-up">{t.galleryHeading}</h2>
+    <ul class="gallery" data-reveal="fade-up">
+      {
+        teacherPhotos.map((photo, i) => (
+          <li>
+            <button
+              type="button"
+              class="tile"
+              data-index={i}
+              data-src={photo.src}
+              data-caption={caption(photo)}
+              aria-label={`${t.openPhoto}: ${caption(photo)}`}
+            >
+              <img src={photo.src} alt={caption(photo)} loading="lazy" decoding="async" />
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label={t.close}>✕</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label={t.prev}>‹</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="" />
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label={t.next}>›</button>
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox") as HTMLDivElement;
+  const img = document.getElementById("lightbox-img") as HTMLImageElement;
+  const captionEl = document.getElementById("lightbox-caption") as HTMLElement;
+  const tiles = Array.from(document.querySelectorAll<HTMLButtonElement>(".tile"));
+  let current = 0;
+
+  function open(index: number) {
+    current = (index + tiles.length) % tiles.length;
+    const tile = tiles[current];
+    img.src = tile.dataset.src ?? "";
+    img.alt = tile.dataset.caption ?? "";
+    captionEl.textContent = tile.dataset.caption ?? "";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  tiles.forEach((tile) => tile.addEventListener("click", () => open(Number(tile.dataset.index))));
+  document.getElementById("lightbox-close")?.addEventListener("click", close);
+  document.getElementById("lightbox-prev")?.addEventListener("click", () => open(current - 1));
+  document.getElementById("lightbox-next")?.addEventListener("click", () => open(current + 1));
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") open(current - 1);
+    if (e.key === "ArrowRight") open(current + 1);
+  });
+</script>
+
+<style>
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 500;
+    margin: 0 0 var(--space-4);
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  .back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: calc(var(--space-6) * -1);
+  }
+
+  .back-link:hover {
+    color: var(--text);
+  }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+  }
+
+  @media (min-width: 760px) {
+    .hero {
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .portrait {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 760px) {
+    .portrait {
+      width: 220px;
+      height: 220px;
+    }
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 62ch;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5.5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .lede {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  /* Stats */
+  .stats {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5) var(--space-4);
+  }
+
+  @media (min-width: 760px) {
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stats li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .stats strong {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 500;
+  }
+
+  .stats span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  /* Story */
+  .story-body {
+    max-width: 66ch;
+  }
+
+  .story-body p {
+    margin: 0 0 var(--space-4);
+  }
+
+  blockquote {
+    margin: var(--space-5) 0 0;
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--accent);
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Stations */
+  .stations ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .station {
+    display: grid;
+    gap: var(--space-4);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--line);
+  }
+
+  @media (min-width: 760px) {
+    .station.has-image {
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-6);
+      align-items: start;
+    }
+  }
+
+  .station-text {
+    max-width: 60ch;
+  }
+
+  .station-meta {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .station h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: var(--space-1) 0 var(--space-2);
+  }
+
+  .station p {
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .station img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--bg-2);
+  }
+
+  /* Bridge */
+  .bridge {
+    background: var(--bg-2);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+  }
+
+  @media (min-width: 760px) {
+    .bridge {
+      padding: var(--space-6);
+    }
+  }
+
+  .bridge p {
+    max-width: 66ch;
+    margin: 0 0 var(--space-4);
+  }
+
+  .bridge-links {
+    list-style: none;
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 760px) {
+    .bridge-links {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .bridge-links a {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    height: 100%;
+    padding: var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .bridge-links a:hover {
+    border-color: var(--accent);
+  }
+
+  .bridge-links strong {
+    font-weight: 600;
+  }
+
+  .bridge-links span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Training + languages */
+  .facts {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 760px) {
+    .facts {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .training {
+    margin: 0;
+    padding-left: 1.1em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    line-height: 1.5;
+  }
+
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .chips li {
+    padding: 0.3em 0.8em;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+
+  .note {
+    color: var(--text-muted);
+    margin: var(--space-3) 0 0;
+  }
+
+  /* Gallery */
+  .gallery {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 640px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .tile {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    background: var(--bg-2);
+  }
+
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .tile:hover img {
+    transform: scale(1.06);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox-figure {
+    margin: 0;
+    max-width: min(90vw, 1000px);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .lightbox-figure img {
+    max-width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .lightbox-figure figcaption {
+    color: #f4f4f4;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: var(--space-2);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.8rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: var(--space-2) var(--space-3);
+    opacity: 0.8;
+  }
+
+  .lightbox-nav:hover {
+    opacity: 1;
+  }
+
+  .lightbox-prev {
+    left: var(--space-3);
+  }
+
+  .lightbox-next {
+    right: var(--space-3);
+  }
+
+  @media (max-width: 640px) {
+    .lightbox-nav {
+      font-size: 2rem;
+    }
+  }
+</style>

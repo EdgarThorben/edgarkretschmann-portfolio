@@ -5,6 +5,13 @@ export interface TeacherPhoto {
 }
 
 export const teacherPhotos: TeacherPhoto[] = [
+  // From deutschacademy.com/ueber-mich (the ones not already used in the station timeline)
+  { src: "/images/bio/teacher/da/qingdao-1.webp", captionEn: "Teaching adults in Qingdao, China", captionDe: "Unterricht mit Erwachsenen in Qingdao, China" },
+  { src: "/images/bio/teacher/da/philippinen-1.webp", captionEn: "Christmas photo with a class in the Philippines", captionDe: "Weihnachtsfoto mit einer Klasse auf den Philippinen" },
+  { src: "/images/bio/teacher/da/berlin-2.webp", captionEn: "Class trip in front of a palace", captionDe: "Ausflug mit einer Klasse vor einem Schloss" },
+  { src: "/images/bio/teacher/da/online-1.webp", captionEn: "Integration course online: learners waving at the camera", captionDe: "Integrationskurs online: Teilnehmende winken in die Kamera" },
+  { src: "/images/bio/teacher/da/berlin-3.webp", captionEn: "Course outing in Berlin", captionDe: "Ausflug mit einem Kurs in Berlin" },
+  { src: "/images/bio/teacher/da/online-3.webp", captionEn: "Online course over Zoom", captionDe: "Online-Kurs über Zoom" },
   { src: "/images/bio/teacher/philippinen-1.jpg", captionEn: "Philippines", captionDe: "Philippinen" },
   { src: "/images/bio/teacher/philippinen-4.jpg", captionEn: "Philippines", captionDe: "Philippinen" },
   { src: "/images/bio/teacher/celta-group.jpg", captionEn: "CELTA course, group photo", captionDe: "CELTA-Kurs, Gruppenfoto" },
